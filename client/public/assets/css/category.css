@@ -1,0 +1,614 @@
+/* ------------------------------------------------------------------------------ 
+Project Name : Daqing 
+Description : Main Style Sheet 
+Author : Imran Rovan 
+Created On : 22 Feb 2018 
+--------------------------------------------------------------------------------*/
+
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&family=Poppins:wght@400;500;700&display=swap');
+
+/*font-family: 'Dancing Script', cursive;
+font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif;*/
+
+
+
+/*  Reset */
+html, body {
+	margin: 0;
+	padding: 0;
+}
+html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+ol, ul {
+	list-style: none;
+}
+img {
+	display: block;
+	outline: none;
+}
+img, input, textarea, button, select {
+	border: 0;
+	outline: 0 !important;
+	resize: none;
+}
+a, a:hover, a:focus {
+	text-decoration: none;
+	-moz-transition: all .200s ease-in-out;
+	-webkit-transition: all .200s ease-in-out;
+	transition: all .200s ease-in-out;
+}
+.clear {
+	clear: both;
+	font-size: 0;
+	height: 0;
+}
+.clearfix:after {
+	clear: both;
+	content: "";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+li.clearfix {
+	display: list-item;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body, p, a, li, span, div {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*Theme */
+body {
+	color: #000;
+	font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	-ms-overflow-style: scrollbar;
+	background: #ebebeb;
+}
+p {
+	font-size: 15px;
+	/*line-height: 24px;*/
+	font-weight: 400;
+	color: #4b4b4b;
+	text-align: justify;
+}
+h1,h2,h3 {
+	font-family: 'Playfair Display', serif;
+}
+h4 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 35px;
+}
+header {
+  background: transparent;
+  width: 100%;
+  height: 160px;
+  position: fixed;
+  top: 0;
+  z-index: 555;
+  transition: top 0.5s ease-in-out;
+}
+header {
+ position: fixed;
+ width: 100%;
+ height: 100px;
+ top: 0;
+ left: 0;
+ background-color: transparent;
+ padding: 10px 0;
+ z-index: 999;
+ -webkit-transition: all 0.5s ease;
+ -moz-transition: all 0.5s ease;
+ -o-transition: all 0.5s ease;
+ transition: all 0.5s ease;
+}
+header.header-fixed {
+ height: 80px;
+ padding: 5px 0;
+ background-color: rgba(255,255,255,1);
+ top: 0px;
+ -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+ -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+ box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+}
+header .logo {
+ float: left;
+}
+header .logo img {
+ display: block;
+ height: 130px;
+ -webkit-transition: all 0.5s ease;
+ -moz-transition: all 0.5s ease;
+ -o-transition: all 0.5s ease;
+ transition: all 0.5s ease;
+}
+header.header-fixed .logo img {
+ height: 70px;
+}
+header nav#menu ul li
+{
+	display: inline-block!important;
+}
+#menu > ul > li:last-child a 
+{
+	background:rgba(0, 0, 0, 0.5)!important;
+	border-radius: 5px!important;
+}
+
+/*search box*/
+.search_btn
+{
+	padding-top: 0!important;
+}
+.search-box:hover > .search-txt {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+  background: white;
+  color: white!important;
+}
+.search-btn {
+  color: white!important;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:rgba(0, 0, 0, 0.5)!important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+/********banner*********/
+.banner
+{
+  background: url(../images/category-banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 160px 0 80px 0;
+  background-position: 0px 18%;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.banner h3
+{
+  color: black;
+  font-family: 'Poppins', sans-serif;  
+  font-weight: 700;
+  font-size: 50px;
+}
+.order-tab
+{
+  margin-bottom: 50px;
+}
+/****nav*****/
+.tabs-left, .tabs-right {
+  border-bottom: none;
+  padding-top: 2px;
+}
+.tabs-left {
+  background: white;
+  border-radius: 8px;
+}
+.tabs-right {
+  border-left: 1px solid #ddd;
+}
+.tabs-left>li, .tabs-right>li {
+  float: none;
+}
+.tabs-left>li {
+  margin-right: -1px;
+  width: 100%;
+  color: black!important;
+  border-bottom: 1px solid #eeeeee;
+}
+.tabs-left>li:first-child {
+  font-weight: 700;
+  font-size:18px;
+}
+.tabs-left>li a img
+{
+  width: 18px;
+  display: inline-block;
+  float: right;
+}
+.tabs-left>li:first-child
+{
+  padding: 12px;
+}
+.tabs-left>li:first-child:hover
+{
+  background: white;
+}
+.tabs-left>li a{
+  color: black!important;
+  display: inline-block;
+  padding: 12px;
+}
+.tabs-left>li a.active.show
+{
+  background: #f9c89f;fl
+}
+.tabs-left>li:last-child
+{
+  border-bottom: 1px solid transparent;
+}
+.tabs-right>li {
+  margin-left: -1px;
+}
+.tabs-left li:hover
+{
+  background: #f9c89f;
+}
+.tabs-left>li.active>a,
+.tabs-left>li.active>a:hover,
+.tabs-left>li.active>a:focus {
+  border-bottom-color: #ddd;
+  border-right-color: transparent;
+}
+
+.tabs-right>li.active>a,
+.tabs-right>li.active>a:hover,
+.tabs-right>li.active>a:focus {
+  border-bottom: 1px solid #ddd;
+  border-left-color: transparent;
+}
+.tabs-left>li>a {
+  border-radius: 4px 0 0 4px;
+  margin-right: 0;
+  display:block;
+  background: url(../images/right-arrow.png) no-repeat right 15px center;
+  background-size: auto 18px;
+}
+.tabs-right>li>a {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+}
+.dish
+{
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.dish .dish-img
+{
+  width: 25%;
+  background-size: cover;
+  border-radius: 8px 0 0 8px;
+  background-repeat: no-repeat;
+}
+.dish .dish-img img
+{
+  width: 100%;
+  border-radius: 8px 0 0 8px;
+  height: 100%;
+}
+.dish-title-desc-star,.dish-price
+{
+  padding: 12px;
+}
+.dish-title-desc-star h5 {
+  margin-bottom: 10px;
+}
+.dish-title-desc-star
+{
+  border-right:1px solid #eeeeee;
+  width: 50%;
+}
+.dish-title-desc-star .dish-desc
+{
+  margin-bottom: 20px;
+}
+/*des-star*/
+
+.rating { 
+  border: none;
+  float: left;
+  display: block;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+  float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+/******************************/
+.revw-txt
+{
+  display: block;
+  text-align: left;
+  position: relative;
+}
+.revw-txt:before 
+{
+  content:'';
+  position: absolute;
+  width: 19%;
+  height: 13px;
+  background: #eeeeee;
+  display: inline-block;
+  top: 43%;
+  left: 1%;
+  z-index: -1;
+}
+.dish-price
+{
+  text-align: center;
+  width: 25%;
+  padding-top: 6%;
+}
+.dish-price p
+{
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.dish-price .price-num
+{
+  font-size: 25px;
+}
+.dish-price a
+{
+  display: inline-block;
+  padding: 3px 8px;
+  color: white;
+  background: #3f3d3d;
+}
+.offer-txt
+{
+ display: inline-block;
+ background: #f9c89f;
+ padding: 3px 10px;
+ font-weight: 500;
+ border-radius: 3px;
+ font-size: 14px;
+ margin-bottom: 10px;
+ color: #5a1111;
+}
+.normal-price
+{
+  text-decoration-line: line-through;
+}
+.offer-price
+{
+  color: red;
+  display: inline-block;
+  margin-left: 5px;
+}
+/****************************************sidebar*********************************************/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-align: center;
+}
+.sidenav::-webkit-scrollbar
+{
+  width: 5px;
+}
+.sidenav::-webkit-scrollbar-track
+{
+  background: white; 
+}
+.sidenav::-webkit-scrollbar-thumb
+{
+  background: #888;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.sidenav .cart-orders
+{
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid #dedede;
+}
+.sidenav .cart-orders #cart-dish-num
+{
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+}
+.sidenav .cart-orders img
+{
+  width: 100%;
+}
+.sidenav .cart-orders button
+{
+  cursor: pointer;
+  padding: 5px 12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  margin: 0 12px;
+  background: black;
+}
+.sidenav .cart-orders h3,.sidenav h3
+{
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 15px 0;
+  font-size: 22px;
+}
+.sidenav .cart-orders p
+{
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+/*footer*/
+
+.footer-1
+{
+  background: #252429;
+  padding: 30px 0;
+  display: flex;
+}
+.flx
+{
+  display: flex;
+  justify-content: space-between; 
+}
+.footer-contact
+{
+  /*width: 20%;*/
+  display: inline-block;
+}
+.footer-contact img
+{
+  display: inline-block;
+  width: 52px;
+  float: left;
+}
+.contact-txt
+{
+  display: inline-block;
+  float: left;
+  font-size: 12px;
+  margin-left: 12px;
+}
+.contact-txt p:first-child
+{
+  color: #706f70;
+}
+.contact-txt p:last-child
+{
+  color: white;
+}
+.footer-contact a
+{
+  color: white;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+/*footer 2*/
+.footer-2
+{
+  background: #1b1a1f;
+  padding: 15px 0;
+}
+.footer-2-txt p
+{
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+  color: white;
+  margin: 10px 0;
+}
+.footer-social-links
+{
+  display: inline-block;
+  text-align: center;
+  float: right;
+}
+.footer-social-links a
+{
+  display: inline-block;
+  width: 32px;
+  margin-right: 12px;
+}
+.footer-social-links a img
+{
+  display: inline-block;
+  width: 100%;
+  margin-right: 12px;
+}
+.footer-social-links a:last-child
+{
+  margin-right: 0;  
+}
