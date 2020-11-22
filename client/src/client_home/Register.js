@@ -14,19 +14,38 @@ import './css/bootstrap.min.css';
 import './css/plugins.css';
 import './css/style.css';
 import './css/responsive.css';
-
+import logo from './images/logo.png';
+import hmeabout from './images/abtus.png';
+import callus from './images/callus.png';
+import fb from './images/fb.png';
+import insta from './images/insta.png';
+import twitter from './images/twitter.png';
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
 
 
-
+toast.configure()
 function Register(props) {
 	const [name,setName]=useState("");
 	const [pass,setPass]=useState("");
 	const [phone,setPhone]=useState("");
 	const [address,setAddress]=useState("");
 	const [email,setEmail]=useState("");
-
+	const notify = ()=>{  
+        // // inbuilt-notification 
+        // toast.warning('Danger') 
+        // // inbuilt-notification 
+        // toast.success('successful') 
+        // // inbuilt-notification 
+        // toast.info('GeeksForGeeks') 
+        // // inbuilt-notification 
+        // toast.error('Runtime error') 
+        // // default notification 
+        toast('Successfully register') 
+           
+    } 
 	const formik=useFormik({
 		initialValues:{
 		Email:"",
@@ -66,6 +85,8 @@ function Register(props) {
 			console.log(userInputData)
 			axios.post('http://localhost:2000/user/insert',userInputData).then(res=>{
 			console.log(res);
+			notify()
+			//document.getElementById(event.target.id).disabled=true;
 			props.history.push('/user_log');
 			//window.location='/user_log?id='+res.data._id;
 			})
@@ -75,7 +96,7 @@ function Register(props) {
 <div id="page">
 		<header>
 			<div className="logo">
-				<a href="index.html"><img src="images/logo.png" className="img-fluid"/></a>
+			<a href="/"><img src={logo} class="img-fluid"/></a>
 				<a href="#menu" id="burgernav"><span></span><span></span><span></span></a>
 			</div>
 
@@ -110,54 +131,60 @@ function Register(props) {
 			<div className="container">
 				<div className="loginBlk">
 					<h6>Register</h6>
-					<p>Please login to continue ordering</p>
+					<p>Please register to continue ordering</p>
 
 					<div className="wrap-input">
+					<span className="label-input">Email Id</span>
 						<input className="inputlog"  onChange={formik.handleChange} value={formik.values.Email} type="text" name="Email"/>
-						<span className="label-input">Email Id</span>
+						
 					{formik.errors.Email ?
 					<div className="alert-danger">{formik.errors.Email}</div>
 					: null}
 					</div>
 					<div className="wrap-input">
+					<span className="label-input">Password</span>
 						<input className="inputlog" onChange={formik.handleChange} value={formik.values.Pass} type="password" name="Pass"/>
-						<span className="label-input">Password</span>
+						
 						{formik.errors.Pass ?
 					<div className="alert-danger">{formik.errors.Pass}</div>
 					: null}
 					</div> 
 					<div className="wrap-input">
+					<span className="label-input">Confirm Password</span>
 						<input className="inputlog" onChange={formik.handleChange} value={formik.values.CPass} type="password" name="CPass"/>
-						<span className="label-input">Confirm Password</span>
+						
 						{formik.errors.CPass ?
 					<div className="alert-danger">{formik.errors.CPass}</div>
 					: null}
 					</div>
 					<h5>Personal Details</h5>
 					<div className="wrap-input">
+					<span className="label-input">Full Name</span>
 						<input className="inputlog"  onChange={formik.handleChange} value={formik.values.Name} type="text" name="Name"/>
-						<span className="label-input">Full Name</span>
+						
 						{formik.errors.Name ?
 					<div className="alert-danger">{formik.errors.Name}</div>
 					: null}
 					</div>
 					<div className="wrap-input">
+					<span className="label-input">Contact Number</span>
 						<input className="inputlog" onChange={formik.handleChange} value={formik.values.Phone} type="text" name="Phone"/>
-						<span className="label-input">Contact Number</span>
+						
 						{formik.errors.Phone ?
 					<div className="alert-danger">{formik.errors.Phone}</div>
 					: null}
 					</div> 
 					<div className="wrap-input">
+					<span className="label-input">Address</span>
 						<textarea onChange={formik.handleChange} value={formik.values.Address} name="Address" className="inputlog"></textarea>
-						<span className="label-input">Address</span>
+						
 						{formik.errors.Address ?
 					<div className="alert-danger">{formik.errors.Address}</div>
 					: null}
 					</div>            
-					<button className="btns btnslogin" onClick={formik.handleSubmit}>Register</button>
+					<button className="btns btnslogin" id="save" onClick={formik.handleSubmit}>Register</button>
 					<div className="registerlink">
-						Do you have an account?<a href="login.html">Login</a>
+						Do you have an account?<a href="/user_log">Login</a>
 					</div>
 				</div>
 			</div>
@@ -166,14 +193,14 @@ function Register(props) {
 			<div className="footer-1 clearfix">
 				<div className="container flx">
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus}/>
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus}/>
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
@@ -182,34 +209,30 @@ function Register(props) {
 					<div className="footer-contact clearfix">
 						<ul>
 							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
 							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
-						</ul>
-					</div>
-					<div className="footer-contact clearfix">
-						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-						</ul>
+							</ul>
+							</div>
+							<div className="footer-contact clearfix">
+							<ul>
+							<li><a href="/register">Register</a></li>
+							<li><a href="/user_log">Login</a></li>
+							</ul>
 					</div>
 				</div>
 			</div>
-			
 		<div className="footer-2">
 			<div className="container clearfix">
 				<div className="footer-2-txt">
 					<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 				</div>
 				<div className="footer-social-links">
-					<a href=""><img src="images/fb.png"/></a>
-					<a href=""><img src="images/insta.png"/></a>
-					<a href=""><img src="images/twitter.png"/></a>
+					<a href=""><img src={fb} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer>	
 	</div>
 
     );

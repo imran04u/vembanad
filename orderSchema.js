@@ -11,8 +11,20 @@ product:[
     }
    
 ],
+phone:{
+    type:String,
+    required:true
+},
+status:{
+    type:String,
+    default:"Pending"
+},
 total:{
     type:Number,
+    required:true
+},
+address:{
+    type:String,
     required:true
 },
 created:{

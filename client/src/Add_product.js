@@ -3,6 +3,10 @@ import Header from "./Header";
 import Navbar from "./Navbar";
 import axios from "axios";
 import $ from "jquery";
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
+
 
 function Add_product() {
   const [cname,setCname]=useState("");
@@ -11,11 +15,19 @@ function Add_product() {
   const [fname,setFname]=useState("");
   const [description,setDescription]=useState("");
   const [price,setPrice]=useState("");
-  const [offer_price,setOPrice]=useState("");
+  const [offer_price,setOPrice]=useState(0);
   const [spl,setSpl]=useState("false");
   const [search,setSearch]=useState("");
   const [cat_data,setCatdata]=useState([]);
   const [pro_data,setPdata]=useState([]);
+  const Added = ()=>{  
+    toast('Successfully Added') 
+         
+  } 
+  const Delete = ()=>{  
+    toast('Successfully deleted') 
+         
+  } 
   useEffect(()=>{
     
       $("#searchT").on("keyup", function() {
@@ -41,8 +53,11 @@ function Add_product() {
     if(e.target.id!="")
     {
       axios.get('http://localhost:2000/product/delete/'+e.target.id).then(res=>{
-        alert('successfully deleted');
-        window.location="/pro"
+        Delete()
+        //alert('successfully deleted');
+        setInterval(() => {
+          window.location="/pro"
+        },1000)
       })
     }
   }
@@ -68,8 +83,13 @@ function Add_product() {
      }
      console.log(data)
      axios.post('http://localhost:2000/product/insert', data).then(res=>{
-     alert('succesfully added');
-     window.location="/pro"
+     //alert('succesfully added');
+     Added()
+     document.getElementById(e.target.id).disabled=true;
+    
+     setInterval(() => {
+      window.location="/pro"
+    },1000)
      })
   }
     return (
@@ -110,6 +130,7 @@ function Add_product() {
                 console.warn("Data",event.target.result);
                 //console.warn("File",file[0].name);
                 }}}/>
+                <small>Dimension 750px x 600px</small>
               </div>
             </div>
             <div class="row">
@@ -129,9 +150,12 @@ function Add_product() {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
-                <input type="radio" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />Enable
-                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked/>Disable
-              
+                <div class="radiocat"> 
+                 <input type="radio" id="enable" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  /> 
+                <label for="enable">Enable</label>
+                <input type="radio" id="disable" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked/>
+                <label for="disable">Disable</label>
+                </div>
               </div>
             </div>
             <div class="row">
@@ -141,7 +165,7 @@ function Add_product() {
               </div>
               </div>
             <div class="col-md-12 formsingle">
-              <button class="btnBlue btnSmall" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
+              <button class="btnBlue btnSmall" id="save" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
               <button class="btnGrey btnSmall" onClick={reSet} name="">Reset</button>
             </div>
           </div>   
@@ -175,7 +199,7 @@ function Add_product() {
                   <td><img src={d.path} alt="" /></td>
                   <td>{d.cname}</td>
                   <td>{d.description}</td>
-                  <td>Rs.{d.price}
+                  <td>{d.price} QR
                   <br/>
               <b>offer:{d.offer_price}</b>
                   </td>

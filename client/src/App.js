@@ -29,8 +29,9 @@ import Menu from './client_home/Menu'
 import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
-
-
+import Order from './Orderslist'
+import Report from './Report'
+import AdminDashboard from './AdminDashboard'
 import ProtectedRouter from './protected'
 function App() {
   return (
@@ -60,6 +61,9 @@ function App() {
       <ProtectedRouter exact path="/pro" component={Add_product}/> 
       <ProtectedRouter exact path="/ban" component={Banner}/> 
       <ProtectedRouter exact path='/sample' component={Sample}/>
+      <ProtectedRouter exact path='/order' component={Order}/>
+      <ProtectedRouter exact path='/dash' component={AdminDashboard}/>
+      <ProtectedRouter exact path='/report' component={Report}/>
       </Switch>
     </div>
    

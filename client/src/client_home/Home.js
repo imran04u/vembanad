@@ -20,17 +20,29 @@ import insta from './images/insta.png';
 import twitter from './images/twitter.png';
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-
+import {useHistory} from 'react-router-dom'
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 
 
 function Home(props) {
+	const history = useHistory();
+	const loc={
+		pathname:'/',
+		state: {fromDashboard:true}
+	}
 	const [data,setData]=useState([]);
 	const [tspl,setTspl]=useState([]);
 	const [offer,setOffer]=useState([]);
 	const [tot,setTot]=useState(0);
 	const [banner,setBanner]=useState([]);
-
+	const [address,setAddress]=useState("");
 	const [order,setD]=useState([]);
+	const notify = ()=>{  
+		toast('Item removed') 
+			 
+	  }
 	function change_qty(a,b){
 		console.log(a,b);
 		let qty_change=JSON.parse(localStorage.getItem("data"))
@@ -38,8 +50,11 @@ function Home(props) {
 		if(qty_change[j].id==a)
 		{
 			qty_change[j].qty=parseInt(b);
-		localStorage.removeItem("data")
+		//localStorage.removeItem("data")
 		localStorage.setItem("data",JSON.stringify(qty_change));
+		}
+		else{
+			console.log("not changed")
 		}
 		console.log(qty_change[j]);
 	}
@@ -53,7 +68,9 @@ function f(){
 		//console.log("tot"+l+" "+tot);
 		
 	})
-	setTot(l)
+	//setTot(l)
+	document.getElementById("gt").textContent=l;
+	//console.log(document.getElementById("gt"))
 }
 function proceed(){
 	if(localStorage.getItem("user"))
@@ -63,13 +80,16 @@ function proceed(){
 			let p={
 				order:JSON.parse(localStorage.getItem("data")),
 				tot:tot,
-				user:localStorage.getItem("user").toString()
+				user:localStorage.getItem("user"),
+				address:address,
+				phone:localStorage.getItem("phone")
 			}
 			console.log(p.user)
 			axios.post('http://localhost:2000/cart/insert/',p).then((res)=>{
 				console.log(res.data);
 				localStorage.removeItem('data')
 				props.history.push('/');
+				window.location='/';
 			})
 			
 		}
@@ -79,6 +99,38 @@ function proceed(){
 		alert("please login first");
 	}
 }
+function plus(v){
+	console.log(v)
+	var inc=Number(document.getElementById(v).value)+1
+	document.getElementById(v).value=inc;
+	change_qty(document.getElementById(v).id,inc)
+	 f()
+	
+}
+function minus(v){
+	console.log(document.getElementById(v).value)
+	if(Number(document.getElementById(v).value)>1){
+		var dec=Number(document.getElementById(v).value)-1
+		document.getElementById(v).value=dec;
+		change_qty(document.getElementById(v).id,dec)
+		f()	
+	}
+	else{
+		console.log("final dec")
+		let items=JSON.parse(localStorage.getItem("data"))
+		var index=items.findIndex(i=> i.id == v)
+		items.splice(index, 1)
+		console.log(items);
+		localStorage.setItem("data",JSON.stringify(items))
+		notify()
+		setInterval(() => {
+			window.location="/"
+		},1000)
+		//props.history.push('/menu')
+		//history.replace(loc)
+		
+	}
+	}
     useEffect(()=>{
     
        //jquery
@@ -120,20 +172,20 @@ function proceed(){
 		$("body").removeClass("cart-show");
 	});
 
-	$('.plus').on('click', function() {
-		if ($(this).prev().val()) {
-			$(this).prev().val(+$(this).prev().val() + 1);
-			change_qty($(this).prev().attr('id'),$(this).prev().val());
-			f();
-		}
-	});
-	$('.minus').on('click', function() {
-		if ($(this).next().val() > 1) {
-			if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-			change_qty($(this).next().attr('id'),$(this).next().val());
-			f();
-		}
-	});
+	// $('.plus').on('click', function() {
+	// 	if ($(this).prev().val()) {
+	// 		$(this).prev().val(+$(this).prev().val() + 1);
+	// 		change_qty($(this).prev().attr('id'),$(this).prev().val());
+	// 		f();
+	// 	}
+	// });
+	// $('.minus').on('click', function() {
+	// 	if ($(this).next().val() > 1) {
+	// 		if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+	// 		change_qty($(this).next().attr('id'),$(this).next().val());
+	// 		f();
+	// 	}
+	// });
 
   
       setTimeout(() => {
@@ -147,6 +199,10 @@ function proceed(){
 			setBanner(res.data.b);
 			setOffer(res.data.offer);
 			setTspl(res.data.t);
+			console.log(props.history);
+			if(localStorage.getItem("address")){
+				setAddress(localStorage.getItem("address"))
+			}
 			if(localStorage.getItem("data"))
 			{
 				setD(JSON.parse(localStorage.getItem("data")))
@@ -181,6 +237,7 @@ function proceed(){
 						<li><a href="/offers">Offers</a></li>
 						<li ><a href="/about">About Us</a></li>
 						<li><a href="/contact">Contact Us</a></li>
+						<li><a href="/user_log">Login</a></li>
 					</ul>
 				</nav>
 				<div class="search_btn">
@@ -193,7 +250,7 @@ function proceed(){
 					</div>
 				</div>
 				<div class="cartlink">
-					<a href="#cart" id="cart-panel" ><i class="fas fa-cart-plus"></i>Cart</a>
+					<a href="#cart" id="cart-panel" ><i class="fas fa-cart-plus"></i>{order.length}</a>
 				</div>
 			</div>
 		</header>
@@ -201,22 +258,22 @@ function proceed(){
 			<a href="javascript:void(0)" title="Close" class="close-cart">
 				<i class="fas fa-times"></i><span>Close</span>
 			</a>
-	<h2>SHOPPING CART :<p>{order.length}</p></h2>
+	<h2>SHOPPING CART :</h2>
 			<ul>
 				
 				{order.map(o=>(
 					   			<li>
 									<div class="cartimg">
-										<img src="images/cat-dish-2.jpg" />
+										<img src={o.path} />
 									</div>
 									<div class="cartdtl">
 				<h6>{o.name}</h6>
 										<div class="cartaction">
 				<div class="rate">{o.rs}</div>
-											<div class="quantity">
-												<input type="button" value="-" class="minus"/>
+											<div class="quantity" key={o.id}>
+												<input type="button"  value="-" onClick={(e)=>{ e.preventDefault(); minus(o.id); }}  class="minus"/>
 												<input type="text" name="quantity" id={o.id}  value={o.qty}  title="Qty" class="qty" size="4"/>
-												<input type="button" value="+" class="plus"/> 
+												<input type="button" value="+" onClick={(e)=>{ e.preventDefault(); plus(o.id); }} class="plus"/> 
 											</div>
 										</div>
 				
@@ -229,9 +286,11 @@ function proceed(){
 			</ul>
 			<div class="carttotal">
             <span class="label"> Total: </span>
-				<span class="price">Rs. {tot}</span> 
+				<span class="price"> <span id="gt"> {tot}</span>QR</span> 
           </div>
           <button class="checkbtn" onClick={proceed}> Proceed to Checkout</button>
+		  <label>ADDRESS</label>
+		  <input type="text" onChange={(event)=>{setAddress(event.target.value);}} value={address}/>
 		</div>
 		
 		<div class="wrap-overlay"></div>
@@ -321,7 +380,7 @@ function proceed(){
 						<h2>Today's Special</h2>
 					</div>
 					<div class="order-now-btn">
-						<a href="menu.html">Order Now</a>
+						<a href="/menu">Order Now</a>
 					</div>
 					</div>
 				
@@ -329,7 +388,7 @@ function proceed(){
 			{tspl.map(t=>(
 					<div class=" dish">
 					<img src={t.path}/>
-				<span>{t.price}</span>
+				<span>{t.price} QR</span>
 				<p>{t.title}</p>
 					<a href="/menu">Order now <i class="fa fa-long-arrow-right"></i></a>
 					</div>
@@ -345,7 +404,7 @@ function proceed(){
 					<h4>Favourites</h4>
 					<h2>Grand feast is back</h2>
 					<h3>Delivered to your doorstep</h3>
-					<a href="menu.html">Order Now</a>
+					<a href="/offers">Our Offers</a>
 				</div>
 			</div>	
 		</section>
@@ -370,18 +429,14 @@ function proceed(){
 					<div class="footer-contact clearfix">
 						<ul>
 							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
 							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
-						</ul>
-					</div>
-					<div class="footer-contact clearfix">
-						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-							
-						</ul>
+							</ul>
+							</div>
+							<div className="footer-contact clearfix">
+							<ul>
+							<li><a href="/register">Register</a></li>
+							<li><a href="/user_log">Login</a></li>
+							</ul>
 					</div>
 				</div>
 			</div>
@@ -392,8 +447,8 @@ function proceed(){
 					</div>
 					<div class="footer-social-links">
 						<a href=""><img src={fb} /></a>
-						<a href=""><img src={insta} /></a>
-						<a href=""><img src={twitter} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 					</div>
 				</div>
 			</div>

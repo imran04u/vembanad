@@ -14,7 +14,7 @@ function ProtectedRouter({component,...rest}) {
                 ) : (
                     <Redirect 
                     to ={{
-                        pathname:'/home'
+                        pathname:'/'
                     }}
                     />
                 )

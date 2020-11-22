@@ -1,12 +1,21 @@
 import ReactDOM from 'react-dom';
 import React, {useState} from "react"
 import axios from 'axios'
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 
 function Login(props) {
 const [uname,setUname]=useState("");
 const [pass,setPass]=useState("");
 const [color,setColor]=useState("");
 const [res,setResult]=useState("");
+const notify = ()=>{  
+  toast('Successfully Logged') 
+       
+} 
+   
+
    function btn_click(e){
      e.preventDefault();
      let data={
@@ -19,11 +28,12 @@ const [res,setResult]=useState("");
       
       if(res.data.result)
       {
-        setColor("alert-success")
-        setResult("successfully logged");
+        // setColor("alert-success")
+        // setResult("successfully logged");
        // window.location="/cat"
        console.log(res);
        localStorage.setItem('auth',JSON.stringify(res.data.token));
+       notify()
       props.history.push('/category')
       }
       else{

@@ -13,12 +13,15 @@ function Navbar() {
       </div>     
       <div className="menu">
         <ul id="menu">
-      
+        <li><a href="/dash"><i> <img src="assets/images/icons/dashboard.svg"/></i><span>Dashboard</span></a></li>
+        <li><a href="/order"><i> <img src="assets/images/icons/restaurant.svg"/></i><span>Order Management</span></a></li>
+        
+       
            <li><a href="/category"><i><img src="assets/images/icons/bell.svg" /></i><span>Catogory Management</span></a></li>
           <li><a href="/pro"><i><img src="assets/images/icons/tray.svg" /></i><span>Product Management</span></a></li>
           <li><a href="/ban"><i><img src="assets/images/icons/images.svg" /></i><span>Banner Management</span></a></li>
           <li><a href="/user"><i><img src="assets/images/icons/user.svg" /></i><span>User Management</span></a></li>
-          <li><a href=""><i><img src="assets/images/icons/chart.svg" /></i><span>Reports</span></a></li>
+          <li><a href="/report"><i><img src="assets/images/icons/chart.svg" /></i><span>Reports</span></a></li>
         </ul>
       </div>
     </div>

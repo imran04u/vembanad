@@ -4,9 +4,15 @@ const bodyParser=require('body-parser');
 const cors=require('cors');
 const morgan=require('morgan');
 const app = express();
+
+//const PORT=process.env.PORT || 5000
+//const path = require('path');
+
+
 app.use(cors());
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.urlencoded({limit:'50mb',extended:true}))
+
 
 app.use(morgan('dev'));
 const cat=require('./CatSchema');
@@ -83,16 +89,29 @@ app.use('/product',pro_router);
 const PORT=process.env.PORT || 2000
 app.listen(PORT,()=>console.log("server created"));
 
-// app.use(express.static(path.join(__dirname, '../build')))
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../build'))
-// })
+// if(process.env.NODE_ENV=="production"){
+//    app.use(express.static('client/build'))
+//    const path = require('path')
+//    app.get("*",(req,res)=>{
+//        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+//    })
+// }
+
+// production
+app.use(express.static('client/build'))
+const path = require('path')
+app.get("*",(req,res)=>{
+	res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
+
+
 
 //mongo db
 mongoose.set('useNewUrlParser',true);
 mongoose.set('useUnifiedTopology',true);
-//mongodb://localhost:27017/food
-mongoose.connect('mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority',(err)=>{
+//'mongodb://localhost:27017/food'
+//'mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority'
+mongoose.connect('mongodb://localhost:27017/food',(err)=>{
 if(err){console.log(err.message)}
 console.log('Db Connected');
 });

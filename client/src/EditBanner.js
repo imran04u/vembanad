@@ -2,15 +2,22 @@ import React, {useState,useEffect} from "react"
 import Header from "./Header";
 import Navbar from "./Navbar";
 import axios from "axios";
-
-function EditBanner() {
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+import { PromiseProvider } from "mongoose";
+toast.configure()
+function EditBanner(props) {
   const [fname,setFname]=useState("");
   const [Img,setImg]=useState("");
   const [title,setTitle]=useState("");
   const [description,setDescription]=useState("");
   const [url_link,setUrl_link]=useState("");
   const [catid,setId]=useState("");
-  
+  const notify = ()=>{  
+    toast('Successfully updated') 
+         
+  } 
+
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -44,8 +51,9 @@ function EditBanner() {
      
      axios.post('http://localhost:2000/home/ban_edit/', data).then(res=>{
       console.log(res.data)
-    alert('successfully Updated');
-    window.location="/ban"
+    //alert('successfully Updated');
+    notify()
+    props.history.push("/ban")
      })
   }
     return (

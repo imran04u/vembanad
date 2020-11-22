@@ -25,7 +25,26 @@ import twitter from './images/twitter.png';
 
 function Dashboard() {
 	const [data,setData]=useState([]);
-	const [banner,setBanner]=useState([]);
+	const [address,setAddress]=useState([]);
+	const [contact,setContact]=useState([]);
+	const [name,setName]=useState([]);
+	
+	function setUpdate(){
+		let data={
+			name:name,
+			phone:contact,
+			address:address,
+			id:localStorage.getItem("id")
+		}
+		axios.post('http://localhost:2000/user/update/',data).then(res=>{
+			console.log(res.data);
+			setData(res.data);
+			setAddress(res.data.address);
+			setName(res.data.name);
+			setContact(res.data.phone);
+
+		 })      
+	}
 
     useEffect(()=>{
     
@@ -34,10 +53,13 @@ function Dashboard() {
       setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000/').then(res=>{
+		 axios.get('http://localhost:2000/user/fetch/'+localStorage.getItem("id")).then(res=>{
 			console.log(res.data);
-			setData(res.data.d);
-			setBanner(res.data.b);
+			setData(res.data);
+			setAddress(res.data.address);
+			setName(res.data.name);
+			setContact(res.data.phone);
+
 		 })      
       }, 1000);
     }, []);
@@ -85,19 +107,19 @@ function Dashboard() {
 				<div className="profileblk">
 					<h6>Profile</h6>
 					<div className="wrap-input">
-					<input className="inputlog" type="text" value="Imran Rovan"/>
+					<input className="inputlog" type="text" onChange={(event)=>{setName(event.target.value);}} value={name}/>
 					<span className="label-input active">Full Name</span>
 				</div>
 				<div className="wrap-input">
-					<input className="inputlog" type="text" value="8113081130"/>
+					<input className="inputlog" type="text" onChange={(event)=>{setContact(event.target.value);}} value={contact}/>
 					<span className="label-input active">Contact Number</span>
 				</div> 
 				<div className="wrap-input">
-					<textarea className="inputlog" value="">42 KhajaLine Street, palakkarai, Thennur, Trichy</textarea>
-					<span className="label-input active">Address</span>
+				<input className="inputlog" type="text" onChange={(event)=>{setAddress(event.target.value);}} value={address}/>
+									<span className="label-input active">Address</span>
 				</div>     
 
-					<button className="btns btnslogin">Update</button>
+					<button className="btns btnslogin" onClick={setUpdate}>Update</button>
 					
 				</div>
 			</div>
@@ -106,14 +128,14 @@ function Dashboard() {
 			<div className="footer-1 clearfix">
 				<div className="container flx">
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus} />
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus} />
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
@@ -121,19 +143,15 @@ function Dashboard() {
 					</div>
 					<div className="footer-contact clearfix">
 						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
-							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
-						</ul>
-					</div>
-					<div className="footer-contact clearfix">
-						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-							
-						</ul>
+		<li><a href="#">Privacy Policy</a></li>
+		<li><a href="#">Terms of use</a></li>
+		</ul>
+		</div>
+		<div className="footer-contact clearfix">
+		<ul>
+		<li><a href="/register">Register</a></li>
+		<li><a href="/user_log">Login</a></li>
+		</ul>
 					</div>
 				</div>
 			</div>
@@ -145,8 +163,8 @@ function Dashboard() {
 				</div>
 				<div className="footer-social-links">
 					<a href=""><img src={fb} /></a>
-						<a href=""><img src={insta} /></a>
-						<a href=""><img src={twitter} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>

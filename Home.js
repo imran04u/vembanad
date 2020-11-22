@@ -13,7 +13,7 @@ router3.get('/', async(req, res)=>{
     const s=await cat.find().exec();
     const b=await banner.find().exec();
     const w=await product.find({offer_price:{$gte:1}}).exec();
-    const spl=await product.find({todayspl:'true'}).limit(3).exec();
+    const spl=await product.find({todayspl:'true'}).sort({created:-1}).limit(3).exec();
     let d=[];
     for(let j=0;j<w.length;j++)
     {

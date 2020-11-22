@@ -12,15 +12,30 @@ import './css/bootstrap.min.css';
 import './css/plugins.css';
 import './css/style.css';
 import './css/responsive.css';
-
+import logo from './images/logo.png';
+import hmeabout from './images/abtus.png';
+import callus from './images/callus.png';
+import fb from './images/fb.png';
+import insta from './images/insta.png';
+import twitter from './images/twitter.png';
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-
-
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 
 function User_Log(props) {
 	const [pass,setPass]=useState("");
 	const [email,setEmail]=useState("");
+	const [msg,setMsg]=useState("");
+	const success = ()=>{  
+		toast("Login Successfull") 
+			 
+	  } 
+	  const invalid = ()=>{  
+		toast("Invalid") 
+			 
+	  } 
 	function btn_click(e){
 		e.preventDefault();
 		let data={
@@ -35,11 +50,17 @@ function User_Log(props) {
 		 {
 		   // window.location="/cat"
 		  console.log(res);
-		 localStorage.setItem('user',JSON.stringify(res.data.email));
-		 //props.history.push('/')
+		 localStorage.setItem('user',res.data.email);
+		 localStorage.setItem('address',res.data.address);
+		 localStorage.setItem('phone',res.data.phone);
+		 localStorage.setItem('id',res.data.id);
+		
+		 success()
+		 props.history.push('/')
 		 }
 		 else{
-			console.log(res);
+		
+			invalid()
 		}
 		})
 	  }
@@ -50,7 +71,7 @@ function User_Log(props) {
 <div id="page">
 		<header>
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" class="img-fluid"/></a>
+			<a href="/"><img src={logo} class="img-fluid"/></a>
 				<a href="#menu" id="burgernav"><span></span><span></span><span></span></a>
 			</div>
 
@@ -62,6 +83,7 @@ function User_Log(props) {
 						<li><a href="/offers">Offers</a></li>
 						<li><a href="/about">About Us</a></li>
 						<li><a href="/contact">Contact Us</a></li>
+						<li className="active"><a href="/user_log">Login</a></li>
 					</ul>
 				</nav>
 				<div class="search_btn">
@@ -88,14 +110,16 @@ function User_Log(props) {
 					<p>Please login to continue ordering</p>
 
 					<div class="wrap-input">
+					<span class="label-input">Email Id</span>
 						<input class="inputlog" type="text" onChange={(event)=>{setEmail(event.target.value);}} name="Email Id"/>
-						<span class="label-input">Email Id</span>
+						
 					</div>
 					<div class="wrap-input">
+					<span class="label-input">Password</span>
 						<input class="inputlog" type="password" onChange={(event)=>{setPass(event.target.value);}} name="Password"/>
-						<span class="label-input">Password</span>
+						
 					</div>            
-					<a href="">Forgot Password?</a>
+					
 					<button class="btns btnslogin" onClick={btn_click}>Login</button>
 					<div class="registerlink">
 						Don't have an account?<a href="/register">Register</a>
@@ -103,54 +127,50 @@ function User_Log(props) {
 				</div>
 			</div>
 		</section>
-		<footer class="footer">
-			<div class="footer-1 clearfix">
-				<div class="container flx">
-					<div class="footer-contact clearfix">
-						<img src="images/callus.png"/>
-						<div class="contact-txt">
+		<footer className="footer">
+			<div className="footer-1 clearfix">
+				<div className="container flx">
+					<div className="footer-contact clearfix">
+						<img src={callus}/>
+						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
-					<div class="footer-contact clearfix">
-						<img src="images/callus.png"/>
-						<div class="contact-txt">
+					<div className="footer-contact clearfix">
+						<img src={callus}/>
+						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
-					<div class="footer-contact clearfix">
+					<div className="footer-contact clearfix">
 						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
-							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Terms of use</a></li>
 						</ul>
-					</div>
-					<div class="footer-contact clearfix">
+						</div>
+						<div className="footer-contact clearfix">
 						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
+						<li><a href="/register">Register</a></li>
+						<li><a href="/user_log">Login</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-		<div class="footer-2">
-			<div class="container clearfix">
-				<div class="footer-2-txt">
+		<div className="footer-2">
+			<div className="container clearfix">
+				<div className="footer-2-txt">
 					<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 				</div>
-				<div class="footer-social-links">
-					<a href=""><img src="images/fb.png"/></a>
-					<a href=""><img src="images/insta.png"/></a>
-					<a href=""><img src="images/twitter.png"/></a>
+				<div className="footer-social-links">
+					<a href=""><img src={fb} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer>	
 	</div>	
 	
     );

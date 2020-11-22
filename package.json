@@ -2,7 +2,7 @@
   "name": "food",
   "version": "1.0.0",
   "description": "",
-  "homepage":"https://vembanad.herokuapp.com/",
+  "homepage":"https://restaurant.etolls.in",
   "proxy": "http://localhost:3000",
   "main": "server.js",
   "scripts": {

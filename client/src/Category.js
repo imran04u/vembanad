@@ -1,9 +1,13 @@
 import React, {useState,useEffect} from "react"
+import ReactDOM from 'react-dom';
 import Header from "./Header";
 import Navbar from "./Navbar";
 import axios from "axios";
 //import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 
 function Category(props) {
   //const history = useHistory();
@@ -14,6 +18,14 @@ function Category(props) {
   const [name,setName]=useState("");
   const [cat_data,setCatdata]=useState([]);
   let d=[];
+  const Added = ()=>{  
+    toast('Successfully Added') 
+         
+  }
+  const Deleted = ()=>{  
+    toast('Successfully Deleted') 
+         
+  }
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -43,9 +55,10 @@ function Category(props) {
       axios.get('http://localhost:2000/login/catdel/'+e.target.id).then(res=>{
         if(res.data)
         {
-          alert('successfully deleted');
-          window.location="/category"
-          props.history.push('/category');
+          Deleted()
+          setInterval(() => {
+						window.location="/category"
+					},1000)//props.history.push('/category');
         }
         
       })
@@ -58,17 +71,24 @@ function Category(props) {
       photo:Img,
       cat:cat
      }
-     console.log(data)
+    
+     console.log(e.target.id)
+     
      axios.post('http://localhost:2000/login/cat/', data).then(res=>{
        //window.location='/cat';
        if(res.data){
-        alert('successfully added');
-        window.location='/category';
+        Added()
+        document.getElementById(e.target.id).disabled=true;
+       
+        setInterval(() => {
+          window.location="/category"
+        },1000)
         //e.target.reset();
-       props.history.push('/category');
+       //props.history.push('/category');
        }
     
      })
+     
   }
     return (
       <div className="page-container">  
@@ -102,10 +122,11 @@ function Category(props) {
                     setName(file[0].name)
                 console.warn("Data",event.target.result);
                 console.warn("File",file[0].type.substring(6));}}}/>
+                <small>Dimension 750px x 500px</small>
               </div>
             </div>
             <div class="col-md-12 formsingle">
-              <button class="btnBlue btnSmall" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
+              <button class="btnBlue btnSmall" id="save" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
               <button class="btnGrey btnSmall" onClick={reSet} name="">Reset</button>
             </div>
           </div>   

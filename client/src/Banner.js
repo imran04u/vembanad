@@ -4,9 +4,11 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
-
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 function Banner(props) {
-  const history = useHistory();
+  //const history = useHistory();
   const [fname,setFname]=useState("");
   const [Img,setImg]=useState("");
   const [bname,setBname]=useState("");
@@ -14,6 +16,14 @@ function Banner(props) {
   const [banner_link,setBanner_link]=useState("#");
   const [ban_data,setBandata]=useState([]);
   let d=[];
+  const Added = ()=>{  
+    toast('Successfully Added') 
+         
+  } 
+  const Deleted = ()=>{  
+    toast('Successfully Deleted') 
+         
+  } 
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -35,8 +45,11 @@ function Banner(props) {
     if(e.target.id!="")
     {
       axios.get('http://localhost:2000/home/del_ban/'+e.target.id).then(res=>{
-        alert('successfully deleted');
-        window.location="/ban"
+        //alert('successfully deleted');
+        Deleted()
+        setInterval(() => {
+          window.location="/ban"
+        },1000)
       })
     }
   }
@@ -52,7 +65,11 @@ function Banner(props) {
      }
      console.log(data)
      axios.post('http://localhost:2000/home/add_ban/', data).then(res=>{
-       window.location='/ban';
+       Added()
+      document.getElementById(e.target.id).disabled=true;
+      setInterval(() => {
+        window.location="/ban"
+      },1000)
     //alert('successfully added');
     //e.target.reset();
    //history.push('/cat');
@@ -102,7 +119,7 @@ function Banner(props) {
               </div>
               </div>
             <div class="col-md-12 formsingle">
-              <button class="btnBlue btnSmall" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
+              <button class="btnBlue btnSmall" id="save" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
               <button class="btnGrey btnSmall" name="">Reset</button>
             </div>
           </div>   

@@ -1,6 +1,7 @@
 import jquery from "jquery";
 import React, {useState,useEffect} from "react";
 import ReactDOM from 'react-dom';
+import Header from "./Header";
 import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -18,6 +19,7 @@ import callus from './images/callus.png';
 import fb from './images/fb.png';
 import insta from './images/insta.png';
 import twitter from './images/twitter.png';
+import cont from "./images/contact.jpg"
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
 
@@ -47,36 +49,7 @@ function Contact() {
 
     return (
 <div id="page">
-			<header>
-				<div className="logo">
-					<a href="/"><img src={logo} class="img-fluid"/></a>
-					<a href="#menu" id="burgernav"><span></span><span></span><span></span></a>
-				</div>
-
-				<div className="headerright">
-					<nav id="menu">
-						<ul>
-						<li><a href="/">Home</a></li>
-						<li><a href="/menu">Menu</a></li>
-						<li><a href="/offers">Offers</a></li>
-						<li ><a href="/about">About Us</a></li>
-						<li className="active"><a href="/contact">Contact Us</a></li>
-						</ul>
-					</nav>
-					<div className="search_btn">
-						<div className="control">
-							<input className="control__input control__input--search" type="search" placeholder="Search Food"/>
-							<svg className="control__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<circle cx="11" cy="11" r="8"></circle>
-								<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-							</svg>
-						</div>
-					</div>
-					<div className="cartlink">
-						<a href="#cart"><i className="fas fa-cart-plus"></i>Cart</a>
-					</div>
-				</div>
-			</header>
+<Header nav="contact"/>
 			<section className="innerban subv-1">
 				<h1><span>Contact Us</span></h1>
 			</section>
@@ -86,7 +59,7 @@ function Contact() {
 						<div className="col-lg-6">
 							<div className="contact-box-content">
 								<div className="img-holder">
-									<img src="images/contact.jpg" alt="Saudi House"/>
+									<img src={cont} alt="Saudi House"/>
 								</div>
 								<div className="text-holder">
 									<div className="row">
@@ -133,14 +106,14 @@ function Contact() {
 			<div className="footer-1 clearfix">
 				<div className="container flx">
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus} />
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus} />
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
@@ -148,18 +121,15 @@ function Contact() {
 					</div>
 					<div className="footer-contact clearfix">
 						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
-							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
-						</ul>
-					</div>
-					<div className="footer-contact clearfix">
-						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-						</ul>
+		<li><a href="#">Privacy Policy</a></li>
+		<li><a href="#">Terms of use</a></li>
+		</ul>
+		</div>
+		<div className="footer-contact clearfix">
+		<ul>
+		<li><a href="/register">Register</a></li>
+		<li><a href="/user_log">Login</a></li>
+		</ul>
 					</div>
 				</div>
 			</div>
@@ -170,8 +140,8 @@ function Contact() {
 				</div>
 				<div className="footer-social-links">
 					<a href=""><img src={fb} /></a>
-						<a href=""><img src={insta} /></a>
-						<a href=""><img src={twitter} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>

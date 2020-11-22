@@ -2,8 +2,11 @@ import React, {useState,useEffect} from "react"
 import Header from "./Header";
 import Navbar from "./Navbar";
 import axios from "axios";
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
 
-function Edit_product() {
+function Edit_product(props) {
   const [cname,setCname]=useState("");
   const [Img,setImg]=useState("");
   const [pname,setPname]=useState("");
@@ -12,7 +15,11 @@ function Edit_product() {
   const [price,setPrice]=useState("");
   const [offer_price,setOPrice]=useState("");
   const [spl,setSpl]=useState("");
-  
+  const [propath,setPath]=useState("");
+  const notify = ()=>{  
+    toast('Successfully updated') 
+         
+  } 
   const [cat_data,setCatdata]=useState([]);
  // const [pro_data,setPdata]=useState([]);
   useEffect(()=>{
@@ -29,6 +36,7 @@ function Edit_product() {
       setDescription(res.data.a[0].description);
       setPrice(res.data.a[0].price);
       setOPrice(res.data.a[0].offer_price);
+      setPath(res.data.a[0].path); 
       })
       
     }, 1000);
@@ -47,13 +55,16 @@ function Edit_product() {
       offer_price:offer_price,
       price:price,
       spl:spl,
-      id:q.substring(4)
+      id:q.substring(4),
+      path:propath
       
      }
      console.log(data)
      axios.post('http://localhost:2000/product/update', data).then(res=>{
-     alert('succesfully updated');
-     window.location="/pro"
+     //alert('succesfully updated');
+      notify()
+     props.history.push('/pro');
+     //window.location="/pro"
      })
   }
     return (
@@ -83,7 +94,8 @@ function Edit_product() {
     
               </div>
               <div class="col-md-6 formsingle">
-                <label>Image Upload</label>
+                <label>Image Upload</label><br/>
+                <label>path:{propath}</label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -92,6 +104,7 @@ function Edit_product() {
                     setFname(file[0].type.substring(6));
                     setImg(event.target.result);
                 console.warn("Data",event.target.result);
+                setPath(""); 
                 //console.warn("File",file[0].name);
                 }}}/>
               </div>
@@ -114,7 +127,7 @@ function Edit_product() {
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
                 <input type="radio" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />Enable
-                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  />Disable
+                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked/>Disable
               
               </div>
             </div>

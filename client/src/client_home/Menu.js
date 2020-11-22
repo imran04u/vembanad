@@ -3,6 +3,7 @@ import React, {useState,useEffect} from "react";
 import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from "axios";
+import Header from "./Header";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -22,6 +23,10 @@ import twitter from './images/twitter.png';
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
 
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';  
+toast.configure()
+
 
 
 function Menu(props) {
@@ -32,55 +37,16 @@ function Menu(props) {
 	const [product,setP]=useState([]);
 	const [tot,setTot]=useState(0);
 	const [order,setD]=useState([]);
+	const notify = ()=>{  
+		toast('Add to carted') 
+			 
+	  }
+	  const already = ()=>{  
+		toast('Already added') 
+			 
+	  }
 	let url="/menu?"
-	function change_qty(a,b){
-		console.log(a,b);
-		let qty_change=JSON.parse(localStorage.getItem("data"))
-	for(let j=0;j<qty_change.length;j++){
-		if(qty_change[j].id==a)
-		{
-			qty_change[j].qty=parseInt(b);
-		localStorage.removeItem("data")
-		localStorage.setItem("data",JSON.stringify(qty_change));
-		}
-		console.log(qty_change[j]);
-	}
-}
-	function f(){
-		let d=JSON.parse(localStorage.getItem("data"));
-		console.log(d) 
-		let l=0;
-		d.map(o=>{
-			 l=l+o.qty*o.rs;
-			//console.log("tot"+l+" "+tot);
-			
-		})
-		setTot(l)
-	}
-	function proceed(){
-		if(localStorage.getItem("user"))
-		{
-			if(localStorage.getItem("data"))
-			{
-				let p={
-					order:JSON.parse(localStorage.getItem("data")),
-					tot:tot,
-					user:localStorage.getItem("user").toString()
-				}
-				console.log(p.user)
-				axios.post('http://localhost:2000/cart/insert/',p).then((res)=>{
-					console.log(res.data);
-					localStorage.removeItem('data')
-					props.history.push('/');
-				})
-				
-			}
-			
-		}
-		else{
-			alert("please login first");
-		}
-	}
+
 
     useEffect(()=>{
 		$('.count').each(function () {
@@ -109,15 +75,13 @@ function Menu(props) {
 		$('.plus').on('click', function() {
 			if ($(this).prev().val()) {
 				$(this).prev().val(+$(this).prev().val() + 1);
-				change_qty($(this).prev().attr('id'),$(this).prev().val());
-				f();
+			
 			}
 		});
 		$('.minus').on('click', function() {
 			if ($(this).next().val() > 1) {
 				if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-				change_qty($(this).next().attr('id'),$(this).next().val());
-				f();
+				
 			}
 		});
 	
@@ -154,7 +118,7 @@ function Menu(props) {
 			if(localStorage.getItem("data"))
 			{
 				setD(JSON.parse(localStorage.getItem("data")))
-				f();
+			
 			}
 		 })      
       }, 1000);
@@ -162,13 +126,17 @@ function Menu(props) {
     const options = {
 		items: 4,
 	};
-function add_cart(e,id,name,rs){
+function add_cart(e,id,name,rs,path){
 e.preventDefault();
 let result=true;
-let order_data={id:id,name:name,rs:rs,qty:1};
+let order_data={id:id,name:name,rs:rs,qty:1,path:path};
 //intial 
 if(JSON.stringify(localStorage.getItem("data"))=="null"){
 	localStorage.setItem("data",JSON.stringify([order_data]))
+	notify()
+	setInterval(() => {
+		window.location="/menu"
+	},1000)
 }
 else{
 	//another add cart
@@ -178,6 +146,10 @@ else{
 		if(chec[j].id==order_data.id)
 		{
 			result=false;
+			already()
+			setInterval(() => {
+				window.location="/menu"
+			},1000)
 			break;
 		}
 	}
@@ -186,6 +158,11 @@ else{
 		chec.push(order_data);
 		localStorage.removeItem("data")
 		localStorage.setItem("data",JSON.stringify(chec));
+		notify()
+		//window.location="/menu";
+		setInterval(() => {
+			window.location="/menu"
+		},1000)
 
 	}
 }
@@ -193,73 +170,7 @@ else{
 }
     return (
 <div id="page">
-		<header>
-			
-			<div className="logo">
-				<a href="/"><img src={logo} class="img-fluid"/></a>
-				<a href="#menu" id="burgernav"><span></span><span></span><span></span></a>
-			</div>
-
-			<div className="headerright">
-				<nav id="menu">
-					<ul>
-					<li><a href="/">Home</a></li>
-						<li className="active"><a href="/menu">Menu</a></li>
-						<li><a href="/offers">Offers</a></li>
-						<li ><a href="/about">About Us</a></li>
-						<li><a href="/contact">Contact Us</a></li>
-					</ul>
-				</nav>
-				<div className="search_btn">
-					<div className="control">
-						<input className="control__input control__input--search" type="search" placeholder="Search Food"/>
-						<svg className="control__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<circle cx="11" cy="11" r="8"></circle>
-							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-						</svg>
-					</div>
-				</div>
-				<div className="cartlink">
-					<a href="#cart"><i className="fas fa-cart-plus"></i>Cart</a>
-				</div>
-			</div>
-		</header>
-		<div id="cart" class="cartpanel">
-			<a href="javascript:void(0)" title="Close" class="close-cart">
-				<i class="fas fa-times"></i><span>Close</span>
-			</a>
-	<h2>SHOPPING CART :<p>{order.length}</p></h2>
-			<ul>
-				
-				{order.map(o=>(
-					   			<li>
-									<div class="cartimg">
-										<img src="images/cat-dish-2.jpg" />
-									</div>
-									<div class="cartdtl">
-				<h6>{o.name}</h6>
-										<div class="cartaction">
-				<div class="rate">{o.rs}</div>
-											<div class="quantity">
-												<input type="button" value="-" class="minus"/>
-												<input type="text" name="quantity" id={o.id}  value={o.qty}  title="Qty" class="qty" size="4"/>
-												<input type="button" value="+" class="plus"/> 
-											</div>
-										</div>
-				
-									</div>
-								</li>
-
-				))}
-				
-				
-			</ul>
-			<div class="carttotal">
-            <span class="label"> Total: </span>
-				<span class="price">Rs. {tot}</span> 
-          </div>
-          <button class="checkbtn" onClick={proceed}> Proceed to Checkout</button>
-		</div>
+<Header nav="menus"/>
 		
 		<section className="innerban subv-1">
 			<h1><span>Our Menu</span></h1>
@@ -292,11 +203,11 @@ else{
 						<p>{o.description}</p>
 								</div>
 								<div className="dish-price">
-						<span className="offpriz">QR.<i>{o.offer_price}</i></span>
-						<span className="netpriz">QR.<i>{o.price}</i></span>
+						<span className="offpriz"><i>{o.offer_price} QR</i></span>
+						<span className="netpriz"><i>{o.price} QR</i></span>
 									<a href="" onClick={(event)=>{
 										//localStorage.setItem("data",JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}]))
-										add_cart(event,o._id,o.title,o.offer_price)
+										add_cart(event,o._id,o.title,o.offer_price,o.path)
 										}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 								</div>
 							</div>
@@ -313,7 +224,7 @@ else{
 							</div>
 							<div className="dish-price">
 						<span className="netpriz">QR.<i>{p.price}</i></span>
-								<a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price)}}>Add to cart <i className="fas fa-cart-plus"></i></a>
+								<a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 							</div>
 						</div>
 							)}
@@ -329,14 +240,14 @@ else{
 			<div className="footer-1 clearfix">
 				<div className="container flx">
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus}/>
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
 					<div className="footer-contact clearfix">
-						<img src="images/callus.png"/>
+						<img src={callus}/>
 						<div className="contact-txt">
 							<p>Call us</p>
 							<p>+974 4412 5928</p>
@@ -345,18 +256,14 @@ else{
 					<div className="footer-contact clearfix">
 						<ul>
 							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms of sale</a></li>
 							<li><a href="#">Terms of use</a></li>
-							<li><a href="#">Payments</a></li>
-						</ul>
-					</div>
-					<div className="footer-contact clearfix">
-						<ul>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">My Account</a></li>
-							
-						</ul>
+							</ul>
+							</div>
+							<div className="footer-contact clearfix">
+							<ul>
+							<li><a href="/register">Register</a></li>
+							<li><a href="/user_log">Login</a></li>
+							</ul>
 					</div>
 				</div>
 			</div>
@@ -368,8 +275,8 @@ else{
 				</div>
 				<div className="footer-social-links">
 					<a href=""><img src={fb} /></a>
-						<a href=""><img src={insta} /></a>
-						<a href=""><img src={twitter} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
