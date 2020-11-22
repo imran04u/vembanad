@@ -39,7 +39,7 @@ function About() {
 		setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000/').then(res=>{
+		 axios.get('http://localhost:2000').then(res=>{
 		 	console.log(res.data);
 		 	setData(res.data.d);
 		 	setBanner(res.data.b);
