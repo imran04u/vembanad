@@ -111,7 +111,7 @@ mongoose.set('useNewUrlParser',true);
 mongoose.set('useUnifiedTopology',true);
 //'mongodb://localhost:27017/food'
 //'mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority'
-mongoose.connect('mongodb://localhost:27017/food',(err)=>{
+mongoose.connect('mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority',(err)=>{
 if(err){console.log(err.message)}
 console.log('Db Connected');
 });
