@@ -39,7 +39,7 @@ function Menu(props) {
 	const [tot,setTot]=useState(0);
 	const [order,setD]=useState([]);
 	const notify = ()=>{  
-		toast('Add to carted') 
+		toast('Added to cart') 
 			 
 	  }
 	  const already = ()=>{  

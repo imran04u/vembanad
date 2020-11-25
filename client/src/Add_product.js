@@ -22,11 +22,11 @@ function Add_product() {
   const [cat_data,setCatdata]=useState([]);
   const [pro_data,setPdata]=useState([]);
   const Added = ()=>{  
-    toast('Successfully Added') 
+    toast('Added Successfully') 
          
   } 
   const Delete = ()=>{  
-    toast('Successfully deleted') 
+    toast('Deleted Successfully') 
          
   } 
   useEffect(()=>{

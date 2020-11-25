@@ -18,7 +18,7 @@ function Edit_product(props) {
   const [spl,setSpl]=useState("");
   const [propath,setPath]=useState("");
   const notify = ()=>{  
-    toast('Successfully updated') 
+    toast('Updated Successfully') 
          
   } 
   const [cat_data,setCatdata]=useState([]);

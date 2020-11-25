@@ -31,7 +31,7 @@ function Offers() {
 	const [data,setData]=useState([]);
 	//const [banner,setBanner]=useState([]);
 	const notify = ()=>{  
-		toast('Add to carted') 
+		toast('Added to cart') 
 			 
 	  }
 	  const already = ()=>{  

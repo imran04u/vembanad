@@ -13,7 +13,7 @@ function Editcat() {
   const [catid,setId]=useState("");
   const [catpath,setPath]=useState("");
   const notify = ()=>{  
-    toast('Successfully updated') 
+    toast('Updated Successfully') 
          
   } 
   useEffect(()=>{

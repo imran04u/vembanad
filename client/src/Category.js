@@ -20,11 +20,11 @@ function Category(props) {
   const [cat_data,setCatdata]=useState([]);
   let d=[];
   const Added = ()=>{  
-    toast('Successfully Added') 
+    toast('Added Successfully') 
          
   }
   const Deleted = ()=>{  
-    toast('Successfully Deleted') 
+    toast('Deleted Successfully') 
          
   }
   useEffect(()=>{

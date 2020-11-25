@@ -43,7 +43,7 @@ function Register(props) {
         // // inbuilt-notification 
         // toast.error('Runtime error') 
         // // default notification 
-        toast('Successfully register') 
+        toast('Registered Successfully') 
            
     } 
 	const formik=useFormik({

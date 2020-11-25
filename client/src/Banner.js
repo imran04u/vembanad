@@ -18,11 +18,11 @@ function Banner(props) {
   const [ban_data,setBandata]=useState([]);
   let d=[];
   const Added = ()=>{  
-    toast('Successfully Added') 
+    toast('Added Successfully') 
          
   } 
   const Deleted = ()=>{  
-    toast('Successfully Deleted') 
+    toast('Deleted Successfully') 
          
   } 
   useEffect(()=>{

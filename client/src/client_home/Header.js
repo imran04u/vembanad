@@ -16,11 +16,11 @@ function Header(props) {
 			 
       }
       const checouts = ()=>{  
-		toast('Checout has been suceess') 
+		toast('Checked out successfully') 
 			 
       }
       const login=()=>{
-          toast("logn frst")
+          toast("Login to continue")
       }
     const [address,setAddress]=useState("");
     const [order,setD]=useState([]);

@@ -15,7 +15,7 @@ function EditBanner(props) {
   const [url_link,setUrl_link]=useState("");
   const [catid,setId]=useState("");
   const notify = ()=>{  
-    toast('Successfully updated') 
+    toast('Updated Successfully') 
          
   } 
 
