@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
+import CONFIG from './config';
 
 function Userlist(props) {
   const [cat_data,setCatdata]=useState([]);
@@ -12,7 +13,7 @@ function Userlist(props) {
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
-      axios.get('http://localhost:2000/user/display/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/user/display/`).then(res=>{
         console.log(res.data);
        setCatdata(res.data);
         

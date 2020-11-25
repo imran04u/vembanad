@@ -5,6 +5,7 @@ import axios from "axios";
 import $ from "jquery";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from './config';
 toast.configure()
 
 
@@ -38,7 +39,7 @@ function Add_product() {
       });
 
     setTimeout(() => {
-      axios.get('http://localhost:2000/product/display/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
         setCatdata(res.data.b);
       setPdata(res.data.a);
         console.log();
@@ -52,7 +53,7 @@ function Add_product() {
     console.log(e.target.id);
     if(e.target.id!="")
     {
-      axios.get('http://localhost:2000/product/delete/'+e.target.id).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/product/delete/${e.target.id}`).then(res=>{
         Delete()
         //alert('successfully deleted');
         setInterval(() => {
@@ -82,7 +83,7 @@ function Add_product() {
       spl:spl
      }
      console.log(data)
-     axios.post('http://localhost:2000/product/insert', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/product/insert`, data).then(res=>{
      //alert('succesfully added');
      Added()
      document.getElementById(e.target.id).disabled=true;

@@ -22,7 +22,7 @@ import twitter from './images/twitter.png';
 import cont from "./images/contact.jpg"
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-
+import CONFIG from '../config';
 
 
 function Contact() {
@@ -36,7 +36,7 @@ function Contact() {
       setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000').then(res=>{
+		 axios.get(`${CONFIG.baseUrl}`).then(res=>{
 			console.log(res.data);
 			setData(res.data.d);
 			setBanner(res.data.b);

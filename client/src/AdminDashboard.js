@@ -9,6 +9,7 @@ import playAlert from 'alert-sound-notify';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
 import sound from './client_home/images/notification.mp3';
+import CONFIG from './config';
 toast.configure()
 
 function AdminDashboard(props) {
@@ -28,7 +29,7 @@ function AdminDashboard(props) {
       status:e.target.value
     }
     console.log(data);
-    axios.post('http://localhost:2000/cart/update/',data).then(res=>{
+    axios.post(`${CONFIG.baseUrl}/cart/update/`,data).then(res=>{
     console.log(res.data)
     notify()
     setInterval(() => {
@@ -39,7 +40,7 @@ function AdminDashboard(props) {
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
-    axios.get('http://localhost:2000/cart/display/').then(res=>{
+    axios.get(`${CONFIG.baseUrl}/cart/display/`).then(res=>{
       setLength(res.data.length);
       setCatdata(res.data);
       ref.current=res.data.length;
@@ -47,7 +48,7 @@ function AdminDashboard(props) {
     setInterval(() => {
       //setLength(cat_data.length)
       console.log(length)
-      axios.get('http://localhost:2000/cart/display/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/cart/display/`).then(res=>{
        // console.log(res.data);
       
       
@@ -71,7 +72,7 @@ function AdminDashboard(props) {
     }, 15000);
 
     // setTimeout(() => {
-    //   axios.get('http://localhost:2000/cart/display/').then(res=>{
+    //   axios.get(`${CONFIG.baseUrl}/cart/display/').then(res=>{
     //     // console.log(res.data);
     //    setCatdata(res.data);
     //     setLength(res.data.length);

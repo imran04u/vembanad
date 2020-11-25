@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from './config';
 toast.configure()
 function Editcat() {
   const [fname,setFname]=useState("");
@@ -23,7 +24,7 @@ function Editcat() {
       const q=window.location.search;
       console.log(q.substring(4));
       
-      axios.get('http://localhost:2000/login/catd/'+q.substring(4)).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/login/catd/`+q.substring(4)).then(res=>{
         console.log( __dirname+'/public/'+res.data[0].path);
       setCat(res.data[0].title); 
       setPath(res.data[0].path); 
@@ -44,7 +45,7 @@ function Editcat() {
       path:catpath
      }
      
-     axios.post('http://localhost:2000/login/catedit/', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/login/catedit/`, data).then(res=>{
       console.log(res.data)
       notify()
    // alert('successfully Updated');

@@ -6,6 +6,7 @@ import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from  './config';
 toast.configure()
 function Banner(props) {
   //const history = useHistory();
@@ -28,7 +29,7 @@ function Banner(props) {
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
-      axios.get('http://localhost:2000/home/banner/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
         
         setBandata(res.data);
         console.log(ban_data);
@@ -44,7 +45,7 @@ function Banner(props) {
     console.log(e.target.id);
     if(e.target.id!="")
     {
-      axios.get('http://localhost:2000/home/del_ban/'+e.target.id).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/home/del_ban/${e.target.id}`).then(res=>{
         //alert('successfully deleted');
         Deleted()
         setInterval(() => {
@@ -64,7 +65,7 @@ function Banner(props) {
       
      }
      console.log(data)
-     axios.post('http://localhost:2000/home/add_ban/', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/home/add_ban/`, data).then(res=>{
        Added()
       document.getElementById(e.target.id).disabled=true;
       setInterval(() => {

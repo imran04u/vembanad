@@ -5,6 +5,7 @@ import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
 import $ from "jquery";
+import CONFIG from './config';
 
 function Orderlist(props) {
   const [cat_data,setCatdata]=useState([]);
@@ -26,7 +27,7 @@ function Orderlist(props) {
 
 
     setTimeout(() => {
-      axios.get('http://localhost:2000/cart/display1/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/cart/display1/`).then(res=>{
         // console.log(res.data);
        setCatdata(res.data);
         setLength(res.data.length);

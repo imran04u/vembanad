@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "client": "cd client && npm start",
+    "server:dev": "nodemon server.js",
     "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build:client": "cd client && npm run build",
     "prod": "npm run build:client && nodemon server.js"

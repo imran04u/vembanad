@@ -9,6 +9,7 @@
     "alert-sound-notify": "^0.0.8",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "cross-env": "^7.0.2",
     "formik": "^2.2.5",
     "jquery": "^3.5.1",
     "react": "^17.0.1",
@@ -22,8 +23,8 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_ENV=development && react-scripts start",
+    "build": "cross-env NODE_ENV=production && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

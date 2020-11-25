@@ -23,6 +23,7 @@ import twitter from './images/twitter.png';
 import {useHistory} from 'react-router-dom'
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from '../config';
 toast.configure()
 
 
@@ -85,7 +86,7 @@ function proceed(){
 				phone:localStorage.getItem("phone")
 			}
 			console.log(p.user)
-			axios.post('http://localhost:2000/cart/insert/',p).then((res)=>{
+			axios.post(`${CONFIG.baseUrl}/cart/insert/`,p).then((res)=>{
 				console.log(res.data);
 				localStorage.removeItem('data')
 				props.history.push('/');
@@ -193,8 +194,9 @@ function minus(v){
 		  
 				
 		 // alert('hi');  
-		 axios.get('http://localhost:2000/home/').then(res=>{
-			console.log(res.data);
+		 axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
+
+			// console.log(res.data);
 			//setData(res.data.d);
 			setBanner(res.data.b);
 			setOffer(res.data.offer);
@@ -298,20 +300,21 @@ function minus(v){
 		<section id="banner">
 		<div class="homebanner">
 		   <OwlCarousel  className="homebanner" items={1} loop margin={0} dots autoplay autoplayTimeout={7000}>
-			{banner.map(b=>(
+			{ 
+				(banner && Array.isArray(banner)) ? banner.map(b=>(
+					<div class="item">
+					<div class="hmban-img">
+						<img src={b.path} />
+					</div>
+					<div class="sub-ban">
+						<h2>{b.title}</h2>
+						<p>{b.description}</p>
+						<a href={b.link}>Order Now</a>
+					</div>    			
+					</div>
 
-							<div class="item">
-							<div class="hmban-img">
-								<img src={b.path} />
-							</div>
-							<div class="sub-ban">
-								<h2>{b.title}</h2>
-								<p>{b.description}</p>
-								<a href={b.link}>Order Now</a>
-							</div>    			
-							</div>
-
-					) )}
+				) ): ''
+			}
 
 			
 								

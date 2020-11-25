@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
+import CONFIG from './config';
 
 function Report(props) {
   const [cat_data,setCatdata]=useState([]);
@@ -13,7 +14,7 @@ function Report(props) {
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
-      axios.get('http://localhost:2000/cart/display2/').then(res=>{
+      axios.get(`${CONFIG.baseUrl}/cart/display2/`).then(res=>{
         console.log(res.data);
        setCatdata(res.data);
         // res.data.map(t=>{

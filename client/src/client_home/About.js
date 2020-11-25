@@ -25,6 +25,7 @@ import about3 from './images/about-5.jpg';
 import about4 from './images/about-1.jpg';
 import vision from './images/vision.png';
 import chef from './images/chef.png';
+import CONFIG from '../config';
 
 
 
@@ -39,7 +40,7 @@ function About() {
 		setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000').then(res=>{
+		 axios.get(`${CONFIG.baseUrl}`).then(res=>{
 		 	console.log(res.data);
 		 	setData(res.data.d);
 		 	setBanner(res.data.b);

@@ -1,10 +1,10 @@
 const express = require('express');
 const router5=express.Router();
 const mongoose= require('mongoose');
-const product=require('./productSchema');
-const user=require("./userSchema");
-const tempcart=require('./tempcSchema');
-const orders=require('./orderSchema');
+const product=require('../../models/productSchema');
+const user=require("../../models/userSchema");
+const tempcart=require('../../models/tempcSchema');
+const orders=require('../../models/orderSchema');
 
 
 router5.post("/insert/",async(req,res)=>{

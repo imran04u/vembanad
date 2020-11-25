@@ -3,6 +3,7 @@ import React, {useState} from "react"
 import axios from 'axios'
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from './config';
 toast.configure()
 
 function Login(props) {
@@ -23,7 +24,7 @@ const notify = ()=>{
        pass:pass
      }
      console.log(data);
-     axios.post('http://localhost:2000/login/', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/login/`, data).then(res=>{
       console.log(res.data.result);
       
       if(res.data.result)

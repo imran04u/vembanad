@@ -23,8 +23,8 @@ import twitter from './images/twitter.png';
 //import 'imports?jQuery=jquery!owl.carousel';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from '../config';
 toast.configure()
-
 
 
 function Offers() {
@@ -45,7 +45,7 @@ function Offers() {
       setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000/home/').then(res=>{
+		 axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.offer);
 			//setBanner(res.data.b);

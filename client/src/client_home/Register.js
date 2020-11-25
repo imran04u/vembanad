@@ -24,7 +24,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';  
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-
+import CONFIG from '../config';
 
 toast.configure()
 function Register(props) {
@@ -83,7 +83,7 @@ function Register(props) {
 		onSubmit:(userInputData)=>{
 			userInputData.uname=userInputData.Email
 			console.log(userInputData)
-			axios.post('http://localhost:2000/user/insert',userInputData).then(res=>{
+			axios.post(`${CONFIG.baseUrl}/user/insert`,userInputData).then(res=>{
 			console.log(res);
 			notify()
 			//document.getElementById(event.target.id).disabled=true;

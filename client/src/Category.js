@@ -7,6 +7,7 @@ import axios from "axios";
 import { PromiseProvider } from "mongoose";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from './config';
 toast.configure()
 
 function Category(props) {
@@ -30,7 +31,7 @@ function Category(props) {
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
-      axios.get('http://localhost:2000/login/catdisplay/',{
+      axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
         headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
         
        setCatdata(res.data);
@@ -52,7 +53,7 @@ function Category(props) {
     console.log(e.target.id);
     if(e.target.id!="")
     {
-      axios.get('http://localhost:2000/login/catdel/'+e.target.id).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/login/catdel/${e.target.id}`).then(res=>{
         if(res.data)
         {
           Deleted()
@@ -74,7 +75,7 @@ function Category(props) {
     
      console.log(e.target.id)
      
-     axios.post('http://localhost:2000/login/cat/', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/login/cat/`, data).then(res=>{
        //window.location='/cat';
        if(res.data){
         Added()

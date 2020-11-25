@@ -20,7 +20,7 @@ import insta from './images/insta.png';
 import twitter from './images/twitter.png';
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-
+import CONFIG from '../config';
 
 
 function Dashboard() {
@@ -36,7 +36,7 @@ function Dashboard() {
 			address:address,
 			id:localStorage.getItem("id")
 		}
-		axios.post('http://localhost:2000/user/update/',data).then(res=>{
+		axios.post(`${CONFIG.baseUrl}/user/update/`,data).then(res=>{
 			console.log(res.data);
 			setData(res.data);
 			setAddress(res.data.address);
@@ -53,7 +53,7 @@ function Dashboard() {
       setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get('http://localhost:2000/user/fetch/'+localStorage.getItem("id")).then(res=>{
+		 axios.get(`${CONFIG.baseUrl}/user/fetch/`+localStorage.getItem("id")).then(res=>{
 			console.log(res.data);
 			setData(res.data);
 			setAddress(res.data.address);

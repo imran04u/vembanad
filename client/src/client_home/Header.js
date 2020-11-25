@@ -7,6 +7,7 @@ import './css/responsive.css';
 import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from '../config';
 import logo from './images/logo.png';
 toast.configure()
 function Header(props) {
@@ -67,7 +68,7 @@ function proceed(){
 				phone:localStorage.getItem("phone")
 			}
 			console.log(p.user)
-			axios.post('http://localhost:2000/cart/insert/',p).then((res)=>{
+			axios.post(`${CONFIG.baseUrl}/cart/insert/`,p).then((res)=>{
 				console.log(res.data);
 				localStorage.removeItem('data')
                 //props.history.push('/');
@@ -131,7 +132,7 @@ useEffect(()=>{
         document.getElementById(props.nav).classList="active";
               
        // alert('hi');  
-       axios.get('http://localhost:2000/home/').then(res=>{
+       axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
           console.log(res.data);
          
           console.log(props.history);

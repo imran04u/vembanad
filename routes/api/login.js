@@ -1,9 +1,9 @@
 const express = require('express');
 const router=express.Router();
 const mongoose= require('mongoose');
-const user=require('./adminSchema');
-const cat=require('./CatSchema');
-const product=require('./productSchema');
+const user=require('../../models/adminSchema');
+const cat=require('../../models/CatSchema');
+const product=require('../../models/productSchema');
 const ba64=require('ba64');
 //import {v4 as uuidv4} from 'uuid';
 const uuid=require("uuid");

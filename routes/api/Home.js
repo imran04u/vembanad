@@ -1,9 +1,9 @@
 const express = require('express');
 const router3=express.Router();
 const mongoose= require('mongoose');
-const cat=require('./CatSchema');
-const product=require('./productSchema');
-const banner=require('./bannerSchema')
+const cat=require('../../models/CatSchema');
+const product=require('../../models/productSchema');
+const banner=require('../../models/bannerSchema')
 const ba64=require('ba64');
 const uuid=require("uuid");
 const fileUpload=require('express-fileupload');

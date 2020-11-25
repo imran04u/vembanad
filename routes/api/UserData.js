@@ -1,7 +1,7 @@
 const express = require('express');
 const router4=express.Router();
 const mongoose= require('mongoose');
-const user=require("./userSchema")
+const user=require("../../models/userSchema")
 
 router4.post("/insert/",async(req,res)=>{
     try{

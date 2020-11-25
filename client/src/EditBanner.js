@@ -5,6 +5,7 @@ import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import { PromiseProvider } from "mongoose";
+import CONFIG from './config';
 toast.configure()
 function EditBanner(props) {
   const [fname,setFname]=useState("");
@@ -26,7 +27,7 @@ function EditBanner(props) {
       const q=window.location.search;
       console.log(q.substring(4));
       
-      axios.get('http://localhost:2000/home/fetch/'+q.substring(4)).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/home/fetch/`+q.substring(4)).then(res=>{
         setTitle(res.data[0].title);
         setDescription(res.data[0].description);
         setUrl_link(res.data[0].link); 
@@ -49,7 +50,7 @@ function EditBanner(props) {
       id:catid
      }
      
-     axios.post('http://localhost:2000/home/ban_edit/', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/home/ban_edit/`, data).then(res=>{
       console.log(res.data)
     //alert('successfully Updated');
     notify()

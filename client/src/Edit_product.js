@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from './config';
 toast.configure()
 
 function Edit_product(props) {
@@ -25,7 +26,7 @@ function Edit_product(props) {
   useEffect(()=>{
     setTimeout(() => {
       const q=window.location.search;
-      axios.get('http://localhost:2000/product/fetch/'+q.substring(4)).then(res=>{
+      axios.get(`${CONFIG.baseUrl}product/fetch/${q.substring(4)}`).then(res=>{
         setCatdata(res.data.b);
       //setPdata(res.data.a);
       
@@ -60,7 +61,7 @@ function Edit_product(props) {
       
      }
      console.log(data)
-     axios.post('http://localhost:2000/product/update', data).then(res=>{
+     axios.post(`${CONFIG.baseUrl}/product/update`, data).then(res=>{
      //alert('succesfully updated');
       notify()
      props.history.push('/pro');

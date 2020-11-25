@@ -22,6 +22,7 @@ import twitter from './images/twitter.png';
 //import 'imports?jQuery=jquery!owl.carousel';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
+import CONFIG from '../config';
 toast.configure()
 
 function User_Log(props) {
@@ -43,7 +44,7 @@ function User_Log(props) {
 		  pass:pass
 		}
 		console.log(data);
-		axios.post('http://localhost:2000/user/login/', data).then(res=>{
+		axios.post(`${CONFIG.baseUrl}/user/login/`, data).then(res=>{
 		// console.log(res.data.result);
 		 
 		 if(res.data.result)
