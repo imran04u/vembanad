@@ -17,16 +17,17 @@ function Edit_product(props) {
   const [offer_price,setOPrice]=useState("");
   const [spl,setSpl]=useState("");
   const [propath,setPath]=useState("");
+  const [cat_data,setCatdata]=useState([]);
   const notify = ()=>{  
     toast('Updated Successfully') 
          
   } 
-  const [cat_data,setCatdata]=useState([]);
+ 
  // const [pro_data,setPdata]=useState([]);
   useEffect(()=>{
     setTimeout(() => {
       const q=window.location.search;
-      axios.get(`${CONFIG.baseUrl}product/fetch/${q.substring(4)}`).then(res=>{
+      axios.get(`${CONFIG.baseUrl}/product/fetch/`+q.substring(4)).then(res=>{
         setCatdata(res.data.b);
       //setPdata(res.data.a);
       

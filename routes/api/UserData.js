@@ -2,7 +2,7 @@ const express = require('express');
 const router4=express.Router();
 const mongoose= require('mongoose');
 const user=require("../../models/userSchema")
-
+const order=require("../../models/orderSchema")
 router4.post("/insert/",async(req,res)=>{
     try{
         //req.body={"name":"yahya","email":"yahya@gmail.com","phone":"123456791","pass":"yahya","address":"trichy"}
@@ -51,17 +51,12 @@ router4.post("/login/",async(req,res)=>{
   
 })
 
-router4.post("/update/",async(req,res)=>{
+router4.get("/fetchorder/:id",async(req,res)=>{
     
      
     try{
-        const m=await user.updateOne({_id:req.body.id},{$set:{name:req.body.name,phone:req.body.phone,address:req.body.address}}).exec(function(err, leads){
-            //const file=req.body.photo;
-           // console.log(m);
-            res.status(200).json(leads);
-
-
-        })
+        const a=await order.find({customer:req.params.id}).sort({created:-1}).limit(15).exec();
+        res.status(200).json(a);
          }
          catch(err){
              res.json(err);

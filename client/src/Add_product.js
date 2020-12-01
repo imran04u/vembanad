@@ -56,9 +56,17 @@ function Add_product() {
       axios.get(`${CONFIG.baseUrl}/product/delete/${e.target.id}`).then(res=>{
         Delete()
         //alert('successfully deleted');
-        setInterval(() => {
-          window.location="/pro"
-        },1000)
+        // setInterval(() => {
+        //   window.location="/pro"
+        // },1000)
+        setTimeout(() => {
+          axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
+            setCatdata(res.data.b);
+          setPdata(res.data.a);
+            console.log();
+          })
+          
+        }, 1000);
       })
     }
   }
@@ -71,6 +79,8 @@ function Add_product() {
 
   }
   function createCat(e){
+    document.getElementById(e.target.id).disabled=true;
+    
     e.preventDefault();
     let data={
       photo:Img,
@@ -86,11 +96,19 @@ function Add_product() {
      axios.post(`${CONFIG.baseUrl}/product/insert`, data).then(res=>{
      //alert('succesfully added');
      Added()
-     document.getElementById(e.target.id).disabled=true;
+     document.getElementById(e.target.id).disabled=false;
     
-     setInterval(() => {
-      window.location="/pro"
-    },1000)
+    //  setInterval(() => {
+    //   window.location="/pro"
+    // },1000)
+    setTimeout(() => {
+      axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
+        setCatdata(res.data.b);
+      setPdata(res.data.a);
+        console.log();
+      })
+      
+    }, 1000);
      })
   }
     return (

@@ -1,8 +1,8 @@
 /* ------------------------------------------------------------------------------ 
-Project Name : Daqing 
-Description : Responsive Style Sheet 
+Project Name : Vembanad Restaurant 
+Description : Main Style Sheet 
 Author : Imran Rovan 
-Created On : 22 Feb 2018 
+Created On : 27 Nov 2020 
 --------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 1024px) {
@@ -95,382 +95,289 @@ Created On : 22 Feb 2018
 		padding-left:25px;	
 	}
 }
-@media screen and (max-width: 1400px) {
-/*.inner-ban {
-height: 350px;
-}*/
-}
-@media screen and (max-width: 1199px) {
-	.sub-ban {
-		width: 80% !important;
-	}
-	.sub-ban h5 {
-		font-size:17px;
-		line-height:17px;
-		width:480px;
+@media screen and (max-width: 1100px) {
+	#menu > ul > li {
+		margin-right: 30px;
 	}
 	.sub-ban h2 {
-		font-size:45px;
-		line-height:45px;
+		padding-top: 20px;
+		font-size: 25px;
+		line-height: 35px;
 	}
 	.sub-ban p {
-		font-size:15px;
-		line-height:24px;
-	}
-	.owl-carousel .owl-item img {
-		height: auto;
-	}
-	.submenu .container {
-		width: 100%;
-	}
-	.abt-blk h5 {
-		font-size: 20px;
-	}
-	.abt-blk h5 span {
-		font-size: 40px;
-	}
-	.abt-intro .abt-dtl h3 {
-		font-size: 18px;
-		line-height: 22px;
-		margin-bottom: 6px;
-		width: 100%;
-	}
-	.abt-intro .abt-dtl p {
 		font-size: 14px;
-		line-height: 24px;
-		margin-bottom: 10px;
+		line-height: 22px;
 	}
-	.abt-intro .abt-img img, .abt-big img {
-		width: auto;
-		height: 100%;
+	.grandfeast-txt {
+		width: 70%;
 	}
-	.abt-big {
-		height: 402px;
+	.innerban h1 {
+		font-size: 40px;
+		padding: 120px 20px;
 	}
-	.orgchart:before {
-		height: 690px;
+	.contact-box-content .img-holder {
+		display: block;
+		max-width: 100%;
+		width: 100%;
 	}
-	.predimg {
-		margin-bottom: 40px;
+	.contact-box-content .text-holder .col-md-5, .contact-box-content .text-holder .col-md-7 {
+		flex: 0 0 100%;
+		max-width: 100%;
 	}
-	.asc-inner {
-		min-height: 145px;
+	.contact-box-content .text-holder .opening-hours {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		max-width: 100%;
+		margin: 20px;
 	}
-	.career-table tr td:first-child {
-		width: auto;
+	.dish-desc p {
+		font-size: 14px;
+		line-height: 21px;
+	}
+	.offermenu .dish-img {
+		max-height: 220px;
+		height: auto;
+		overflow: hidden;
 	}
 }
-
-@media screen and (max-width: 991px) {
-	.sub-ban h2 {
-		font-size: 25px;
-		line-height: 25px;
+@media screen and (max-width: 1023px) {
+	header {
+		height: 100px;
 	}
-	.abt-intro .abt-dtl {
-		width: 62%;
+	header .logo img {
+		height: 100px;
 	}
-	.abt-intro .abt-img {
-		width: 38%;
-	}
-	.abt-big img {
-		width: 100%;
-		height: auto;
-	}
-	.home-career {
-		height: 420px;
-		background-size: cover;
-	}
-	.career-dtl {
-		width: 80%;
-		padding: 75px 0;
-	}
-	.footer-menu .container {
-		width: 100%;
-	}
-	.submenu li a {
-		padding: 20px 10px;
-		font-size: 13px;
-	}
-	.div-table > div {
-		float: none;
-		display: block;
-		width: 100%;
-	}
-	.inner-content h2 {
+	.dish-desc h5 {
 		font-size: 18px;
-		line-height: 29px;
-		margin-bottom: 5px;
 	}
-	.inner-content img {
-		margin: 15px auto;
+	.sub-ban {
+		width: 80%;
+		left: 25px;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+2) > div p, .mile-timeline .timeline-row:nth-of-type(2n+1) > div p {
-		width: auto;
+	.logo {
+		margin-left: 35px;
 	}
-	.orgchart:before {
-		height: 565px;
-	}
-	.predimg {
-		margin-bottom: 0px;
-	}
-	.preddtl h2,.preddtl h6, .signature {
-		margin-left: 15px;
-	}
-	.inner-content h1 {
-		font-size: 25px;
-		line-height: 28px;
-	}
-	.inner-content h1:after {
-		width: 80px;
-		margin-left: -40px;
-	}
-	.inner-service h1:after {
+	.abt-img {
+		width: 100%;
+		float: none;
 		margin-left: 0;
 	}
-	.inner-ban {
+	.abt-txt {
 		width: 100%;
-		height: 300px;
+		float: none;
 	}
-	.footer-menu .top-nav li:last-child a {
-		font-size: 14px;
-		padding-top: 20px;
-		margin: 20px -2px 0;
+	.abt-img img {
+		width: auto;
+		height: 250px;
+		margin: auto;
 	}
-	.footer-menu .top-nav li:first-child a {
-		font-size: 16px;
+	.abt-us {
+		background: #fff;
+		padding: 50px 0;
 	}
-	.footer-menu {
-		padding: 25px 0;
+	.spl-title {
+		float: none;
+		display: inline-block;
+		width: 310px;
 	}
-	.inner-content img {
-		margin: 20px 0;
+	.tdy-offer-txt {
+		float: none;
+		width: 100%;
+		margin-top: 80px;
 	}
-	.services-inner .sleft:nth-child(1) {
+	.tdy-offer-img {
+		float: none;
+		width: 100%;
+	}
+	.tdy-offer-img img:first-child {
 		display: none;
 	}
-	.services-inner .sleft:nth-child(2) {
+	.tdy-offer-img img:last-child {
+		width: auto;
+		margin-top: 0;
+		margin-right: 0;
+		float: none;
+		position: relative;
+		z-index: 5;
+		max-height: 200px;
+	}
+	.owl-prev, .owl-next {
+		position: relative !important;
+		bottom: inherit;
+		left: inherit;
+		margin-top: 20px;
+		margin-left: 30px;
+	}
+	.mainmenu .menulist {
+		flex-wrap: wrap;
+	}
+	.mainmenu .menulist .dish-desc {
+		width: 75%;
+		border-right: 0;
+	}
+	.mainmenu .menulist .dish-price {
 		width: 100%;
-		float: none !important;
+		padding: 0px 0 10px 0;
+		border-top: 1px solid #ccc;
+		margin-top: 15px;
 	}
-	.serviceshalf {
-		height: auto;
-		margin-bottom: 30px;
+	.dish-price a {
+		margin-left: 20px;
 	}
-	.owl-client .owl-nav {
-		display: none;
+	.offermenu .menulist {
+		width: 48%;
 	}
 }
 @media screen and (max-width: 767px) {
-	header {
-		height: 70px;
-		padding: 0px 0;
-		background-color: rgba(255,255,255,1);
-		top: 0px;
-		-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
-		-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
-		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
-	}
-	header .logo img:first-child {
-		display: none;
-		height: 70px;
-	}
-	header .logo img:last-child {
-		display: block;
-		height: 70px;
-	}
-	header #burgernav span {
-		background-color: #bf1e2e;
-	}
-	header.header-fixed #burgernav {
-		top: 20px;
-	}
-	#full-slider-wrapper {
-		padding-top: 70px;
-	}
-	.sub-ban h2 {
-		font-size: 20px;
-		line-height: 22px;
-		padding-top: 0px;
-		margin-top: -20px;
-	}
-	.sub-ban h2:before {
-		display: none;
-
+	.sub-ban {
+		width: 70%;
+		min-width: 300px;
+		max-width: 400px;
+		left: 25px;
 	}
 	.sub-ban p {
 		display: none;
 	}
-	.abt-blk h5 {
-		font-size: 16px;
+	.spl-dishes {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
 	}
-	.abt-blk h5 span {
-		font-size: 30px;
-	}
-	.abt-intro .abt-dtl {
+	.spl-dishes .dish:first-child, .spl-dishes .dish:nth-child(2), .spl-dishes .dish:nth-child(3) {
 		width: 100%;
-		height: auto;
+		margin: 0 0 25px 0;
 	}
-	.abt-intro .abt-img, .abt-intro .abt-img img {
+	.grandfeast-txt {
 		width: 100%;
-		height: auto;
 	}
-	.abt-big {
-		height: auto;
+	header {
+		background-color: #fff;
+		padding: 0 10px;
 	}
-	.owl-service .owl-stage .center {
-		transform: scale(1);
+	.logo {
+		margin-left: 80px;
 	}
-	.owl-service .owl-stage-outer {
-		padding: 20px 0;
+	header.header-fixed #burgernav {
+		top: 24px;
 	}
-	.service-caro {
-		padding: 45px 0px;
+	#banner {
+		padding-top: 100px;
 	}
-	.career-dtl {
-		width: 100%;
-		padding: 25px 0;
-	}
-	.career-dtl h4 {
-		font-size: 38px;
-		line-height: 38px;
-		margin-bottom: 25px;
-	}
-	.career-dtl h2 {
-		font-size: 30px;
-		line-height: 45px;
-	}
-	.career-dtl h2 span {
-		display: block;
-		font-size: 40px;
-	}
-	.career-dtl a {
-		color: #fff;
-		font-size: 18px;
-		font-weight: 500;
-		margin-left: 0;
-		background-size: contain;
-	}
-	/* .home-career {
-		height: 300px;
-		background: url(/images/home-career.jpg) no-repeat right -200px bottom;
-		background-size: cover;
-	} */
-	.footer-menu .top-nav {
-		text-align: left;
-	}
-	.footer-menu .top-nav li:first-child a {
-		font-size: 13px;
-		width: 45%;
-		padding: 0;
-	}
-	.footer-menu .top-nav li:last-child a {
-		display: none;
-	}
-	.owl-service .owl-stage .center .serv-dtls {
-		zoom: inline-block;
-	}
-	.submenu {
-		display: none;
-	}
-	.orgchart:before {
-		display: none;
-	}
-	.president-img {
-		padding: 20px;
-		background-color: #f5f5f5;
-		margin-left: 0;
-	}
-	.predimg {
-		margin-bottom: 0px;
-		margin: 0;
-		width: 100%;
-		float: none;
-	}
-	.preddtl {
-		padding-right: 0;
-		font-size: 25px;
-	}
-	.preddtl h2, .preddtl h6, .signature {
-		margin: 0;
-	}
-	.service-list li {
-		width: 100%;
-		float: none;
-	}
-	.tableScrol {
-		width: 100%;
-		overflow: scroll;
-	}
-	.tableScrol table {
-		min-width: 550px;
-	}
-	.tabs-career .panel-title {
-		font-size: 12px!important;
-	}
-	.tabs-career .nav>li>a {
-		position: relative;
-		display: block;
-		padding: 10px 8px;
-		font-size: 14px;
-	}
-	.inner-content .job-dtl p span {
-		width: 100%;
-		float: none;
-	}
-	.inner-content .job-dtl p span:first-child {
-		padding-right: 0;
-		border-right: none;
+	.txt h2 {
+		font-size: 35px;
+		color: #f8c366;
 		margin-bottom: 20px;
-		display: inline-block;
 	}
-	.centerAlign {
-		text-align: center;
-	}
-	.career-form .label-form label:first-child, .career-form .label-form label:last-child {
-		float: none;
-		text-align: center;
-	}
-	.career-form .label-form label:last-child span {
-		float: none;
-	}
-	.margt20 {
-		margin-top: 10px;
-	}
-	.career-form h3 {
+	.abt-txt {
 		margin-top: 20px;
 	}
-	.mile-timeline .timeline-row:before {
-		right: 95%;
+	#counts, #counts:last-child {
+		width: 100%;
+		float: none;
+		margin-right: 15px;
+		border-bottom: 1px solid #e6e6e4;
+		padding-right: 12px;
+		border-right: 0;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+1) > div {
-		float: right;
-		text-align: left;
+	.spl-title {
+		width: 245px;
 	}
-	.mile-timeline .timeline-row > div {
-		width: 95%;
+	.grandfeast {
+		background: url(../images/grandfeastbg.jpg) center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 40px 0;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type {
-		float: left;
+	.grandfeast .txt h2 {
+		font-size: 30px;
+		color: #f8c366;
+		margin-bottom: 10px;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:first-of-type {
-		float: right;
+	.grandfeast-txt h3 {
+		color: white;
+		font-family: 'Poppins', sans-serif;
+		font-size: 18px;
+		margin-bottom: 10px;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type:after {
-		left: 0;
-		top: 15px;
+	.flx {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
 	}
-	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type:before {
-		left: -10px;
-		top: 5.5px;
+	.innerban {
+		padding-top: 100px;
 	}
-	.mile-timeline .timeline-row h4 {
-		font-size: 17px;
-		font-weight: 400;
-		margin: 0px 0 10px;
+	.innerban h1 {
+		font-size: 30px;
+		padding: 50px 20px;
+	}
+	.tabs-left {
+		margin-bottom: 30px;
+		padding: 0;
+	}
+	.mainmenu .menulist .dish-img {
+		width: 100%;
+		border-radius: 10px 0 0 10px;
+	}
+	.mainmenu .menulist .dish-img {
+		width: 100%;
+		border-radius: 10px;
+		max-height: 250px;
+		overflow: hidden;
+	}
+	.mainmenu .menulist .dish-desc {
+		width: 100%;
+		padding: 15px 15px 0 15px;
+	}
+	.abtdtls {
+		padding-right: 0;
+		padding-top: 0;
+		padding-left: 0;
+	}
+	.abtdtls h3 {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 20px;
+	}
+	.embed-responsive img, img.over {
+		display: none;
+	}
+	.fast-text-container {
+		margin-top: 50px;
+	}
+	.fast-text {
+		padding-left: 15px;
+		border-left: 0;
+	}
+	.vision .col-md-8 {
+		padding-left: 15px;
+	}
+
+}
+@media screen and (max-width: 450px) {
+	p {
+		font-size: 14px;
+		line-height: 24px;
+	}
+	.abt-img img {
+		width: 100%;
+		height: auto;
+		margin: auto;
+	}
+	.sub-ban h2 {
+		padding-top: 0px;
+		font-size: 18px;
+		line-height: 25px;
+	}
+	.sub-ban a {
+		padding: 3px 20px;
+		font-size: 14px;
+	}
+	.tdy-offer-img img:last-child {
+		width: 100%;
 	}
 }
-
-
 
 
 

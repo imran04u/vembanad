@@ -54,8 +54,6 @@ const validuser=(req,res,next)=>{
 router.post("/cat/",async(req,res)=>{
     let id=uuid.v1();
     let way='assets/images/uploads/'+id+'.'+req.body.fname;
-    //console.log(paths)
-    //res.json(paths);
     try{
         //res.setHeader('Content-Type', 'text/json');
         //res.setHeader('Content-Type', 'text/html');
@@ -65,14 +63,10 @@ router.post("/cat/",async(req,res)=>{
             path:way
             })
             const mS=await m.save();
-      //  console.log(mS)
- const c=await cat.find().sort({created:-1}).exec();
-            console.log(c);
-       
-            res.status(200).json(mS);
+        console.log(mS)
+       res.status(200).json(mS);
         const file=req.body.photo;
-        let dir=__dirname.replace("/routes/api","/");
-        let paths=dir+'client/build/assets/images/uploads/'+id;
+        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
         ba64.writeImage(paths,file,(err)=>{
         if(!err){
         //res.status(200).json(mS);
@@ -82,8 +76,7 @@ router.post("/cat/",async(req,res)=>{
         catch(err){
             //res.json(err);
         }
-       
-       // res.send("h");
+        res.send("h");
 })
 
 router.post("/catedit/",async(req,res)=>{
@@ -96,9 +89,8 @@ router.post("/catedit/",async(req,res)=>{
          try{
         res.type('json');
             const file=req.body.photo;
-            let dir=__dirname.replace("/routes/api","/");
-            let paths=dir+'client/build/assets/images/uploads/'+id;
-            ba64.writeImage(paths,file,(err)=>{
+        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
+        ba64.writeImage(paths,file,(err)=>{
             console.log(paths);
         if(!err){
         //res.status(200).json(m);
@@ -195,7 +187,7 @@ router.get("/catdisplay/",validuser,async(req,res)=>{
             res.sendStatus(403);
         }
         else{
-        const a=await cat.find().sort({created:-1}).exec();
+        const a=await cat.find();
         res.status(200).json(a);
         }
 

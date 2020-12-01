@@ -25,6 +25,9 @@ function Header(props) {
     const [address,setAddress]=useState("");
     const [order,setD]=useState([]);
     const [tot,setTot]=useState(0);
+    const [tologin,setLogin]=useState({});
+    const [logout,setLogout]=useState({});
+    
     function change_qty(a,b){
 		console.log(a,b);
 		let qty_change=JSON.parse(localStorage.getItem("data"))
@@ -112,7 +115,7 @@ function minus(v){
 		console.log(items);
 		localStorage.setItem("data",JSON.stringify(items))
 		notify()
-		window.location='/';
+		//window.location='/';
 		//history.replace(loc)
 		
 	}
@@ -130,8 +133,16 @@ useEffect(()=>{
     setTimeout(() => {
         //axios
         document.getElementById(props.nav).classList="active";
-              
-       // alert('hi');  
+        if(localStorage.getItem('id'))
+        {
+            setLogout({"display":"none"});     
+         
+        }
+        else{
+            setLogin({"display":"none"}); 
+           
+        }
+         // alert('hi');  
        axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
           console.log(res.data);
          
@@ -144,13 +155,18 @@ useEffect(()=>{
               setD(JSON.parse(localStorage.getItem("data")))
               f();
           }
-          
-          
+    
        })   
         
     }, 1000);
     //console.log("or"+order)
-    
+    setInterval(()=>{
+        if(localStorage.getItem("data"))
+        {
+            setD(JSON.parse(localStorage.getItem("data")))
+            f();
+        }
+    },1000);
 
   }, []);
   return(<div>
@@ -163,12 +179,15 @@ useEffect(()=>{
     <div class="headerright">
         <nav id="menu">
             <ul>
-            <li><a href="/">Home</a></li>
+            <li id="home"><a  href="/">Home</a></li>
                 <li id="menus"><a href="/menu">Menu</a></li>
                 <li id="offer"><a href="/offers">Offers</a></li>
                 <li id="about"><a href="/about">About Us</a></li>
                 <li id="contact"><a href="/contact">Contact Us</a></li>
-                <li id="login"><a href="/user_log">Login</a></li>
+                <li id="login" style={logout}><a href="/user_log">Login</a></li>
+                <li id="user" style={tologin}><a href="/user_dash"><i class="fas fa-user"></i></a></li>
+                <li style={tologin} ><a href="" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
+                
             </ul>
         </nav>
         <div class="search_btn">

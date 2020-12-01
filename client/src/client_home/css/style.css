@@ -933,6 +933,7 @@ header.header-fixed .logo img {
 }
 .offermenu {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 }
 .offermenu .menulist {
@@ -1542,3 +1543,211 @@ button.checkbtn {
 	display: block;
 	margin-top: 20px;
 }
+
+table.datatable {
+	margin: 10px 0;
+	width: 100%;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.03);
+  }
+  table.datatable thead th {
+	background-color: #0084ff;
+	color: #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 15px 10px 15px 10px;
+	border-bottom: none;
+	white-space: normal;
+  }
+  table.datatable thead th ul {
+	display: flex;
+  }
+  table.datatable thead th ul li {
+	width: 100px;
+  }
+  table.datatable thead th:last-child {
+	min-width: 120px;
+  }
+  .datatable tbody td {
+	padding: 8px 10px;
+	background-color: #f2f9ff;
+	border-top: 1px solid #e3eeff;
+	border-bottom: 1px solid #e3eeff;
+	color: #333;
+	font-size: 14px;
+	white-space: normal;
+  }
+  .datatable tbody td img {
+	height: 80px;
+	border:1px solid #ccc;
+	padding: 3px;
+  }
+  .datatable tbody td .techlist {
+	height: 23px;
+	overflow: hidden;
+	padding-top: 1px;
+	position: relative;
+  }
+  .datatable tbody td .techlist.auto {
+	height: auto;
+  }
+  .datatable tbody td .techlist.auto .accdtech i:before {
+	content: "";
+  }
+  .datatable tbody td .techlist ul {
+	display: flex;
+	margin-bottom: 8px;
+  }
+  .datatable tbody td .techlist ul li {
+	width: 100px;
+  }
+  .datatable tbody td .techlist .accdtech {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9;
+	color: #31699d;
+  }
+  .datatable tbody td .techlist .accdtech i {
+	border: 1px solid #31699d;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	line-height: 18px;
+	text-align: center;
+  }
+  .datatable tbody td > a {
+	font-weight: 500;
+	color: #000;
+	text-decoration: underline;
+	text-transform: capitalize;
+  }
+  .datatable tbody td > a i {
+	color: #007bff;
+  }
+  .datatable tbody td span.open {
+	border: solid 1px #0084ff;
+	font-size: 13px;
+	font-weight: 500;
+	color: #0084ff;
+	border-radius: 5px;
+	padding: 3px 7px;
+	text-transform: capitalize;
+  }
+  .datatable tbody td span.prospect {
+	border: solid 1px #db34c0;
+	font-size: 13px;
+	font-weight: 500;
+	color: #db34c0;
+	border-radius: 5px;
+	padding: 3px 7px;
+	text-transform: capitalize;
+  }
+  .datatable tbody td span.converted {
+	border: solid 1px #0e7c7b;
+	font-size: 13px;
+	font-weight: 500;
+	color: #0e7c7b;
+	border-radius: 5px;
+	padding: 3px 7px;
+	text-transform: capitalize;
+  }
+  .datatable tbody td span.rejected {
+	border: solid 1px #db3a34;
+	font-size: 13px;
+	font-weight: 500;
+	color: #db3a34;
+	border-radius: 5px;
+	padding: 3px 7px;
+	text-transform: capitalize;
+  }
+  .datatable tbody td .dropdown {
+	text-align: right;
+	padding-right: 17px;
+  }
+  .datatable tbody tr:nth-child(even) td {
+	background-color: #fff;
+	border-top: 1px solid #fff;
+  }
+  .ordertable span.id {
+	width: 68px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	padding: 0;
+	display: block;
+	text-transform: uppercase;
+  }
+  .ordertable span.date {
+	width: 73px;
+	white-space: nowrap;
+	overflow: hidden;
+	word-break: break-all;
+	padding: 0;
+	display: block;
+	text-transform: uppercase;
+  }
+  .ordertable tr td > table {
+	width: 350px;
+	text-align: left;
+	
+  }
+  .ordertable tr td > table tr th {
+	background-color: #333;
+	color:#fff;
+	font-size: 13px;
+	padding: 5px;
+	border:1px solid #222;
+  }
+  .ordertable tr td > table tr:nth-child(1n) td {
+	background-color: #666;
+	color: #fff;
+	padding: 5px;
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
+  
+  }
+  .ordertable tr td > table tr:nth-child(2n) td {
+	background-color: #666;
+	color:#fff;
+	padding: 5px;
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
+  }
+  .ordertable select {
+	border:1px solid #ccc;
+	padding: 10px;
+  }
+  .ordertable > tbody > tr > td:last-child {
+	text-align: center;
+  }
+  .ordertable label[title=Pending] {
+	display: inline-block;
+	padding: 5px 15px;
+	color:  #fff;
+	border-radius: 5px;
+	background-color: #fb3;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	margin-bottom: 10px;
+  }
+  .ordertable label[title=Accepted] {
+	display: inline-block;
+	padding: 5px 15px;
+	color:  #fff;
+	border-radius: 5px;
+	background-color: #00c851;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	margin-bottom: 10px;
+  }
+  .ordertable label[title=Canceled] {
+	display: inline-block;
+	padding: 5px 15px;
+	color:  #fff;
+	border-radius: 5px;
+	background-color: #ff3547;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	margin-bottom: 10px;
+  }  

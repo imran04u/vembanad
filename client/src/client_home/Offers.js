@@ -74,9 +74,9 @@ function Offers() {
 				{
 					result=false;
 					already()
-					setInterval(() => {
-						window.location="/menu"
-					},1000)
+					// setInterval(() => {
+					// 	window.location="/menu"
+					// },1000)
 					break;
 					
 				}
@@ -87,9 +87,9 @@ function Offers() {
 				localStorage.removeItem("data")
 				localStorage.setItem("data",JSON.stringify(chec));
 				notify()
-				setInterval(() => {
-					window.location="/offers"
-				},1000)
+				// setInterval(() => {
+				// 	window.location="/offers"
+				// },1000)
 		
 			}
 		}

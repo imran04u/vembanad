@@ -57,15 +57,25 @@ function Category(props) {
         if(res.data)
         {
           Deleted()
-          setInterval(() => {
-						window.location="/category"
-					},1000)//props.history.push('/category');
+          // setInterval(() => {
+					// 	window.location="/category"
+          // },1000)//props.history.push('/category');
+          setTimeout(() => {
+            axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
+              headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
+              
+             setCatdata(res.data);
+              console.log(cat_data);
+            })
+            
+          }, 1000);
         }
         
       })
     }
   }
   function createCat(e){
+    document.getElementById("save").disabled=true;
     e.preventDefault();
     let data={
       fname:fname,
@@ -77,13 +87,24 @@ function Category(props) {
      
      axios.post(`${CONFIG.baseUrl}/login/cat/`, data).then(res=>{
        //window.location='/cat';
+       console.log(res.data)
        if(res.data){
         Added()
-        document.getElementById(e.target.id).disabled=true;
-       
-        setInterval(() => {
-          window.location="/category"
-        },1000)
+        document.getElementById("save").disabled=false;
+        document.getElementById('f').value='';
+        setCat("");
+        setTimeout(() => {
+          axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
+            headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
+            
+           setCatdata(res.data);
+            console.log(cat_data);
+          })
+          
+        }, 1000);
+        // setInterval(() => {
+        //   window.location="/category"
+        // },1000)
         //e.target.reset();
        //props.history.push('/category');
        }
@@ -113,7 +134,7 @@ function Category(props) {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label>
-                <input type="file" name="" placeholder={name} class="iconblk"  onChange={(event)=>{
+                <input type="file" name="" id="f" placeholder={name} class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);

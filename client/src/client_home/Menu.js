@@ -22,8 +22,7 @@ import insta from './images/insta.png';
 import twitter from './images/twitter.png';
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
-import CONFIG from '../config';
-
+import CONFIG from  '../config';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 toast.configure()
@@ -39,7 +38,7 @@ function Menu(props) {
 	const [tot,setTot]=useState(0);
 	const [order,setD]=useState([]);
 	const notify = ()=>{  
-		toast('Added to cart') 
+		toast('Add to carted') 
 			 
 	  }
 	  const already = ()=>{  
@@ -92,7 +91,7 @@ function Menu(props) {
           //axios
 		 // alert('hi');  
 		 console.log(window.location.search.substring(1))
-		 axios.get(`${CONFIG.baseUrl}/home/menu`).then(res=>{
+		 axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.d);
 			setBanner(res.data.b);
@@ -135,9 +134,9 @@ let order_data={id:id,name:name,rs:rs,qty:1,path:path};
 if(JSON.stringify(localStorage.getItem("data"))=="null"){
 	localStorage.setItem("data",JSON.stringify([order_data]))
 	notify()
-	setInterval(() => {
-		window.location="/menu"
-	},1000)
+	// setInterval(() => {
+	// 	window.location="/menu"
+	// },1000)
 }
 else{
 	//another add cart
@@ -148,9 +147,9 @@ else{
 		{
 			result=false;
 			already()
-			setInterval(() => {
-				window.location="/menu"
-			},1000)
+			// setInterval(() => {
+			// 	window.location="/menu"
+			// },1000)
 			break;
 		}
 	}
@@ -161,9 +160,9 @@ else{
 		localStorage.setItem("data",JSON.stringify(chec));
 		notify()
 		//window.location="/menu";
-		setInterval(() => {
-			window.location="/menu"
-		},1000)
+		// setInterval(() => {
+		// 	window.location="/menu"
+		// },1000)
 
 	}
 }

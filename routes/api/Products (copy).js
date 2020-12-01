@@ -29,8 +29,7 @@ router2.post("/insert/",async(req,res)=>{
         //console.log(mS)
         res.status(200).json(mS);
         const file=req.body.photo;
-        let dir=__dirname.replace("/routes/api","/");
-        let paths=dir+'client/build/assets/images/uploads/'+id;
+        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
         ba64.writeImage(paths,file,(err)=>{
         if(!err){
         //res.status(200).json(mS);
@@ -75,9 +74,8 @@ router2.post("/update/",async(req,res)=>{
          try{
         res.type('json');
             const file=req.body.photo;
-            let dir=__dirname.replace("/routes/api","/");
-            let paths=dir+'client/build/assets/images/uploads/'+id;
-             ba64.writeImage(paths,file,(err)=>{
+        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
+        ba64.writeImage(paths,file,(err)=>{
             console.log(paths);
         if(!err){
         //res.status(200).json(m);

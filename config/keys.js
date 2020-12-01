@@ -1,3 +1,3 @@
 module.exports = {
-  mongoURI: 'mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority'
+  mongoURI: 'mongodb://127.0.0.1:27017/food'
 };

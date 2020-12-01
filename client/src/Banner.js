@@ -48,13 +48,24 @@ function Banner(props) {
       axios.get(`${CONFIG.baseUrl}/home/del_ban/${e.target.id}`).then(res=>{
         //alert('successfully deleted');
         Deleted()
-        setInterval(() => {
-          window.location="/ban"
-        },1000)
+        // setInterval(() => {
+        //   window.location="/ban"
+        // },1000)
+        setTimeout(() => {
+          axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
+            
+            setBandata(res.data);
+            console.log(ban_data);
+          })
+          
+        }, 1000);
+        
       })
     }
   }
   function createCat(e){
+    document.getElementById(e.target.id).disabled=true;
+      
     e.preventDefault();
     let data={
       fname:fname,
@@ -67,10 +78,19 @@ function Banner(props) {
      console.log(data)
      axios.post(`${CONFIG.baseUrl}/home/add_ban/`, data).then(res=>{
        Added()
-      document.getElementById(e.target.id).disabled=true;
-      setInterval(() => {
-        window.location="/ban"
-      },1000)
+      document.getElementById(e.target.id).disabled=false;
+      
+      // setInterval(() => {
+      //   window.location="/ban"
+      // },1000)
+      setTimeout(() => {
+        axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
+          
+          setBandata(res.data);
+          console.log(ban_data);
+        })
+        
+      }, 1000);
     //alert('successfully added');
     //e.target.reset();
    //history.push('/cat');
@@ -153,7 +173,7 @@ function Banner(props) {
                   <td><p >{d.link}</p></td>
                 
                   <td>
-                  <button id={d._id} onClick={(event)=> /*setCatd(event.target.id)*/window.location="editban/?id="+d._id} type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                  <button id={d._id} onClick={(event)=> /*setCatd(event.target.id)*/window.location="/editban?id="+d._id} type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-edit"></i></button>
                     <button id={d._id} onClick={handleDel} type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   </td>

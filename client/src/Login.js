@@ -35,7 +35,7 @@ const notify = ()=>{
        console.log(res);
        localStorage.setItem('auth',JSON.stringify(res.data.token));
        notify()
-      props.history.push('/category')
+      props.history.push('/dash')
       }
       else{
         setColor("alert-danger")
