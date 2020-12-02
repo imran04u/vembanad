@@ -15,26 +15,29 @@ router.post("/",async(req,res)=>{
     //res.json("h");
     try{
         res.type('json');
+        //console.log(req.body);
+        // const m=await new user({
+        //     uname:"admin@123",
+        //     pass:"123",
+        //     })
+        //     const mS=await m.save();
+        // console.log(mS)
+        // res.json(mS);
+        // req.body={
+        //     "uname":"admin@123",
+        //     "pass":"123"
+        //     }
         console.log(req.body);
-        const m=await new user({
-            uname:"admin",
-            pass:"tvr@123",
-            })
-            const mS=await m.save();
-        console.log(mS)
-        res.json(mS);
-       
-    //     console.log(req.body);
-    //    const a=await user.findOne({uname:req.body.uname,pass:req.body.pass}).select("-pass");
-    //    console.log(a);
-    //    if(a!=null){
-    //        const tokens=await jwt.sign({uname:a.uname},"admin");
-    //        res.header('auth',tokens).json({result:true,token:tokens})
+       const a=await user.findOne({uname:req.body.uname,pass:req.body.pass}).select("-pass");
+       console.log(a);
+       if(a!=null){
+           const tokens=await jwt.sign({uname:a.uname},"admin");
+           res.header('auth',tokens).json({result:true,token:tokens})
         
-    //    }
-    //    else{
-    //     res.json({result:false});
-    //    }
+       }
+       else{
+        res.json({result:false});
+       }
 
         
         }
