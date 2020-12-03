@@ -16,7 +16,7 @@ function Header(props) {
 			 
       }
       const checouts = ()=>{  
-		toast('Checked out successfully') 
+		toast('Checkout successfully') 
 			 
       }
       const login=()=>{
@@ -59,6 +59,7 @@ function f(){
 }
 
 function proceed(){
+    document.getElementById("p").disabled=true;
 	if(localStorage.getItem("user"))
 	{
 		if(localStorage.getItem("data"))
@@ -73,7 +74,8 @@ function proceed(){
 			console.log(p.user)
 			axios.post(`${CONFIG.baseUrl}/cart/insert/`,p).then((res)=>{
 				console.log(res.data);
-				localStorage.removeItem('data')
+                localStorage.removeItem('data')
+                document.getElementById("p").disabled=false;
                 //props.history.push('/');
                 checouts()
 				setInterval(() => {
@@ -185,8 +187,8 @@ useEffect(()=>{
                 <li id="about"><a href="/about">About Us</a></li>
                 <li id="contact"><a href="/contact">Contact Us</a></li>
                 <li id="login" style={logout}><a href="/user_log">Login</a></li>
-                <li id="user" style={tologin}><a href="/user_dash"><i class="fas fa-user"></i></a></li>
-                <li style={tologin} ><a href="" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
+                <li id="user" style={tologin}><a href="/user_dash" target="My Account"><i class="fas fa-user"></i></a></li>
+                <li style={tologin} ><a href="" target="Logout" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
                 
             </ul>
         </nav>
@@ -238,7 +240,7 @@ useEffect(()=>{
     <span class="label"> Total: </span>
         <span class="price"> <span id="gt"> {tot}</span>QR</span> 
   </div>
-  <button class="checkbtn" onClick={proceed}> Proceed to Checkout</button>
+  <button class="checkbtn" id="p" onClick={proceed}> Proceed to Checkout</button>
   <label class="labcart">Delivery Address</label>
   <textarea class="addcart" type="text" onChange={(event)=>{setAddress(event.target.value);}} value={address}></textarea>
 </div>

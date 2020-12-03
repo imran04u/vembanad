@@ -22,11 +22,11 @@ function Add_product() {
   const [cat_data,setCatdata]=useState([]);
   const [pro_data,setPdata]=useState([]);
   const Added = ()=>{  
-    toast('Added Successfully') 
+    toast('Added successfully') 
          
   } 
   const Delete = ()=>{  
-    toast('Deleted Successfully') 
+    toast('Deleted successfully') 
          
   } 
   useEffect(()=>{
@@ -76,6 +76,7 @@ function Add_product() {
     setPrice("");
     setDescription("");
     setOPrice("");
+    document.getElementById('f').value='';
 
   }
   function createCat(e){
@@ -97,7 +98,11 @@ function Add_product() {
      //alert('succesfully added');
      Added()
      document.getElementById(e.target.id).disabled=false;
-    
+     document.getElementById('f').value='';
+     setPname("");
+    setPrice("");
+    setDescription("");
+    setOPrice("");
     //  setInterval(() => {
     //   window.location="/pro"
     // },1000)
@@ -139,7 +144,7 @@ function Add_product() {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label>
-                <input type="file" name="" class="iconblk"  onChange={(event)=>{
+                <input type="file" name="" id="f"  class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);
@@ -192,7 +197,8 @@ function Add_product() {
 
          <div class="newblk bgwhite">                
             <div class="subtitle">
-              <h3>View Category</h3>  <input className="col-md-6" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}/>
+              <h3>View Category</h3>  
+			  <input className="col-md-6" style="border:1px solid #ccc;margin:10px 0;border-radius:5px;" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}/>
            
             </div>
             <table id="myTable" class="datatable">
@@ -202,7 +208,7 @@ function Add_product() {
                   <th>Product Image</th>
                   <th>Category Name</th>
                   <th>Description</th>
-                  <th>Prce</th>
+                  <th>Price</th>
                   <th>Action</th>
                 </tr>
               </thead>

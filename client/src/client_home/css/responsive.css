@@ -158,6 +158,14 @@ Created On : 27 Nov 2020
 	.logo {
 		margin-left: 35px;
 	}
+	#user a:after {
+		content: 'My Account';
+		padding-left: 10px;
+	}
+	.mm-listview li:last-child :after {
+		content: 'Logout';
+		padding-left: 10px;
+	}
 	.abt-img {
 		width: 100%;
 		float: none;
@@ -353,7 +361,11 @@ Created On : 27 Nov 2020
 	.vision .col-md-8 {
 		padding-left: 15px;
 	}
-
+	.loginBlk {
+		width: 90%;
+		max-width: 500px;
+		padding: 20px;
+	}
 }
 @media screen and (max-width: 450px) {
 	p {
@@ -376,6 +388,27 @@ Created On : 27 Nov 2020
 	}
 	.tdy-offer-img img:last-child {
 		width: 100%;
+	}
+	.logo {
+		margin-left: 55px;
+	}
+	header .logo img {
+		height: auto;
+		width: 200px;
+		padding: 0;
+	}
+	header.header-fixed .logo img {
+		height: auto;
+		padding: 0;
+	}
+	.cartlink a {
+		padding: 5px 8px;
+		display: flex;
+		align-items: center;
+		font-size: 13px;
+	}
+	.cartlink i {
+		margin-right: 5px;
 	}
 }
 

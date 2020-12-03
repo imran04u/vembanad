@@ -18,11 +18,11 @@ function Banner(props) {
   const [ban_data,setBandata]=useState([]);
   let d=[];
   const Added = ()=>{  
-    toast('Added Successfully') 
+    toast('Added successfully') 
          
   } 
   const Deleted = ()=>{  
-    toast('Deleted Successfully') 
+    toast('Deleted successfully') 
          
   } 
   useEffect(()=>{
@@ -39,6 +39,14 @@ function Banner(props) {
     //console.log(catd);
   }, []);
    
+  function reSet(e){
+    e.preventDefault();
+    setBanner_link("#");
+    setBname("");
+    setDescription("");
+    document.getElementById('f').value='';
+
+  }
     //setCatdata(d);
   function handleDel(e){
     e.preventDefault();
@@ -79,7 +87,10 @@ function Banner(props) {
      axios.post(`${CONFIG.baseUrl}/home/add_ban/`, data).then(res=>{
        Added()
       document.getElementById(e.target.id).disabled=false;
-      
+      setBanner_link("#");
+      setBname("");
+      setDescription("");
+      document.getElementById('f').value='';
       // setInterval(() => {
       //   window.location="/ban"
       // },1000)
@@ -117,8 +128,8 @@ function Banner(props) {
                 <input type="text" name="" value={bname} onChange={(event)=>{setBname(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-6 formsingle">
-                <label>Image Upload</label>
-                <input type="file" name="" class="iconblk"  onChange={(event)=>{
+                <label>Image Upload (Dimension 1920px x 920px)</label>
+                <input type="file" name="" id="f" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);
@@ -141,8 +152,8 @@ function Banner(props) {
               </div>
             <div class="col-md-12 formsingle">
               <button class="btnBlue btnSmall" id="save" onClick={createCat} name=""><i class="fas fa-save"></i>Save</button>
-              <button class="btnGrey btnSmall" name="">Reset</button>
-            </div>
+              <button class="btnGrey btnSmall" onClick={reSet} name="">Reset</button>
+              </div>
           </div>   
 
 

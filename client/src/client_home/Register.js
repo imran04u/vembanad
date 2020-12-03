@@ -57,24 +57,24 @@ function Register(props) {
 		,
 		validationSchema:yup.object({
 		Email:yup.string()
-		.required("Email must be required")
+		.required("Email cannot be blank")
 		.email(),
 		Address:yup.string()
-		.required("Address must be required")
+		.required("Address cannot be blank")
 		.min(10,"minimum 2 character")
-		.max(60,"maximum 15 character"),
+		.max(60,"maximum 25 character"),
 		Name:yup.string()
-		.required("Name must be required")
+		.required("Name cannot be blank")
 		.min(5,"minimum 5 character")
-		.max(20,"maximum 8 character"),
+		.max(20,"maximum 20 character"),
 		Phone:yup.number()
-		.required("Phone number must be required")
-		.typeError("this is not like phone number")
-		.positive("phone number doesn't start with minus")
-		.integer("phone number only numbers")
-		.min(10,"minimum 10 char"),
+		.required("Contact number cannot be blank")
+		.typeError("Please enter a valid format")
+		.positive("Contact number doesn't start with minus")
+		.integer("Contact number can only contains numbers")
+		.min(10,"minimum 10 character"),
 		Pass:yup.string()
-		.required("Password must be required")
+		.required("Password cannot be blank")
 		.min(3,"minimum 3 character")
 		.max(8,"maximum 8 character"),
 		CPass:yup.string().oneOf([yup.ref('Pass')]),

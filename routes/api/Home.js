@@ -80,7 +80,7 @@ router3.get('/', async(req, res)=>{
             console.log(mS)
        res.status(200).json(mS);
         const file=req.body.photo;
-        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
+        let paths=__dirname+'/client/build/assets/images/uploads/'+id;
         ba64.writeImage(paths,file,(err)=>{
         if(!err){
         //res.status(200).json(mS);
@@ -102,7 +102,7 @@ router3.post("/ban_edit/",async(req,res)=>{
         const m=banner.updateOne({_id:req.body.id},{$set:{title:req.body.title,description:req.body.description,link:req.body.link,path:way}}).exec(function(err, leads){
             const file=req.body.photo;
             console.log(m);
-        let paths=__dirname+'/client/public/assets/images/uploads/'+id;
+        let paths=__dirname+'/client/build/assets/images/uploads/'+id;
         ba64.writeImage(paths,file,(err)=>{
             console.log(paths);
         if(!err){
