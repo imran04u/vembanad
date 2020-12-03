@@ -205,10 +205,9 @@ else{
 								<div className="dish-price">
 						<span className="offpriz"><i>{o.offer_price} QR</i></span>
 						<span className="netpriz"><i>{o.price} QR</i></span>
-									<a href="" onClick={(event)=>{
-										//localStorage.setItem("data",JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}]))
+						<div><a href="" onClick={(event)=>{
 										add_cart(event,o._id,o.title,o.offer_price,o.path)
-										}}>Add to cart <i className="fas fa-cart-plus"></i></a>
+										}}>Add to cart <i className="fas fa-cart-plus"></i></a></div>
 								</div>
 							</div>
 
@@ -224,7 +223,7 @@ else{
 							</div>
 							<div className="dish-price">
 						<span className="netpriz">QR.<i>{p.price}</i></span>
-								<a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a>
+								<div><a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a></div>
 							</div>
 						</div>
 							)}
