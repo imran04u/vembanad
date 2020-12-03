@@ -12,7 +12,7 @@ const [pass,setPass]=useState("");
 const [color,setColor]=useState("");
 const [res,setResult]=useState("");
 const notify = ()=>{  
-  toast('Loged in successfully') 
+  toast('Logged in successfully') 
        
 } 
    

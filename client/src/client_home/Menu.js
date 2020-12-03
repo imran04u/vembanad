@@ -178,7 +178,7 @@ else{
 		<section className="content">
 			<div className="container">
 				<div className="row">
-					<div className="col-sm-3">
+					<div className="col-md-3">
 						<ul className="nav-tabs tabs-left">
 							<li>Category</li>
 							{cat.map(d=>
@@ -189,7 +189,7 @@ else{
 							
 						</ul>
 					</div>
-					<div className="col-sm-9">
+					<div className="col-md-9">
 						<div className="mainmenu">
 						{offer.map(o=>
 								
@@ -203,8 +203,8 @@ else{
 						<p>{o.description}</p>
 								</div>
 								<div className="dish-price">
-						<span className="offpriz"><i>{o.offer_price} QR</i></span>
-						<span className="netpriz"><i>{o.price} QR</i></span>
+						<div><span className="offpriz"><i>{o.offer_price} QR</i></span>
+						<span className="netpriz"><i>{o.price} QR</i></span></div>
 									<a href="" onClick={(event)=>{
 										//localStorage.setItem("data",JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}]))
 										add_cart(event,o._id,o.title,o.offer_price,o.path)
@@ -223,7 +223,7 @@ else{
 						<p>{p.description}</p>
 							</div>
 							<div className="dish-price">
-						<span className="netpriz">QR.<i>{p.price}</i></span>
+						<div><span className="netpriz">QR.<i>{p.price}</i></span></div>
 								<a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 							</div>
 						</div>
