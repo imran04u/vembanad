@@ -59,6 +59,7 @@ function f(){
 }
 
 function proceed(){
+    document.getElementById("p").disabled=true;
 	if(localStorage.getItem("user"))
 	{
 		if(localStorage.getItem("data"))
@@ -73,7 +74,8 @@ function proceed(){
 			console.log(p.user)
 			axios.post(`${CONFIG.baseUrl}/cart/insert/`,p).then((res)=>{
 				console.log(res.data);
-				localStorage.removeItem('data')
+                localStorage.removeItem('data')
+                document.getElementById("p").disabled=false;
                 //props.history.push('/');
                 checouts()
 				setInterval(() => {
@@ -238,7 +240,7 @@ useEffect(()=>{
     <span class="label"> Total: </span>
         <span class="price"> <span id="gt"> {tot}</span>QR</span> 
   </div>
-  <button class="checkbtn" onClick={proceed}> Proceed to Checkout</button>
+  <button class="checkbtn" id="p" onClick={proceed}> Proceed to Checkout</button>
   <label class="labcart">Delivery Address</label>
   <textarea class="addcart" type="text" onChange={(event)=>{setAddress(event.target.value);}} value={address}></textarea>
 </div>
