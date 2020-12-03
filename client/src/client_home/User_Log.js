@@ -30,11 +30,11 @@ function User_Log(props) {
 	const [email,setEmail]=useState("");
 	const [msg,setMsg]=useState("");
 	const success = ()=>{  
-		toast("Logged in Successfully") 
+		toast("Login Successfull") 
 			 
 	  } 
 	  const invalid = ()=>{  
-		toast("Incorrect Username or password") 
+		toast("Invalid") 
 			 
 	  } 
 	function btn_click(e){

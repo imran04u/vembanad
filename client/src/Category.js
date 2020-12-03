@@ -46,7 +46,6 @@ function Category(props) {
     function reSet(e){
       e.preventDefault();
       setCat("");
-      document.getElementById('f').value='';
 
     }
   function handleDel(e){
@@ -176,7 +175,7 @@ function Category(props) {
                 <td><p key={d.id}>{d.title}</p></td>
                   <td><img src={d.path} alt="" /></td>
                   <td>
-                  <button id={d._id} onClick={(event)=> /*setCatd(event.target.id)*/window.location="/editcat?id="+d._id} type="button" class="btn btn-success" >
+                  <button id={d._id} onClick={(event)=> /*setCatd(event.target.id)*/window.location="/editcat?id="+d._id} type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-edit"></i></button>
                     <button id={d._id} onClick={handleDel} type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                   </td>
@@ -187,7 +186,25 @@ function Category(props) {
 
 
 
-
+<div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="modal-body">
+      ...
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
               </tbody>
             </table>
           </div> 

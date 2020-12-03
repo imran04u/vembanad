@@ -76,7 +76,6 @@ function Add_product() {
     setPrice("");
     setDescription("");
     setOPrice("");
-    document.getElementById('f').value='';
 
   }
   function createCat(e){
@@ -98,11 +97,7 @@ function Add_product() {
      //alert('succesfully added');
      Added()
      document.getElementById(e.target.id).disabled=false;
-     document.getElementById('f').value='';
-     setPname("");
-    setPrice("");
-    setDescription("");
-    setOPrice("");
+    
     //  setInterval(() => {
     //   window.location="/pro"
     // },1000)
@@ -144,7 +139,7 @@ function Add_product() {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label>
-                <input type="file" name="" id="f"  class="iconblk"  onChange={(event)=>{
+                <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);

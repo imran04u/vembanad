@@ -38,7 +38,7 @@ function Menu(props) {
 	const [tot,setTot]=useState(0);
 	const [order,setD]=useState([]);
 	const notify = ()=>{  
-		toast('Added to cart') 
+		toast('Add to carted') 
 			 
 	  }
 	  const already = ()=>{  
@@ -205,9 +205,10 @@ else{
 								<div className="dish-price">
 						<span className="offpriz"><i>{o.offer_price} QR</i></span>
 						<span className="netpriz"><i>{o.price} QR</i></span>
-						<div><a href="" onClick={(event)=>{
+									<a href="" onClick={(event)=>{
+										//localStorage.setItem("data",JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}]))
 										add_cart(event,o._id,o.title,o.offer_price,o.path)
-										}}>Add to cart <i className="fas fa-cart-plus"></i></a></div>
+										}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 								</div>
 							</div>
 
@@ -223,7 +224,7 @@ else{
 							</div>
 							<div className="dish-price">
 						<span className="netpriz">QR.<i>{p.price}</i></span>
-								<div><a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a></div>
+								<a href="" onClick={(event)=>{add_cart(event,p._id,p.title,p.price,p.path)}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 							</div>
 						</div>
 							)}
