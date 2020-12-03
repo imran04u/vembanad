@@ -16,7 +16,7 @@ function Header(props) {
 			 
       }
       const checouts = ()=>{  
-		toast('Checked out successfully') 
+		toast('Checkout successfully') 
 			 
       }
       const login=()=>{

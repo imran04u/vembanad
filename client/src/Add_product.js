@@ -197,7 +197,8 @@ function Add_product() {
 
          <div class="newblk bgwhite">                
             <div class="subtitle">
-              <h3>View Category</h3>  <input className="col-md-6" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}/>
+              <h3>View Products</h3>  
+              <input className="col-md-6 searchfood" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}/>
            
             </div>
             <table id="myTable" class="datatable">
@@ -207,7 +208,7 @@ function Add_product() {
                   <th>Product Image</th>
                   <th>Category Name</th>
                   <th>Description</th>
-                  <th>Prce</th>
+                  <th>Price</th>
                   <th>Action</th>
                 </tr>
               </thead>

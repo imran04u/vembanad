@@ -14,6 +14,7 @@ function EditBanner(props) {
   const [description,setDescription]=useState("");
   const [url_link,setUrl_link]=useState("");
   const [catid,setId]=useState("");
+  const [banpath,setPath]=useState("");
   const notify = ()=>{  
     toast('Updated Successfully') 
          
@@ -30,6 +31,7 @@ function EditBanner(props) {
       axios.get(`${CONFIG.baseUrl}/home/fetch/`+q.substring(4)).then(res=>{
         setTitle(res.data[0].title);
         setDescription(res.data[0].description);
+        setPath(res.data[0].path); 
         setUrl_link(res.data[0].link); 
       setId(q.substring(4))
 
@@ -47,7 +49,8 @@ function EditBanner(props) {
       description:description,
       link:url_link,
       title:title,
-      id:catid
+      id:catid,
+      path:banpath
      }
      
      axios.post(`${CONFIG.baseUrl}/home/ban_edit/`, data).then(res=>{
@@ -78,7 +81,8 @@ function EditBanner(props) {
                 <input type="text" name="" value={title} onChange={(event)=>{setTitle(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-12 formsingle">
-                <label>Image Upload</label>
+                <label>Image Upload (Dimension 1920px x 920px)</label><br/>
+                <label>path:{banpath}</label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();

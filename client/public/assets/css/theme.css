@@ -776,7 +776,14 @@ body .activitylog tr td span {
   float: right;
   color: #666;
 }
-
+.searchfood {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  height: 35px;
+  border-radius: 5px;
+  max-width: 320px;
+  width: 90%;
+}
 /* Responsive */
 @media only screen and (max-width: 1099px) {
   body .page-container .left-content {
@@ -1075,23 +1082,23 @@ body .activitylog tr td span {
   color: #fff;
   margin-right: 10px;
 }
-.btnBlue:before, .btnGreen:before, .btnRed:before {
-  content: "";
-  background: linear-gradient(white, #cccccc);
-  width: 200px;
-  height: 50px;
-  margin-top: 1px;
-  transform: rotate(40deg);
-  margin-left: -200px;
-  opacity: 0.3;
-  transition: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-  position: absolute;
-  filter: blur(5px);
-}
+/*.btnBlue:before, .btnGreen:before, .btnRed:before {
+content: "";
+background: linear-gradient(white, #cccccc);
+width: 200px;
+height: 50px;
+margin-top: 1px;
+transform: rotate(40deg);
+margin-left: -200px;
+opacity: 0.3;
+transition: 0.5s;
+-webkit-transition-duration: 0.5s;
+transition-duration: 0.5s;
+-webkit-transition-timing-function: ease-out;
+transition-timing-function: ease-out;
+position: absolute;
+filter: blur(5px);
+}*/
 .btnBlue:hover, .btnGreen:hover, .btnRed:hover {
   color: #fff;
 }
@@ -1158,7 +1165,10 @@ body .activitylog tr td span {
 .btnSmall i {
   font-size: 17px !important;
 }
-
+.btnSmall:disabled {
+  background: #999;
+  cursor: wait;
+}
 .profileAvatar .btnClose {
   background: #f63737;
   border: 1px #750000 solid;
@@ -5786,7 +5796,7 @@ body.errorpage h2 {
 .ordertable tr td > table {
   width: 350px;
   text-align: left;
-  
+
 }
 .ordertable tr td > table tr th {
   background-color: #333;
@@ -5856,13 +5866,13 @@ body.errorpage h2 {
 }
 .printbtn {
   padding: 5px 20px;
-background: #ed212c;
-border-radius: 20px;
-display: inline-block;
-color: white;
-position: absolute;
-top: 10px;
-right: 0;
+  background: #ed212c;
+  border-radius: 20px;
+  display: inline-block;
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 0;
 }
 
 

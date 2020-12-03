@@ -11,7 +11,7 @@ function Header(props) {
           <a href="" onClick={()=>{
                   localStorage.clear();
                   props.history.push('/');
-                }} className="dropdown-item"><i className="fas fa-sign-out-alt"></i> &nbsp; Log out</a>
+                }} className="dropdown-item"><i className="fas fa-sign-out-alt"></i> &nbsp; Logout</a>
               
         </div>
         </div>
