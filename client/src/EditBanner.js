@@ -15,7 +15,7 @@ function EditBanner(props) {
   const [url_link,setUrl_link]=useState("");
   const [catid,setId]=useState("");
   const notify = ()=>{  
-    toast('Updated successfully') 
+    toast('Updated Successfully') 
          
   } 
 
@@ -78,7 +78,7 @@ function EditBanner(props) {
                 <input type="text" name="" value={title} onChange={(event)=>{setTitle(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-12 formsingle">
-                <label>Image Upload (Dimension 1920px x 920px)</label>
+                <label>Image Upload</label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();

@@ -18,11 +18,11 @@ function Banner(props) {
   const [ban_data,setBandata]=useState([]);
   let d=[];
   const Added = ()=>{  
-    toast('Added successfully') 
+    toast('Added Successfully') 
          
   } 
   const Deleted = ()=>{  
-    toast('Deleted successfully') 
+    toast('Deleted Successfully') 
          
   } 
   useEffect(()=>{
@@ -128,7 +128,7 @@ function Banner(props) {
                 <input type="text" name="" value={bname} onChange={(event)=>{setBname(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-6 formsingle">
-                <label>Image Upload (Dimension 1920px x 920px)</label>
+                <label>Image Upload</label>
                 <input type="file" name="" id="f" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();

@@ -16,7 +16,7 @@ function Header(props) {
 			 
       }
       const checouts = ()=>{  
-		toast('Checkout successfully') 
+		toast('Checked out successfully') 
 			 
       }
       const login=()=>{
@@ -187,8 +187,8 @@ useEffect(()=>{
                 <li id="about"><a href="/about">About Us</a></li>
                 <li id="contact"><a href="/contact">Contact Us</a></li>
                 <li id="login" style={logout}><a href="/user_log">Login</a></li>
-                <li id="user" style={tologin}><a href="/user_dash" target="My Account"><i class="fas fa-user"></i></a></li>
-                <li style={tologin} ><a href="" target="Logout" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
+                <li id="user" style={tologin}><a href="/user_dash"><i class="fas fa-user"></i></a></li>
+                <li style={tologin} ><a href="" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
                 
             </ul>
         </nav>

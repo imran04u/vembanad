@@ -13,7 +13,7 @@ function Editcat() {
   const [catid,setId]=useState("");
   const [catpath,setPath]=useState("");
   const notify = ()=>{  
-    toast('Updated successfully') 
+    toast('Updated Successfully') 
          
   } 
   useEffect(()=>{
@@ -74,7 +74,7 @@ function Editcat() {
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload</label><br/>
-				<label>path:{catpath}</label>
+    <label>path:{catpath}</label>
                 <input type="file" name="" class="iconblk"   onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -85,7 +85,6 @@ function Editcat() {
                 console.warn("Data",event.target.result);
                 console.warn("File",file[0].type.substring(6));
                 setPath("")}}}/>
-				<small>Dimension 750px x 500px</small>
               </div>
             </div>
             <div class="col-md-12 formsingle">

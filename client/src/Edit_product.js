@@ -19,7 +19,7 @@ function Edit_product(props) {
   const [propath,setPath]=useState("");
   const [cat_data,setCatdata]=useState([]);
   const notify = ()=>{  
-    toast('Updated successfully') 
+    toast('Updated Successfully') 
          
   } 
  
@@ -109,7 +109,6 @@ function Edit_product(props) {
                 setPath(""); 
                 //console.warn("File",file[0].name);
                 }}}/>
-				<small>Dimension 750px x 600px</small>
               </div>
             </div>
             <div class="row">
