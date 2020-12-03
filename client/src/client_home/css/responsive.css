@@ -161,11 +161,11 @@ Created On : 27 Nov 2020
 	.logo {
 		margin-left: 35px;
 	}
-	#user a:after {
+	.mm-listview #user a:after {
 		content: 'My Account';
 		padding-left: 10px;
 	}
-	.mm-listview li:last-child :after {
+	.mm-listview #logout a:after {
 		content: 'Logout';
 		padding-left: 10px;
 	}
