@@ -9,7 +9,7 @@ function Header(props) {
         <div className="profile clearfix">
           <div className="profimg">
           <a href="" onClick={()=>{
-                  localStorage.clear();
+                  localStorage.removeItem(props.d);
                   props.history.push('/');
                 }} className="dropdown-item"><i className="fas fa-sign-out-alt"></i> &nbsp; Logout</a>
               

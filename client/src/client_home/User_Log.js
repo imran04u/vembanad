@@ -96,9 +96,7 @@ function User_Log(props) {
 						</svg>
 					</div>
 				</div>
-				<div class="cartlink">
-					<a href="#cart"><i class="fas fa-cart-plus"></i>Cart</a>
-				</div>
+			
 			</div>
 		</header>
 		<section class="innerban subv-1">

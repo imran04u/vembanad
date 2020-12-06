@@ -32,10 +32,17 @@ const notify = ()=>{
         // setColor("alert-success")
         // setResult("successfully logged");
        // window.location="/cat"
-       console.log(res);
-       localStorage.setItem('auth',JSON.stringify(res.data.token));
+       console.log(res.data.user_type);
+       if(res.data.user_type=="sales"){
+       localStorage.setItem('auths',JSON.stringify(res.data.token));
        notify()
-      props.history.push('/dash')
+     props.history.push('/sales')
+           }
+           else{
+            localStorage.setItem('auth',JSON.stringify(res.data.token));
+            notify()
+          props.history.push('/dash')
+           }
       }
       else{
         setColor("alert-danger")

@@ -16,7 +16,7 @@ import {Modal,Button} from 'react-bootstrap';
 
 toast.configure()
 
-function AdminDashboard(props) {
+function SalesDashboard(props) {
   const [cat_data,setCatdata]=useState([]);
 
   const [length,setLength]=useState(0);
@@ -151,10 +151,10 @@ function AdminDashboard(props) {
   }
 
     return (
-      <div className="page-container">  
+      <div className="page-container saleswrap">  
       <div className="left-content">
         <div className="mother-grid-inner">
-         <Header d="auth"/>
+         <Header d="auths"/>
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       
@@ -258,7 +258,7 @@ function AdminDashboard(props) {
 </Modal.Footer>
 
 </Modal>
-<Navbar/>
+
     <div className="clearfix"> </div>
     {/* <bootbox 
      message="Are you sure you want to cancel this order?"
@@ -273,4 +273,4 @@ function AdminDashboard(props) {
     );
   }
   
-  export default AdminDashboard;
+  export default SalesDashboard;

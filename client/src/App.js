@@ -32,7 +32,9 @@ import User_Log from './client_home/User_Log'
 import Order from './Orderslist'
 import Report from './Report'
 import AdminDashboard from './AdminDashboard'
+import SalesDashboard from './SalesDashboard'
 import ProtectedRouter from './protected'
+import ProtectedRouters from './protecteds'
 function App() {
   return (
    
@@ -64,6 +66,8 @@ function App() {
       <ProtectedRouter exact path='/order' component={Order}/>
       <ProtectedRouter exact path='/dash' component={AdminDashboard}/>
       <ProtectedRouter exact path='/report' component={Report}/>
+      <ProtectedRouters exact path='/sales' component={SalesDashboard}/>
+     
       </Switch>
     </div>
    
@@ -72,3 +76,67 @@ function App() {
 }
 
 export default App;
+// import  React, {useState} from  'react';
+// import  Bootbox  from  'bootbox-react';
+
+// function  App() {
+//     const [showConfirm, setShowConfirm] = useState(false);
+//     const [showAlert, setShowAlert] = useState(false)
+//     const [showPrompt, setShowPrompt] = useState(false)
+    
+//     const handleConfirm = () => {
+//         console.log("You clicked Yes!");
+//         return setShowConfirm(false);
+//     }
+    
+//     const handleCancel = () => {
+//         console.log("You clicked No!");
+//         return setShowConfirm(false);
+//     }
+
+//     const handleClose = () => {
+//         console.log("You closed Alert!");
+//         return setShowAlert(false);
+//     }
+
+//     const handlePrompt = (result) => {
+//         console.log(`User input: ${result}`);
+//         return setShowPrompt(false);
+//     }
+//     const handleYes = () => {
+//       console.log('hi');
+//   }
+//   const handleNo = () => {
+//     console.log('handleNo');
+// }
+
+
+//     return(
+//         <>
+//             <button onClick={ () => setShowConfirm(true) } >Confirm </button>
+//             <Bootbox show={showConfirm} 
+//                 type={"confirm"}  
+//                 message={"Do That?"}  
+//                 onSuccess={handleYes}  
+//                 onCancel={handleNo}  
+//                 onClose={handleNo} 
+//             />
+
+//             <button onClick={ () => setShowAlert(true) } >Alert </button>
+//             <Bootbox show={showAlert} 
+//                 type={"alert"}  
+//                 message={"This is a simple alert"}  
+//                 onClose={handleClose} 
+//             />
+
+//             <button onClick={ () => setShowPrompt(true) }> Prompt </button>
+//             <Bootbox show={showPrompt} 
+//                 type={"prompt"}  
+//                 message={"What's your name"}  
+//                 onPrompt={handlePrompt} 
+//             />
+//         </>
+//     )
+// }
+
+// export default App

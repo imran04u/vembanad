@@ -20,6 +20,8 @@ import fb from './images/fb.png';
 import insta from './images/insta.png';
 import twitter from './images/twitter.png';
 import CONFIG from '../config';
+
+
 //import 'owl.carousel2/dist/assets/owl.carousel.js';
 //import 'imports?jQuery=jquery!owl.carousel';
 
@@ -63,19 +65,17 @@ function Dashboard() {
                   <th>Order Id</th>
                   <th>Order Date</th>
                   <th>Order Details</th>
-                  <th>Grand Total</th>
                   <th>Status</th>
+				  <th>Grand Total</th>
+                 
                 </tr>
 						</thead>
 						<tbody>
 						{data.map(d=>
               <tr key={d._id}>
                 <td><span class="id">{d._id}</span></td>
-                <td><span class="date">{d.created}</span></td>
-              			
-						<td>{d.total}</td>
-              <td><label title={d.status} class="stat">{d.status}</label></td>
-			  			<td>
+                <td><span>{d.created.split("T")[0]}</span></td>
+				<td>
 						<table>
                       <tr>
                         <th>Item Name</th>
@@ -91,6 +91,10 @@ function Dashboard() {
                   ))}
 					  </table>
 						</td>
+              			
+						
+              <td><label title={d.status} class="stat">{d.status}</label></td>
+			  <td>{d.total}</td>
 						</tr>)}</tbody>
 
 					</table>
