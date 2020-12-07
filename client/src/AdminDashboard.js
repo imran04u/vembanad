@@ -52,25 +52,25 @@ function AdminDashboard(props) {
     //setShowConfirm(true);
     setStatus(e.target.value);
     
-    if(e.target.value=="Accepted"){
-      let data={
-        id:e.target.id,
-        status:e.target.value
-      }
-      console.log(data);
-      axios.post(`${CONFIG.baseUrl}/cart/update/`,data).then(res=>{
-      console.log(res.data)
-      notify()
+    // if(e.target.value=="Accepted"){
+    //   let data={
+    //     id:e.target.id,
+    //     status:e.target.value
+    //   }
+    //   console.log(data);
+    //   axios.post(`${CONFIG.baseUrl}/cart/update/`,data).then(res=>{
+    //   console.log(res.data)
+    //   notify()
        
-      })    
+    //   })    
       
 
-    }
-    else{
+    // }
+   // else{
       
       setShowConfirm(true);
-      setStatus(e.target.value);
-    }
+     // setStatus(e.target.value);
+   // }
    
 
     //bootbox.prompt("Are you sure you want to cancel this order?")
@@ -187,7 +187,7 @@ function AdminDashboard(props) {
               {cat_data.map(d=>
               <tr key={d._id}>
                 <td><span class="id">{d._id}</span></td>
-                <td><span>{d.created.split("T")[0]}</span></td>
+                <td><span class="date">{d.created.split("T")[0]}</span></td>
                 <td>{d.customer}</td>
                 <td>{d.phone}</td>
                 <td>{d.address}</td>
