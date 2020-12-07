@@ -151,7 +151,7 @@ function SalesDashboard(props) {
   }
 
     return (
-      <div className="page-container">  
+      <div className="page-container saleswrap">  
       <div className="left-content">
         <div className="mother-grid-inner">
          <Header d="auths"/>
@@ -240,7 +240,7 @@ function SalesDashboard(props) {
 
 </Modal.Header>
 
-<Modal.Body>"Are you sure you want to {status} this order?"</Modal.Body>
+<Modal.Body>Are you sure you want to {status} this order?</Modal.Body>
 
 <Modal.Footer>
 
