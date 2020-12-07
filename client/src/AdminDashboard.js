@@ -240,7 +240,7 @@ function AdminDashboard(props) {
 
 </Modal.Header>
 
-<Modal.Body>"Are you sure you want to {status} this order?"</Modal.Body>
+<Modal.Body>Are you sure you want to {status} this order?</Modal.Body>
 
 <Modal.Footer>
 
