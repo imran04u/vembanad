@@ -13,6 +13,7 @@ import CONFIG from './config'
 //import BootBox from 'react-bootbox';
 import Dialog from 'react-bootstrap-dialog';
 import {Modal,Button} from 'react-bootstrap';
+import $ from 'jquery'
 
 toast.configure()
 
@@ -21,6 +22,8 @@ function AdminDashboard(props) {
 
   const [length,setLength]=useState(0);
   const ref= useRef()
+  const ref1= useRef(0)
+  
   const [showConfirm, setShowConfirm] = useState(false);
   const [status, setStatus] = useState("");
   const [orders, setOrders] = useState("");
@@ -42,102 +45,62 @@ function AdminDashboard(props) {
     }
     console.log(data);
     axios.post(`${CONFIG.baseUrl}/cart/update/`,data).then(res=>{
+      ref.current=ref.current-1;
     console.log(res.data)
     notify()
-     
     })
   }
   function statusChange(e){
 
-    //setShowConfirm(true);
-    setStatus(e.target.value);
-    
-    // if(e.target.value=="Accepted"){
-    //   let data={
-    //     id:e.target.id,
-    //     status:e.target.value
-    //   }
-    //   console.log(data);
-    //   axios.post(`${CONFIG.baseUrl}/cart/update/`,data).then(res=>{
-    //   console.log(res.data)
-    //   notify()
-       
-    //   })    
-      
-
-    // }
-   // else{
-      
+      setStatus(e.target.value);
       setShowConfirm(true);
-     // setStatus(e.target.value);
-   // }
-   
-
-    //bootbox.prompt("Are you sure you want to cancel this order?")
-    
-    //bootbox.alert("Are you sure you want to cancel this order?");
-    // bootbox.prompt("Are you sure you want to cancel this order?",(res)=>{
-    //   alert(res);
-    // });
+      console.log( $("#"+e.target.id).val());
+      $("#"+e.target.id).html("<option >Pending</option><option >Accepted</option><option >Canceled</option>");
+      
  
     
 
   }
   useEffect(()=>{
-    //const q=window.location.search;
-    //console.log(q.substring(4));
+
+  if(ref1.current==0)
+  {
+
     axios.get(`${CONFIG.baseUrl}/cart/display/`).then(res=>{
-      setLength(res.data.length);
-      setCatdata(res.data);
       ref.current=res.data.length;
-    }).then(console.log(ref.current))
+        setLength(res.data.length);
+        setCatdata(res.data);
+        ref1.current=1;
+       
+      }).then(console.log("ref1"+ref.current))
+  }
    const n= setInterval(() => {
       //setLength(cat_data.length)
-      console.log(length)
-      axios.get(`${CONFIG.baseUrl}/cart/display/`).then(res=>{
-       // console.log(res.data);
+      console.log(ref.current)
+      axios.get(`${CONFIG.baseUrl}/cart/display/`+ref.current).then(res=>{
+       console.log(res.data);
       
-      
-      console.log(ref.current+""+res.data.length);
-       if(ref.current==res.data.length)
-       {
-         console.log("equal");
-         
+       if(res.data.s){
+        console.log(res.data.s);
+        ref.current=res.data.a.length;
+        playAlert('not');
+        
        }
        else{
-         console.log("notequal");
-        // setCatdata(prevcat_data => res.data);
-         playAlert('not');
-         ref.current=res.data.length
-        //setLength(res.data.length);
-        setCatdata(res.data);
+        console.log(res.data.s);
        }
+       setCatdata(res.data.a);
       
+
        
       })
       return ()=> clearInterval(n);
      
     }, 15000);
 
-    // setTimeout(() => {
-    //   axios.get(`${CONFIG.baseUrl}/cart/display/').then(res=>{
-    //     // console.log(res.data);
-    //    setCatdata(res.data);
-    //     setLength(res.data.length);
-    //     console.log(length);
-    //     clearTimeout();
-       
-    //   })
-   
-    // }, 1000);
-    //console.log(catd);
+
   }, []);
    
-//   const incrementCounter = () => {
-//     setLength(cat_data.length);
-// }
-
-    //setCatdata(d);
 
 
 
@@ -149,6 +112,11 @@ function AdminDashboard(props) {
        }
          setShowConfirm(false);
   }
+  const handleNo = () => {
+
+      setShowConfirm(false);
+     
+}
 
     return (
       <div className="page-container">  
@@ -158,7 +126,7 @@ function AdminDashboard(props) {
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       
-          <h1>Dashboard</h1>
+    <h1>Dashboard</h1>
           </div>
 
 
@@ -187,7 +155,7 @@ function AdminDashboard(props) {
               {cat_data.map(d=>
               <tr key={d._id}>
                 <td><span class="id">{d._id}</span></td>
-                <td><span>{d.created.split("T")[0]}</span></td>
+                <td><span class="date">{d.created.split("T")[0]}</span></td>
                 <td>{d.customer}</td>
                 <td>{d.phone}</td>
                 <td>{d.address}</td>
@@ -240,11 +208,11 @@ function AdminDashboard(props) {
 
 </Modal.Header>
 
-<Modal.Body>Are you sure you want to {status} this order?</Modal.Body>
+<Modal.Body>"Are you sure you want to {status} this order?"</Modal.Body>
 
 <Modal.Footer>
 
-<Button variant="danger" onClick={() => setShowConfirm(false)}>
+<Button variant="danger" onClick={handleNo}>
 
    NO
 

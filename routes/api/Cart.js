@@ -27,6 +27,7 @@ router5.post("/insert/",async(req,res)=>{
 router5.get("/display/",async(req,res)=>{
    try{
        //id="5fa0165849baa22985f6ab31";
+       
        const a=await orders.find({status:"Pending"}).sort({created:-1}).exec();
         res.status(200).json(a);
    }
@@ -35,6 +36,29 @@ router5.get("/display/",async(req,res)=>{
    }
  
 })
+router5.get("/display/:id",async(req,res)=>{
+    try{
+        
+        //id="5fa0165849baa22985f6ab31";
+      //  const d=await orders.find({created:{$gt:new Date(ISODate().getTime()-1000*60*1)}});
+       // console.log(d);
+        var r;
+        const c=await orders.find({status:"Pending"});
+        console.log(c.length);
+        if(c.length+""==req.params.id){
+            r=false;
+        }
+        else{
+            r=true;
+        }
+        const a=await orders.find({status:"Pending"}).sort({created:-1}).exec();
+         res.status(200).json({a:a,s:r});
+    }
+    catch(err){
+        console.log(err);
+    }
+  
+ })
 router5.get("/display1/",async(req,res)=>{
     try{
         //id="5fa0165849baa22985f6ab31";

@@ -40,7 +40,7 @@ function Userlist(props) {
             <div class="subtitle">
               <h3>View user</h3>
             </div>
-            <table class="datatable ordertable">
+            <table class="datatable">
               <thead>
                 <tr>
                 <th>ID</th>
@@ -48,7 +48,6 @@ function Userlist(props) {
                   <th>Address</th>
                   <th>Phone no</th>
                   <th>Email</th>
-				  <th></th>
                   </tr>
               </thead>
 
@@ -57,12 +56,12 @@ function Userlist(props) {
               {cat_data.map(d=>
               <tr key={d._id}>
               
-                <td><span class="id">{d._id}</span></td>
-                <td><span>{d.name}</span></td>
-                <td><span>{d.address}</span></td>
-                <td><span>{d.phone}</span></td>
-                <td><span>{d.email}</span></td>
-              <td></td>
+                <td><p >{d._id}</p></td>
+                <td><p >{d.name}</p></td>
+                <td><p >{d.address}</p></td>
+                <td><p >{d.phone}</p></td>
+                <td><p >{d.email}</p></td>
+              
                  </tr>
               )}
          

@@ -46,7 +46,25 @@ function Menu(props) {
 			 
 	  }
 	let url="/menu?"
-
+	function setC(e,c){
+		e.preventDefault();
+		setOffer([]);
+		setP([]);
+		axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
+			res.data.offer.map(o=>{
+				if(o.cname==c){
+					setOffer(offer=>[...offer,o]);
+				}
+			})
+			res.data.p.map(p=>{
+				if(p.cname==c){
+					setP(product=>[...product,p]);
+				}
+			})
+		});
+		
+	}
+  
 
     useEffect(()=>{
 		$('.count').each(function () {
@@ -85,8 +103,7 @@ function Menu(props) {
 			}
 		});
 	
-    
-  
+
       setTimeout(() => {
           //axios
 		 // alert('hi');  
@@ -96,25 +113,10 @@ function Menu(props) {
 			setData(res.data.d);
 			setBanner(res.data.b);
 			setCat(res.data.c);
-			
-			if(window.location.search.substring(1))
-			{
-				res.data.offer.map(o=>{
-				if(o.cname==window.location.search.substring(1)){
-					setOffer(offer=>[...offer,o]);
-				}
-			})
-				res.data.p.map(p=>{
-				if(p.cname==window.location.search.substring(1)){
-					setP(product=>[...product,p]);
-				}
-			})
-			}
-			else{
-				setOffer(res.data.offer);
-				setP(res.data.p);
+			setOffer(res.data.offer);
+			setP(res.data.p);
 
-			}
+		
 			if(localStorage.getItem("data"))
 			{
 				setD(JSON.parse(localStorage.getItem("data")))
@@ -183,7 +185,7 @@ else{
 							<li>Category</li>
 							{cat.map(d=>
 							
-								<li><a href={url+d.title}>{d.title}</a></li>
+								<li><a href="" onClick={(event)=>{setC(event,d.title)}}>{d.title}</a></li>
 								)}
 							
 							
