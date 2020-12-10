@@ -241,7 +241,10 @@ header.header-fixed .logo img {
 	transition: all 300ms ease;
 }
 /*******************/
-
+#banner {
+    min-height: 50vh;
+    background: #eee url(loader.gif) center center;
+}
 .sub-ban {
 	position: absolute;
 	z-index: 99;

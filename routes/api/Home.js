@@ -73,20 +73,20 @@ router3.get('/', async(req, res)=>{
             title:req.body.bname,
             description:req.body.description,
             link:req.body.banner_link,
-            path:way
+            path:req.body.photo
             })
             console.log(m)
             const mS=await m.save();
             console.log(mS)
        res.status(200).json(mS);
-        const file=req.body.photo;
-        let dir=__dirname.replace("/routes/api","/");
-        let paths=dir+'client/build/assets/images/uploads/'+id;
-        ba64.writeImage(paths,file,(err)=>{
-        if(!err){
-        //res.status(200).json(mS);
-            }else{console.log("err:"+err)}
-                    })
+        // const file=req.body.photo;
+        // let dir=__dirname.replace("/routes/api","/");
+        // let paths=dir+'client/build/assets/images/uploads/'+id;
+        // ba64.writeImage(paths,file,(err)=>{
+        // if(!err){
+        // //res.status(200).json(mS);
+        //     }else{console.log("err:"+err)}
+        //             })
         }
         catch(err){
             //res.json(err);
@@ -102,17 +102,17 @@ router3.post("/ban_edit/",async(req,res)=>{
         console.log("not yet")
          way='assets/images/uploads/'+id+'.'+req.body.fname;
          try{
-        res.type('json');
-            const file=req.body.photo;
-            let dir=__dirname.replace("/routes/api","/");
-            let paths=dir+'client/build/assets/images/uploads/'+id;
-            ba64.writeImage(paths,file,(err)=>{
-            console.log(paths);
-        if(!err){
-        //res.status(200).json(m);
-        console.log("success")
-            }else{console.log("err:"+err)}
-                    })
+        // res.type('json');
+        //     const file=req.body.photo;
+        //     let dir=__dirname.replace("/routes/api","/");
+        //     let paths=dir+'client/build/assets/images/uploads/'+id;
+        //     ba64.writeImage(paths,file,(err)=>{
+        //     console.log(paths);
+        // if(!err){
+        // //res.status(200).json(m);
+        // console.log("success")
+        //     }else{console.log("err:"+err)}
+        //             })
             
            
         //console.log(req.body.id);
@@ -129,7 +129,7 @@ router3.post("/ban_edit/",async(req,res)=>{
         console.log("yet");
         way=req.body.path
     }
-        const m=banner.updateOne({_id:req.body.id},{$set:{title:req.body.title,description:req.body.description,link:req.body.link,path:way}}).exec(function(err, leads){
+        const m=banner.updateOne({_id:req.body.id},{$set:{title:req.body.title,description:req.body.description,link:req.body.link,path:req.body.photo}}).exec(function(err, leads){
             res.status(200).json(leads);
         });
 })

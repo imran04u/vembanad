@@ -30,6 +30,7 @@ function Category(props) {
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
+    
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
         headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
@@ -122,7 +123,7 @@ function Category(props) {
           
           <div class="titleblk clearfix">       
             <h1>Food Category</h1>
-          </div>
+            </div>
 
           <div class="newblk bgwhite">                
             <div class="subtitle">
@@ -142,6 +143,7 @@ function Category(props) {
                 reader.onload=(event)=>{
                     setFname(file[0].type.substring(6));
                     setImg(event.target.result);
+                   
                     setName(file[0].name)
                 console.warn("Data",event.target.result);
                 console.warn("File",file[0].type.substring(6));}}}/>

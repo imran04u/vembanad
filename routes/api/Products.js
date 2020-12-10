@@ -22,20 +22,20 @@ router2.post("/insert/",async(req,res)=>{
             price:req.body.price,
             offer_price:req.body.offer_price,
             todayspl:req.body.spl,
-            path:way
+            path:req.body.photo
             })
            // console.log(m);
             const mS=await m.save();
         //console.log(mS)
         res.status(200).json(mS);
-        const file=req.body.photo;
-        let dir=__dirname.replace("/routes/api","/");
-        let paths=dir+'client/uploads/'+id;
-        ba64.writeImage(paths,file,(err)=>{
-        if(!err){
-        //res.status(200).json(mS);
-            }else{console.log("err:"+err)}
-                    })
+        // const file=req.body.photo;
+        // let dir=__dirname.replace("/routes/api","/");
+        // let paths=dir+'client/uploads/'+id;
+        // ba64.writeImage(paths,file,(err)=>{
+        // if(!err){
+        // //res.status(200).json(mS);
+        //     }else{console.log("err:"+err)}
+        //             })
         }
         catch(err){
            // res.json(err);
@@ -69,33 +69,33 @@ router2.post("/update/",async(req,res)=>{
     console.log(req.body);
     let id=uuid.v1();
     var way;
-    if(req.body.photo){
-        console.log("not yet")
-         way='../uploads/'+id+'.'+req.body.fname;
-         try{
-        res.type('json');
-            const file=req.body.photo;
-            let dir=__dirname.replace("/routes/api","/");
-            let paths=dir+'client/uploads/'+id;
-             ba64.writeImage(paths,file,(err)=>{
-            console.log(paths);
-        if(!err){
-        //res.status(200).json(m);
-        console.log("success")
-            }else{console.log("err:"+err)}
-                    })
+    // if(req.body.photo){
+    //     console.log("not yet")
+    //      way='../uploads/'+id+'.'+req.body.fname;
+    //      try{
+    //     res.type('json');
+    //         const file=req.body.photo;
+    //         let dir=__dirname.replace("/routes/api","/");
+    //         let paths=dir+'client/uploads/'+id;
+    //          ba64.writeImage(paths,file,(err)=>{
+    //         console.log(paths);
+    //     if(!err){
+    //     //res.status(200).json(m);
+    //     console.log("success")
+    //         }else{console.log("err:"+err)}
+    //                 })
         
-        }
-        catch(err){
-            res.json(err);
-        }
+    //     }
+    //     catch(err){
+    //         res.json(err);
+    //     }
          
-    }
-    else{
-        console.log("yet");
-        way=req.body.path
-    }
-    const m=product.updateOne({_id:req.body.id},{$set:{title:req.body.pname,cname:req.body.cname,description:req.body.description,offer_price:req.body.offer_price,price:req.body.price,todayspl:req.body.spl,path:way}}).exec(function(err, leads){
+    // }
+    // else{
+    //     console.log("yet");
+    //     way=req.body.path
+    // }
+    const m=product.updateOne({_id:req.body.id},{$set:{title:req.body.pname,cname:req.body.cname,description:req.body.description,offer_price:req.body.offer_price,price:req.body.price,todayspl:req.body.spl,path:req.body.photo}}).exec(function(err, leads){
         res.status(200).json(leads);
    })
    console.log(m);

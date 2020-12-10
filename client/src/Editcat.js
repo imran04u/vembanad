@@ -39,7 +39,7 @@ function Editcat() {
   function createCat(){
     let data={
       fname:fname,
-      photo:Img,
+      photo:catpath,
       cat:cat,
       id:catid,
       path:catpath
@@ -74,7 +74,7 @@ function Editcat() {
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload</label><br/>
-                <label>path:{catpath}</label>
+                <label><img src={catpath} style={{"height":"200px","width":"200px"}}/></label>
                 <input type="file" name="" class="iconblk"   onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -84,7 +84,7 @@ function Editcat() {
                     setImg(event.target.result);
                 console.warn("Data",event.target.result);
                 console.warn("File",file[0].type.substring(6));
-                setPath("")}}}/>
+                setPath(event.target.result)}}} />
                 <small>Dimension 750px x 500px</small>
               </div>
             </div>

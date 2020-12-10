@@ -63,7 +63,7 @@ router.post("/cat/",async(req,res)=>{
         res.type('json');
         const m=await new cat({
             title:req.body.cat,
-            path:way
+            path:req.body.photo
             })
             const mS=await m.save();
       //  console.log(mS)
@@ -71,14 +71,14 @@ router.post("/cat/",async(req,res)=>{
             console.log(c);
        
             res.status(200).json(mS);
-        const file=req.body.photo;
-        let dir=__dirname.replace("/routes/api","/");
-        let paths=dir+'client/uploads/'+id;
-        ba64.writeImage(paths,file,(err)=>{
-        if(!err){
-        //res.status(200).json(mS);
-            }else{console.log("err:"+err)}
-                    })
+        // const file=req.body.photo;
+        // let dir=__dirname.replace("/routes/api","/");
+        // let paths=dir+'client/uploads/'+id;
+        // ba64.writeImage(paths,file,(err)=>{
+        // if(!err){
+        // //res.status(200).json(mS);
+        //     }else{console.log("err:"+err)}
+        //             })
         }
         catch(err){
             //res.json(err);
@@ -91,38 +91,38 @@ router.post("/catedit/",async(req,res)=>{
     console.log(req.body);
     let id=uuid.v1();
     var way;
-    if(req.body.photo){
-        console.log("not yet")
-         way='../uploads/'+id+'.'+req.body.fname;
-         try{
-        res.type('json');
-            const file=req.body.photo;
-            let dir=__dirname.replace("/routes/api","/");
-            let paths=dir+'client/uploads/'+id;
-            ba64.writeImage(paths,file,(err)=>{
-            console.log(paths);
-        if(!err){
-        //res.status(200).json(m);
-        console.log("success")
-            }else{console.log("err:"+err)}
-                    })
+    // if(req.body.photo){
+    //     console.log("not yet")
+    //      way='../uploads/'+id+'.'+req.body.fname;
+    //      try{
+    //     res.type('json');
+    //         const file=req.body.photo;
+    //         let dir=__dirname.replace("/routes/api","/");
+    //         let paths=dir+'client/uploads/'+id;
+    //         ba64.writeImage(paths,file,(err)=>{
+    //         console.log(paths);
+    //     if(!err){
+    //     //res.status(200).json(m);
+    //     console.log("success")
+    //         }else{console.log("err:"+err)}
+    //                 })
             
            
-        //console.log(req.body.id);
+    //     //console.log(req.body.id);
         
 
         
-        }
-        catch(err){
-            res.json(err);
-        }
+    //     }
+    //     catch(err){
+    //         res.json(err);
+    //     }
          
-    }
-    else{
-        console.log("yet");
-        way=req.body.path
-    }
-    const m=cat.updateOne({_id:req.body.id},{$set:{title:req.body.cat,path:way}}).exec(function(err, leads){
+    // }
+    // else{
+    //     console.log("yet");
+    //     way=req.body.photo
+    // }
+    const m=cat.updateOne({_id:req.body.id},{$set:{title:req.body.cat,path:req.body.photo}}).exec(function(err, leads){
         res.status(200).json(leads);
     })
     

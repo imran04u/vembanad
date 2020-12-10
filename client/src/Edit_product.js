@@ -49,7 +49,7 @@ function Edit_product(props) {
     const q=window.location.search;
     e.preventDefault();
     let data={
-      photo:Img,
+      photo:propath,
       cname:cname,
       fname:fname,
       pname:pname,
@@ -97,7 +97,7 @@ function Edit_product(props) {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label><br/>
-                <label>path:{propath}</label>
+                <label><img src={propath} style={{"height":"200px","width":"200px"}}/></label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -106,7 +106,7 @@ function Edit_product(props) {
                     setFname(file[0].type.substring(6));
                     setImg(event.target.result);
                 console.warn("Data",event.target.result);
-                setPath(""); 
+                setPath(event.target.result);
                 //console.warn("File",file[0].name);
                 }}}/>
                 <small>Dimension 750px x 600px</small>

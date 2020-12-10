@@ -45,7 +45,7 @@ function EditBanner(props) {
   function createCat(){
     let data={
       fname:fname,
-      photo:Img,
+      photo:banpath,
       description:description,
       link:url_link,
       title:title,
@@ -82,7 +82,7 @@ function EditBanner(props) {
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload (Dimension 1920px x 920px)</label><br/>
-                <label>path:{banpath}</label>
+                <label><img src={banpath} style={{"height":"200px","width":"200px"}}/></label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -90,6 +90,7 @@ function EditBanner(props) {
                 reader.onload=(event)=>{
                     setFname(file[0].type.substring(6));
                     setImg(event.target.result);
+                    setPath(event.target.result);
                 console.warn("Data",event.target.result);
                 console.warn("File",file[0].type.substring(6));}}}/>
               </div>

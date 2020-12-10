@@ -371,6 +371,9 @@ Created On : 27 Nov 2020
 	}
 }
 @media screen and (max-width: 450px) {
+	#banner {
+		min-height: 30vh;
+	}
 	p {
 		font-size: 14px;
 		line-height: 24px;
