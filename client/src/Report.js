@@ -5,8 +5,9 @@ import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
 import CONFIG from './config';
+import $ from 'jquery';
 
-function Report(props) {
+function Report(props) { 
   const [cat_data,setCatdata]=useState([]);
   const [tot,setTot]=useState(0);
   let d=[];
@@ -20,18 +21,33 @@ function Report(props) {
         // res.data.map(t=>{
         //   setTot(...tot+res.data.total);
         // })
+
       })
-      
+      clearTimeout();
     }, 1000);
     //console.log(catd);
   }, []);
-   
+   function dateget(d) {
+    d.preventDefault();
+    var a=$("#from").val();
+     var b=$("#to").val();
+     let data={a:a,b:b}
+     axios.post(`${CONFIG.baseUrl}/cart/display3/`,data).then(res=>{
+        console.log(res.data);
+
+       setCatdata(res.data);
+        // res.data.map(t=>{
+        //   setTot(...tot+res.data.total);
+        // })
+      })
+     //console.log(a);
+   }
     //setCatdata(d);
     return (
       <div className="page-container">  
       <div className="left-content">
         <div className="mother-grid-inner">
-         <Header/>
+         <Header d="auth"/>
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       
@@ -42,6 +58,11 @@ function Report(props) {
          <div class="newblk bgwhite">                
             <div class="subtitle">
               <h3>Orders History</h3>
+              <div>
+                  <input type="date" id="from" />
+                   <input type="date" id="to" />
+                    <input type="button" onClick={(event)=>dateget(event)} value="GET" className="btn btn-success" />
+              </div>
               <button class="printbtn" onClick={(e)=>{//e.preventDefault();
               window.print();}}>Print</button>
             </div>

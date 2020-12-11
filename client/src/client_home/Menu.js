@@ -102,8 +102,11 @@ function Menu(props) {
 				
 			}
 		});
-	
-
+			    		if(localStorage.getItem("offer") || localStorage.getItem("pro")){
+  			setP(offer=>[...offer,JSON.parse(localStorage.getItem("pro"))]);
+  			setOffer(product=>[...product,JSON.parse(localStorage.getItem("offer"))]);
+  			console.log("menu");
+}
       setTimeout(() => {
           //axios
 		 // alert('hi');  
@@ -111,6 +114,9 @@ function Menu(props) {
 		 axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.d);
+			localStorage.setItem("offer",JSON.stringify(res.data.offer));
+			localStorage.setItem("pro",JSON.stringify(res.data.p));
+			console.log("axos menu");
 			setBanner(res.data.b);
 			setCat(res.data.c);
 			setOffer(res.data.offer);
@@ -278,7 +284,6 @@ else{
 				<div className="footer-social-links">
 					<a href="https://www.facebook.com/thevembanadrestaurant" target="_blank"><img src={fb} /></a>
 					<a href="https://www.instagram.com/vembanadrestaurant/?hl=en" target="_blank"><img src={insta} /></a>
-					<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
