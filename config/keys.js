@@ -1,5 +1,5 @@
 module.exports = {
-  mongoURI: 'mongodb+srv://vembanad:vembanad@food.adhdx.mongodb.net/food?retryWrites=true&w=majority'
+  mongoURI: 'mongodb://adminUser:UvBwP73Q$7@localhost:27017/food'
 };
 
 
