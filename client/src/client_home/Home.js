@@ -25,14 +25,10 @@ import {useHistory} from 'react-router-dom'
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import CONFIG from '../config';
-//import Cryptr from 'cryptr';
 toast.configure()
 
 
 function Home(props) {
-	// const cryptr=new Cryptr("myTotalySecretey");
-	// const en=cryptr.encrypt("sample");
-	// const de=cryptr.decrypt(en);
 	const history = useHistory();
 	const loc={
 		pathname:'/',
@@ -107,24 +103,17 @@ function Home(props) {
 	// 	}
 	// });
 
-		    		if(localStorage.getItem("banner")){
-  			setBanner(JSON.parse(localStorage.getItem("banner")));
-  			console.log("banner");
-  			//console.log(en+de);
-  		}
-			
-
+  
       setTimeout(() => {
 		  //axios
-	
+		  
+				
 		 // alert('hi');  
 		 axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
-console.log("axos banner");
 
 			// console.log(res.data);
 			//setData(res.data.d);
 			setBanner(res.data.b);
-			localStorage.setItem("banner",JSON.stringify(res.data.b));
 			setOffer(res.data.offer);
 			setTspl(res.data.t);
 			console.log(props.history);
@@ -307,6 +296,7 @@ console.log("axos banner");
 					<div class="footer-social-links">
 						<a href="https://www.facebook.com/thevembanadrestaurant" target="_blank"><img src={fb} /></a>
 					<a href="https://www.instagram.com/vembanadrestaurant/?hl=en" target="_blank"><img src={insta} /></a>
+					<a href=""><img src={twitter} /></a>
 					</div>
 				</div>
 			</div>

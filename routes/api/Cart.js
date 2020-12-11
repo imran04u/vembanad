@@ -82,28 +82,6 @@ router5.get("/display1/",async(req,res)=>{
     }
   
  })
-  router5.post("/display3/",async(req,res)=>{
-    if(req.body.a==='' && req.body.b===''){
-         const a=await orders.find({status:"Accepted"}).sort({created:-1}).exec();
-         res.status(200).json(a);
-    }
-    else{
-    var fst=new Date(req.body.a);
-    var lst=new Date(req.body.b);
-    lst.setDate(lst.getDate()+1);
-    console.log(fst);
-    try{
-        //id="5fa0165849baa22985f6ab31";
-        const a=await orders.find({status:"Accepted",created:{ $gte: fst, $lt: lst}}).sort({created:-1}).exec();
-         res.status(200).json(a);
-    }
-    catch(err){
-        console.log(err);
-    }
-    }
-
-  
- })
 
 router5.post("/update/",async(req,res)=>{
     console.log(req.body);

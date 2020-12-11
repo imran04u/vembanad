@@ -44,7 +44,7 @@ function Orderlist(props) {
       <div className="page-container">  
       <div className="left-content">
         <div className="mother-grid-inner">
-         <Header d="auth"/>
+         <Header/>
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       

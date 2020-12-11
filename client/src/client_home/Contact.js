@@ -141,6 +141,7 @@ function Contact() {
 				<div className="footer-social-links">
 					<a href="https://www.facebook.com/thevembanadrestaurant" target="_blank"><img src={fb} /></a>
 					<a href="https://www.instagram.com/vembanadrestaurant/?hl=en" target="_blank"><img src={insta} /></a>
+					<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
