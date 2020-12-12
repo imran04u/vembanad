@@ -82,7 +82,7 @@ function Orderlist(props) {
               {cat_data.map(d=>
               <tr key={d._id}>
                  <td><span class="id">{d._id}</span></td>
-                <td><span>{d.created}</span></td>
+                <td><span>{d.created.split("T")[0]}</span></td>
                 <td>{d.customer}</td>
                 <td>{d.phone}</td>
                 <td>{d.address}</td>
