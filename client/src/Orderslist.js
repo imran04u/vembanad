@@ -44,7 +44,7 @@ function Orderlist(props) {
       <div className="page-container">  
       <div className="left-content">
         <div className="mother-grid-inner">
-         <Header/>
+         <Header d="auth"/>
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       
@@ -82,7 +82,7 @@ function Orderlist(props) {
               {cat_data.map(d=>
               <tr key={d._id}>
                  <td><span class="id">{d._id}</span></td>
-                <td><span class="date">{d.created}</span></td>
+                <td><span>{d.created}</span></td>
                 <td>{d.customer}</td>
                 <td>{d.phone}</td>
                 <td>{d.address}</td>

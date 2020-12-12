@@ -1,4 +1,4 @@
-import jquery from "jquery";
+ import jquery from "jquery";
 import React, {useState,useEffect} from "react";
 import ReactDOM from 'react-dom';
 import axios from "axios";
@@ -41,13 +41,16 @@ function Offers() {
     useEffect(()=>{
     
     
-  
+  if(localStorage.getItem("offer")){
+setData(JSON.parse(localStorage.getItem("offer")));
+  }
       setTimeout(() => {
           //axios
 		 // alert('hi');  
 		 axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.offer);
+			localStorage.setItem("offer",JSON.stringify(res.data.offer));
 			//setBanner(res.data.b);
 		 })      
       }, 1000);
@@ -100,7 +103,7 @@ function Offers() {
 <div id="page">
 	<Header nav="offer"/>
 		<section className="innerban subv-1">
-			<h1><span>Today Offer's</span></h1>
+			<h1><span>Today Offer's</span></h1> 
 		</section>
 		<section className="content">
 			<div className="container">
@@ -170,9 +173,9 @@ function Offers() {
 					<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 				</div>
 				<div className="footer-social-links">
-					<a href="https://www.facebook.com/thevembanadrestaurant" target="_blank"><img src={fb} /></a>
-					<a href="https://www.instagram.com/vembanadrestaurant/?hl=en" target="_blank"><img src={insta} /></a>
-					<a href=""><img src={twitter} /></a>
+					<a href=""><img src={fb} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>

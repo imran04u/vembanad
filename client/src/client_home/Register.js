@@ -226,9 +226,9 @@ function Register(props) {
 					<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 				</div>
 				<div className="footer-social-links">
-					<a href="https://www.facebook.com/thevembanadrestaurant" target="_blank"><img src={fb} /></a>
-					<a href="https://www.instagram.com/vembanadrestaurant/?hl=en" target="_blank"><img src={insta} /></a>
-					<a href=""><img src={twitter} /></a>
+					<a href=""><img src={fb} /></a>
+		<a href=""><img src={insta} /></a>
+		<a href=""><img src={twitter} /></a>
 				</div>
 			</div>
 		</div>
