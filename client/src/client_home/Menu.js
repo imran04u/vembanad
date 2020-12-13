@@ -67,6 +67,14 @@ function Menu(props) {
   
 
     useEffect(()=>{
+			       	if(localStorage.getItem("cats")){
+    		setCat(JSON.parse(atob(localStorage.getItem("cats"))));
+    	}
+    	 		if(localStorage.getItem("offer") || localStorage.getItem("pro")){
+  			setP(JSON.parse(atob(localStorage.getItem("pro"))));
+  			setOffer(JSON.parse(atob(localStorage.getItem("offer"))));
+  			console.log("menu");
+}
 		$('.count').each(function () {
 			$(this).prop('Counter',0).animate({
 				Counter: $(this).text()
@@ -102,11 +110,7 @@ function Menu(props) {
 				
 			}
 		});
-			    		if(localStorage.getItem("offer") || localStorage.getItem("pro")){
-  			setP(offer=>[...offer,JSON.parse(localStorage.getItem("pro"))]);
-  			setOffer(product=>[...product,JSON.parse(localStorage.getItem("offer"))]);
-  			console.log("menu");
-}
+
       setTimeout(() => {
           //axios
 		 // alert('hi');  
@@ -114,8 +118,9 @@ function Menu(props) {
 		 axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.d);
-			localStorage.setItem("offer",JSON.stringify(res.data.offer));
-			localStorage.setItem("pro",JSON.stringify(res.data.p));
+			localStorage.setItem("offer",btoa(JSON.stringify(res.data.offer)));
+			localStorage.setItem("pro",btoa(JSON.stringify(res.data.p)));
+			localStorage.setItem("cats",btoa(JSON.stringify(res.data.c)));
 			console.log("axos menu");
 			setBanner(res.data.b);
 			setCat(res.data.c);
@@ -125,7 +130,7 @@ function Menu(props) {
 		
 			if(localStorage.getItem("data"))
 			{
-				setD(JSON.parse(localStorage.getItem("data")))
+				setD(JSON.parse(atob(localStorage.getItem("data"))))
 			
 			}
 		 })      
@@ -140,7 +145,7 @@ let result=true;
 let order_data={id:id,name:name,rs:rs,qty:1,path:path};
 //intial 
 if(JSON.stringify(localStorage.getItem("data"))=="null"){
-	localStorage.setItem("data",JSON.stringify([order_data]))
+	localStorage.setItem("data",btoa(JSON.stringify([order_data])))
 	notify()
 	// setInterval(() => {
 	// 	window.location="/menu"
@@ -148,7 +153,7 @@ if(JSON.stringify(localStorage.getItem("data"))=="null"){
 }
 else{
 	//another add cart
-	let chec=JSON.parse(localStorage.getItem("data"))
+	let chec=JSON.parse(atob(localStorage.getItem("data")))
 	for(let j=0;j<chec.length;j++)
 	{//check existing cart
 		if(chec[j].id==order_data.id)
@@ -165,7 +170,7 @@ else{
 	{//push data
 		chec.push(order_data);
 		localStorage.removeItem("data")
-		localStorage.setItem("data",JSON.stringify(chec));
+		localStorage.setItem("data",btoa(JSON.stringify(chec)));
 		notify()
 		//window.location="/menu";
 		// setInterval(() => {
@@ -214,7 +219,7 @@ else{
 						<div><span className="offpriz"><i>{o.offer_price} QR</i></span>
 						<span className="netpriz"><i>{o.price} QR</i></span></div>
 									<a href="" onClick={(event)=>{
-										//localStorage.setItem("data",JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}]))
+										//localStorage.setItem("data",btoa(JSON.stringify([{id:o._id,name:o.title,rs:o.offer_price}])))
 										add_cart(event,o._id,o.title,o.offer_price,o.path)
 										}}>Add to cart <i className="fas fa-cart-plus"></i></a>
 								</div>

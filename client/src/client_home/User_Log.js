@@ -51,10 +51,10 @@ function User_Log(props) {
 		 {
 		   // window.location="/cat"
 		  console.log(res);
-		 localStorage.setItem('user',res.data.email);
-		 localStorage.setItem('address',res.data.address);
-		 localStorage.setItem('phone',res.data.phone);
-		 localStorage.setItem('id',res.data.id);
+		 localStorage.setItem('user',btoa(res.data.email));
+		 localStorage.setItem('address',btoa(res.data.address));
+		 localStorage.setItem('phone',btoa(res.data.phone));
+		 localStorage.setItem('id',btoa(res.data.id));
 		
 		 success()
 		 props.history.push('/')

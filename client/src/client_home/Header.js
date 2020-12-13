@@ -30,13 +30,13 @@ function Header(props) {
     
     function change_qty(a,b){
 		console.log(a,b);
-		let qty_change=JSON.parse(localStorage.getItem("data"))
+		let qty_change=JSON.parse(atob(localStorage.getItem("data")))
 	for(let j=0;j<qty_change.length;j++){
 		if(qty_change[j].id==a)
 		{
 			qty_change[j].qty=parseInt(b);
 		//localStorage.removeItem("data")
-		localStorage.setItem("data",JSON.stringify(qty_change));
+		localStorage.setItem("data",btoa(JSON.stringify(qty_change)));
 		}
 		else{
 			console.log("not changed")
@@ -45,7 +45,7 @@ function Header(props) {
 	}
 }
 function f(){
-	let d=JSON.parse(localStorage.getItem("data"));
+	let d=JSON.parse(atob(localStorage.getItem("data")));
 	console.log(d) 
 	let l=0;
 	d.map(o=>{
@@ -65,11 +65,11 @@ function proceed(){
 		if(localStorage.getItem("data"))
 		{
 			let p={
-				order:JSON.parse(localStorage.getItem("data")),
+				order:JSON.parse(atob(localStorage.getItem("data"))),
 				tot:document.getElementById("gt").textContent,
-				user:localStorage.getItem("user"),
+				user:atob(localStorage.getItem("user")),
 				address:address,
-				phone:localStorage.getItem("phone")
+				phone:atob(localStorage.getItem("phone"))
 			}
 			console.log(p.user)
 			axios.post(`${CONFIG.baseUrl}/cart/insert/`,p).then((res)=>{
@@ -111,11 +111,11 @@ function minus(v){
 	}
 	else{
 		console.log("final dec")
-		let items=JSON.parse(localStorage.getItem("data"))
+		let items=JSON.parse(atob(localStorage.getItem("data")))
 		var index=items.findIndex(i=> i.id == v)
 		items.splice(index, 1)
 		console.log(items);
-		localStorage.setItem("data",JSON.stringify(items))
+		localStorage.setItem("data",btoa(JSON.stringify(items)))
 		notify()
 		//window.location='/';
 		//history.replace(loc)
@@ -150,11 +150,11 @@ useEffect(()=>{
          
           console.log(props.history);
           if(localStorage.getItem("address")){
-              setAddress(localStorage.getItem("address"))
+              setAddress(atob(localStorage.getItem("address")))
           }
           if(localStorage.getItem("data"))
           {
-              setD(JSON.parse(localStorage.getItem("data")))
+              setD(JSON.parse(atob(localStorage.getItem("data"))))
               f();
           }
     
@@ -165,7 +165,7 @@ useEffect(()=>{
     setInterval(()=>{
         if(localStorage.getItem("data"))
         {
-            setD(JSON.parse(localStorage.getItem("data")))
+            setD(JSON.parse(atob(localStorage.getItem("data"))))
             f();
         }
     },1000);
@@ -188,7 +188,7 @@ useEffect(()=>{
                 <li id="contact"><a href="/contact">Contact Us</a></li>
                 <li id="login" style={logout}><a href="/user_log">Login</a></li>
                 <li id="user" style={tologin}><a href="/user_dash"><i class="fas fa-user"></i></a></li>
-                <li id="logout" style={tologin} ><a href="" onClick={(e)=>{e.preventDefault();localStorage.clear();window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
+                <li id="logout" style={tologin} ><a href="" onClick={(e)=>{e.preventDefault();localStorage.removeItem("id");localStorage.removeItem("user");localStorage.removeItem("phone");localStorage.removeItem("address");window.location='/user_log';}}><i className="fas fa-sign-out-alt"></i></a></li>
                 
             </ul>
         </nav>

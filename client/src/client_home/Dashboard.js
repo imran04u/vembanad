@@ -38,7 +38,7 @@ function Dashboard() {
       setTimeout(() => {
           //axios
 		 // alert('hi');  
-		 axios.get(`${CONFIG.baseUrl}/user/fetchorder/`+localStorage.getItem("user")).then(res=>{
+		 axios.get(`${CONFIG.baseUrl}/user/fetchorder/`+atob(localStorage.getItem("user"))).then(res=>{
 			//console.log(res.data);
 			setData(res.data);
 

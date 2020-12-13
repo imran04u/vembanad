@@ -41,7 +41,9 @@ function About() {
           //axios
 		 // alert('hi');  
 		 axios.get(`${CONFIG.baseUrl}`).then(res=>{
-		 	console.log(res.data);
+		 	var x=btoa(JSON.stringify(res.data));
+		 	console.log("encode"+x);
+		 	console.log("decode"+atob(x));
 		 	setData(res.data.d);
 		 	setBanner(res.data.b);
 		 })      

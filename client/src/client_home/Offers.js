@@ -41,8 +41,8 @@ function Offers() {
     useEffect(()=>{
     
     
-  if(localStorage.getItem("offer")){
-setData(JSON.parse(localStorage.getItem("offer")));
+  if(atob(localStorage.getItem("offer"))){
+setData(JSON.parse(atob(localStorage.getItem("offer"))));
   }
       setTimeout(() => {
           //axios
@@ -50,7 +50,7 @@ setData(JSON.parse(localStorage.getItem("offer")));
 		 axios.get(`${CONFIG.baseUrl}/home/`).then(res=>{
 			console.log(res.data);
 			setData(res.data.offer);
-			localStorage.setItem("offer",JSON.stringify(res.data.offer));
+			localStorage.setItem("offer",btoa(JSON.stringify(res.data.offer)));
 			//setBanner(res.data.b);
 		 })      
       }, 1000);
@@ -65,12 +65,12 @@ setData(JSON.parse(localStorage.getItem("offer")));
 		let order_data={id:id,name:name,rs:rs,qty:1,path:path};
 		//intial 
 		if(JSON.stringify(localStorage.getItem("data"))=="null"){
-			localStorage.setItem("data",JSON.stringify([order_data]))
+			localStorage.setItem("data",btoa(JSON.stringify([order_data])))
 			notify()
 		}
 		else{
 			//another add cart
-			let chec=JSON.parse(localStorage.getItem("data"))
+			let chec=JSON.parse(atob(localStorage.getItem("data")))
 			for(let j=0;j<chec.length;j++)
 			{//check existing cart
 				if(chec[j].id==order_data.id)
@@ -88,7 +88,7 @@ setData(JSON.parse(localStorage.getItem("offer")));
 			{//push data
 				chec.push(order_data);
 				localStorage.removeItem("data")
-				localStorage.setItem("data",JSON.stringify(chec));
+				localStorage.setItem("data",btoa(JSON.stringify(chec)));
 				notify()
 				// setInterval(() => {
 				// 	window.location="/offers"

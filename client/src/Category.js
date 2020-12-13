@@ -33,7 +33,7 @@ function Category(props) {
     
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-        headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
+        headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
         
        setCatdata(res.data);
         console.log(cat_data);
@@ -64,7 +64,7 @@ function Category(props) {
           // },1000)//props.history.push('/category');
           setTimeout(() => {
             axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-              headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
+              headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
               
              setCatdata(res.data);
               console.log(cat_data);
@@ -97,7 +97,7 @@ function Category(props) {
         setCat("");
         setTimeout(() => {
           axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-            headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
+            headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
             
            setCatdata(res.data);
             console.log(cat_data);

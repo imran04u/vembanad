@@ -108,9 +108,17 @@ function Home(props) {
 	// });
 
 		    		if(localStorage.getItem("banner")){
-  			setBanner(JSON.parse(localStorage.getItem("banner")));
+  			setBanner(JSON.parse(atob(localStorage.getItem("banner"))));
   			console.log("banner");
   			//console.log(en+de);
+  		}
+  		if(localStorage.getItem("ofr")){
+  			setOffer(JSON.parse(atob(localStorage.getItem("ofr"))));
+  			
+  		}
+  		if(localStorage.getItem("spl")){
+  			setTspl(JSON.parse(atob(localStorage.getItem("spl"))));
+  			
   		}
 			
 
@@ -124,16 +132,18 @@ console.log("axos banner");
 			// console.log(res.data);
 			//setData(res.data.d);
 			setBanner(res.data.b);
-			localStorage.setItem("banner",JSON.stringify(res.data.b));
+			localStorage.setItem("banner",btoa(JSON.stringify(res.data.b)));
+			localStorage.setItem("ofr",btoa(JSON.stringify(res.data.offer)));
+			localStorage.setItem("spl",btoa(JSON.stringify(res.data.t)));
 			setOffer(res.data.offer);
 			setTspl(res.data.t);
 			console.log(props.history);
-			if(localStorage.getItem("address")){
-				setAddress(localStorage.getItem("address"))
+			if(atob(localStorage.getItem("address"))){
+				setAddress(atob(localStorage.getItem("address")))
 			}
 			if(localStorage.getItem("data"))
 			{
-				setD(JSON.parse(localStorage.getItem("data")))
+				setD(JSON.parse(atob(localStorage.getItem("data"))))
 				
 			}
 			
