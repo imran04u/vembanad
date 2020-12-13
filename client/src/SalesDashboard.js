@@ -119,7 +119,7 @@ function SalesDashboard(props) {
 }
 
     return (
-      <div className="page-container">  
+      <div className="page-container saleswrap">  
       <div className="left-content">
         <div className="mother-grid-inner">
          <Header d="auths"/>
