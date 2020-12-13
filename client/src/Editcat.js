@@ -74,7 +74,7 @@ function Editcat() {
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload</label><br/>
-                <label><img src={catpath} style={{"height":"200px","width":"200px"}}/></label>
+                <label><img src={catpath} style={{"height":"100px","width":"120px"}}/></label>
                 <input type="file" name="" class="iconblk"   onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();

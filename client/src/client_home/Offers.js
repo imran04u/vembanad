@@ -149,8 +149,8 @@ setData(JSON.parse(atob(localStorage.getItem("offer"))));
 					<div className="footer-contact clearfix">
 						<img src={callus}/>
 						<div className="contact-txt">
-							<p>Call us</p>
-							<p>+974 4412 5928</p>
+							<p>Mail us</p>
+							<p>vembanadqatar@gmail.com</p>
 						</div>
 					</div>
 					<div className="footer-contact clearfix">
@@ -173,9 +173,8 @@ setData(JSON.parse(atob(localStorage.getItem("offer"))));
 					<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 				</div>
 				<div className="footer-social-links">
-					<a href=""><img src={fb} /></a>
-		<a href=""><img src={insta} /></a>
-		<a href=""><img src={twitter} /></a>
+					<a href="https://www.facebook.com/thevembanadrestaurant" targer="_blank"><img src={fb} /></a>
+					<a href="https://www.instagram.com/vembanadrestaurant" targer="_blank"><img src={insta} /></a>
 				</div>
 			</div>
 		</div>

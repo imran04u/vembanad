@@ -59,9 +59,9 @@ function Report(props) {
             <div class="subtitle">
               <h3>Orders History</h3>
               <div class="dateblk">
-			  <label>From Date></label>
+			  <label>From Date</label>
                   <input type="date" id="from" />
-				  <label>To Date></label>
+				  <label>To Date</label>
                    <input type="date" id="to" />
                     <input type="button" onClick={(event)=>dateget(event)} value="GET" className="btn btn-success" />
               </div>

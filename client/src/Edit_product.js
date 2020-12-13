@@ -97,7 +97,7 @@ function Edit_product(props) {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label><br/>
-                <label><img src={propath} style={{"height":"200px","width":"200px"}}/></label>
+                <label><img src={propath} style={{"height":"100px","width":"120px"}}/></label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
@@ -129,10 +129,14 @@ function Edit_product(props) {
               </div>
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
-                <input type="radio" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />Enable
-                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked/>Disable
-              
+                <div class="radiocat"> 
+                 <input type="radio" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />
+                <label for="enable">Enable</label>
+                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked />
+                <label for="disable">Disable</label>
+                </div>
               </div>
+				
             </div>
             <div class="row">
               <div class="col-md-6 formsingle">

@@ -284,15 +284,15 @@ console.log("axos banner");
 					<div class="footer-contact clearfix">
 						<img src={callus} />
 						<div class="contact-txt">
-							<p>Email us</p>
+							<p>Call us</p>
 							<p>+974 4412 5928</p>
 						</div>
 					</div>
 					<div class="footer-contact clearfix">
 						<img src={callus} />
 						<div class="contact-txt">
-							<p>Call us</p>
-							<p>+974 4412 5928</p>
+							<p>Mail us</p>
+							<p>vembanadqatar@gmail.com</p>
 						</div>
 					</div>
 					<div class="footer-contact clearfix">
@@ -314,11 +314,10 @@ console.log("axos banner");
 					<div class="footer-2-txt">
 						<p>© Copyright 2020 Vembanad Restaurant. All rights reserved</p>
 					</div>
-					<div class="footer-social-links">
-						<a href=""><img src={fb} /></a>
-		<a href=""><img src={insta} /></a>
-		<a href=""><img src={twitter} /></a>
-					</div>
+					<div className="footer-social-links">
+					<a href="https://www.facebook.com/thevembanadrestaurant" targer="_blank"><img src={fb} /></a>
+					<a href="https://www.instagram.com/vembanadrestaurant" targer="_blank"><img src={insta} /></a>
+				</div>
 				</div>
 			</div>
 		</footer>

@@ -82,7 +82,7 @@ function EditBanner(props) {
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload (Dimension 1920px x 920px)</label><br/>
-                <label><img src={banpath} style={{"height":"200px","width":"200px"}}/></label>
+                <label><img src={banpath} style={{"height":"100px","width":"120px"}}/></label>
                 <input type="file" name="" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
