@@ -19,7 +19,6 @@ import callus from './images/callus.png';
 import fb from './images/fb.png';
 import insta from './images/insta.png';
 import twitter from './images/twitter.png';
-import about1 from './images/about-1.jpg';
 import about2 from './images/about-3.jpg';
 import about3 from './images/about-5.jpg';
 import about4 from './images/about-1.jpg';
@@ -72,7 +71,6 @@ function About() {
 		<div className="col-md-6">
 		<div className="embed-responsive embed-responsive-16by9">
 		<iframe width="100%"  src="https://www.youtube.com/embed/fCuWB9E_6L0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		<img src={about1} alt=""/>
 		</div>
 		</div>
 		</div>
