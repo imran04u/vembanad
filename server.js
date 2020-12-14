@@ -24,7 +24,7 @@ mongoose.connect(db, (err) => {
   if (err) {
     console.log(err.message);
   }
-  console.log('Db Connected');
+  else console.log('Db Connected');
 });
 
 app.use(express.static(path.join(__dirname, '/client/build')));
