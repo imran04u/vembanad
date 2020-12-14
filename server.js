@@ -22,7 +22,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(db, (err) => {
   if (err) {
-    console.log(err.message);
+    console.log(err);
   }
   else console.log('Db Connected');
 });
