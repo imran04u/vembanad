@@ -7,6 +7,7 @@ import { PromiseProvider } from "mongoose";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import CONFIG from  './config';
+import $ from 'jquery';
 toast.configure()
 function Banner(props) {
   //const history = useHistory();
@@ -72,9 +73,8 @@ function Banner(props) {
     }
   }
   function createCat(e){
-    document.getElementById(e.target.id).disabled=true;
-      
     e.preventDefault();
+    $('#'+e.target.id).attr('disabled','disabled');
     let data={
       fname:fname,
       photo:Img,
@@ -86,7 +86,7 @@ function Banner(props) {
      console.log(data)
      axios.post(`${CONFIG.baseUrl}/home/add_ban/`, data).then(res=>{
        Added()
-      document.getElementById(e.target.id).disabled=false;
+      $('#'+e.target.id).removeAttr('disabled');
       setBanner_link("#");
       setBname("");
       setDescription("");

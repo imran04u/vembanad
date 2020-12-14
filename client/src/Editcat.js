@@ -90,7 +90,6 @@ function Editcat() {
             </div>
             <div class="col-md-12 formsingle">
               <button class="btnBlue btnSmall" onClick={createCat} name=""><i class="fas fa-save"></i>Update</button>
-              <button class="btnGrey btnSmall" name="">Reset</button>
             </div>
           </div>   
 

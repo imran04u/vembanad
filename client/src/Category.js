@@ -8,6 +8,7 @@ import { PromiseProvider } from "mongoose";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import CONFIG from './config';
+import $ from 'jquery';
 toast.configure()
 
 function Category(props) {
@@ -33,7 +34,7 @@ function Category(props) {
     
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-        headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
+        headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
         
        setCatdata(res.data);
         console.log(cat_data);
@@ -64,7 +65,7 @@ function Category(props) {
           // },1000)//props.history.push('/category');
           setTimeout(() => {
             axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-              headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
+              headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
               
              setCatdata(res.data);
               console.log(cat_data);
@@ -77,8 +78,7 @@ function Category(props) {
     }
   }
   function createCat(e){
-    document.getElementById("save").disabled=true;
-    e.preventDefault();
+   $('#'+e.target.id).attr('disabled','disabled'); e.preventDefault();
     let data={
       fname:fname,
       photo:Img,
@@ -92,12 +92,12 @@ function Category(props) {
        console.log(res.data)
        if(res.data){
         Added()
-        document.getElementById("save").disabled=false;
+        $('#'+e.target.id).removeAttr('disabled');
         document.getElementById('f').value='';
         setCat("");
         setTimeout(() => {
           axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
-            headers: {'auth':`${JSON.parse(atob(localStorage.getItem('auth')))}`}}).then(res=>{
+            headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
             
            setCatdata(res.data);
             console.log(cat_data);

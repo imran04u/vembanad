@@ -25,8 +25,8 @@ function Header(props) {
     const [address,setAddress]=useState("");
     const [order,setD]=useState([]);
     const [tot,setTot]=useState(0);
-    const [tologin,setLogin]=useState({});
-    const [logout,setLogout]=useState({});
+    const [tologin,setLogin]=useState({"display":"none"});
+    const [logout,setLogout]=useState({"display":"none"});
     
     function change_qty(a,b){
 		console.log(a,b);
@@ -135,13 +135,15 @@ useEffect(()=>{
     setTimeout(() => {
         //axios
         document.getElementById(props.nav).classList="active";
+
         if(localStorage.getItem('id'))
         {
-            setLogout({"display":"none"});     
+               setLogin({"display":"block"}); 
+           
          
         }
         else{
-            setLogin({"display":"none"}); 
+             setLogout({"display":"block"});  
            
         }
          // alert('hi');  

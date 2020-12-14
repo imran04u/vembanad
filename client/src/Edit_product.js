@@ -5,6 +5,7 @@ import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import CONFIG from './config';
+import $ from "jquery";
 toast.configure()
 
 function Edit_product(props) {
@@ -31,7 +32,7 @@ function Edit_product(props) {
         setCatdata(res.data.b);
       //setPdata(res.data.a);
       
-      
+     console.log(res.data.a);
         console.log(cat_data);
        // console.log(pro_data);
         setPname(res.data.a[0].title);
@@ -39,6 +40,10 @@ function Edit_product(props) {
       setPrice(res.data.a[0].price);
       setOPrice(res.data.a[0].offer_price);
       setPath(res.data.a[0].path); 
+      setSpl(res.data.a[0].todayspl);
+      setCname(res.data.a[0].cname);
+      $("#catselect").val(res.data.a[0].cname);
+      $("input[name=r1][value="+res.data.a[0].todayspl+"]").attr('checked','checked');
       })
       
     }, 1000);
@@ -87,7 +92,7 @@ function Edit_product(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Category Name</label>
-                <select onChange={(event)=>{setCname(event.target.value);}} >
+                <select id="catselect" onChange={(event)=>{setCname(event.target.value);}} >
                 <option>--select--</option>
                 {cat_data.map(d=>
                   <option>{d.title}</option>
@@ -130,9 +135,10 @@ function Edit_product(props) {
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
                 <div class="radiocat"> 
-                 <input type="radio" name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />
+                 <input type="radio"  name="r1" value="true" onClick={(event)=>{setSpl(event.target.value);}}  />
                 <label for="enable">Enable</label>
-                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked />
+
+                <input type="radio" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  />
                 <label for="disable">Disable</label>
                 </div>
               </div>
@@ -146,7 +152,6 @@ function Edit_product(props) {
               </div>
             <div class="col-md-12 formsingle">
               <button class="btnBlue btnSmall" onClick={createCat} name=""><i class="fas fa-save"></i>Update</button>
-              <button class="btnGrey btnSmall" name="">Reset</button>
             </div>
           </div>   
 

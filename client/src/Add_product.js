@@ -80,8 +80,7 @@ function Add_product() {
 
   }
   function createCat(e){
-    document.getElementById(e.target.id).disabled=true;
-    
+    $('#'+e.target.id).attr('disabled','disabled');
     e.preventDefault();
     let data={
       photo:Img,
@@ -97,7 +96,7 @@ function Add_product() {
      axios.post(`${CONFIG.baseUrl}/product/insert`, data).then(res=>{
      //alert('succesfully added');
      Added()
-     document.getElementById(e.target.id).disabled=false;
+     $('#'+e.target.id).removeAttr('disabled');
      document.getElementById('f').value='';
      setPname("");
     setPrice("");
@@ -172,6 +171,13 @@ function Add_product() {
                 <label>Product prize</label>
                 <input type="text" name="" value={price} onChange={(event)=>{setPrice(event.target.value);}} placeholder="Category prize" />
               </div>
+               <div class="col-md-6 formsingle">
+                <label>Offer prize</label>
+                <input type="text" name="" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
+              </div>
+
+            </div>
+            <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
                 <div class="radiocat"> 
@@ -180,12 +186,6 @@ function Add_product() {
                 <input type="radio" id="disable" name="r1" value="false" onClick={(event)=>{setSpl(event.target.value);}}  checked/>
                 <label for="disable">Disable</label>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 formsingle">
-                <label>Offer prize</label>
-                <input type="text" name="" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
               </div>
               </div>
             <div class="col-md-12 formsingle">
