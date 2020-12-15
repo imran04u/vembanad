@@ -108,10 +108,10 @@ function Register(props) {
 						<li><a href="/offers">Offers</a></li>
 						<li ><a href="/about">About Us</a></li>
 						<li><a href="/contact">Contact Us</a></li>
+						<li><a href="/user_log">Login</a></li>
 					</ul>
 				</nav>
 			
-				
 			</div>
 		</header>
 		<section className="innerban subv-1">

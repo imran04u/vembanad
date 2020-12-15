@@ -87,7 +87,7 @@ function User_Log(props) {
 						<li className="active"><a href="/user_log">Login</a></li>
 					</ul>
 				</nav>
-			
+				
 			
 			</div>
 		</header>
