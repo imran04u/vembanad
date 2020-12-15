@@ -74,7 +74,7 @@ router5.get("/display1/",async(req,res)=>{
  router5.get("/display2/",async(req,res)=>{
     try{
         //id="5fa0165849baa22985f6ab31";
-        const a=await orders.find({status:"Accepted"}).sort({created:-1}).exec();
+        const a=await orders.find({status:{ $ne : "Pending" }}).sort({created:-1}).exec();
          res.status(200).json(a);
     }
     catch(err){
@@ -84,7 +84,7 @@ router5.get("/display1/",async(req,res)=>{
  })
   router5.post("/display3/",async(req,res)=>{
     if(req.body.a==='' && req.body.b===''){
-         const a=await orders.find({status:"Accepted"}).sort({created:-1}).exec();
+         const a=await orders.find({status:{ $ne : "Pending" }}).sort({created:-1}).exec();
          res.status(200).json(a);
     }
     else{
@@ -94,7 +94,7 @@ router5.get("/display1/",async(req,res)=>{
     console.log(fst);
     try{
         //id="5fa0165849baa22985f6ab31";
-        const a=await orders.find({status:"Accepted",created:{ $gte: fst, $lt: lst}}).sort({created:-1}).exec();
+        const a=await orders.find({status:{ $ne : "Pending" },created:{ $gte: fst, $lt: lst}}).sort({created:-1}).exec();
          res.status(200).json(a);
     }
     catch(err){

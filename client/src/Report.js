@@ -10,8 +10,17 @@ import $ from 'jquery';
 function Report(props) { 
   const [cat_data,setCatdata]=useState([]);
   const [tot,setTot]=useState(0);
+  const [search,setSearch]=useState("");
   let d=[];
   useEffect(()=>{
+
+        $("#searchT").on("change", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable > tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
@@ -63,7 +72,13 @@ function Report(props) {
                   <input type="date" id="from" />
 				  <label>To Date</label>
                    <input type="date" id="to" />
+
                     <input type="button" onClick={(event)=>dateget(event)} value="GET" className="btn btn-success" />
+                <select className="col-md-3 filterselect" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}>
+                <option value="">All orders</option>
+                <option>Accepted</option>
+                <option>Canceled</option>
+                </select>
               </div>
               <button class="printbtn" onClick={(e)=>{//e.preventDefault();
               window.print();}}>Print</button>
@@ -82,7 +97,7 @@ function Report(props) {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody id="myTable">
               {cat_data.map(d=>
               <tr key={d._id}>
                 <td><span class="id">{d._id}</span></td>

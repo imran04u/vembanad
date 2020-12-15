@@ -41,8 +41,8 @@ function Offers() {
     useEffect(()=>{
     
     
-  if(atob(localStorage.getItem("offer"))){
-setData(JSON.parse(atob(localStorage.getItem("offer"))));
+  if(localStorage.getItem("offer")){
+setData(JSON.parse(localStorage.getItem("offer")));
   }
       setTimeout(() => {
           //axios
