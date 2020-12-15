@@ -87,15 +87,7 @@ function User_Log(props) {
 						<li className="active"><a href="/user_log">Login</a></li>
 					</ul>
 				</nav>
-				<div class="search_btn">
-					<div class="control">
-						<input class="control__input control__input--search" type="search" placeholder="Search Food"/>
-						<svg class="control__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<circle cx="11" cy="11" r="8"></circle>
-							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-						</svg>
-					</div>
-				</div>
+			
 			
 			</div>
 		</header>
