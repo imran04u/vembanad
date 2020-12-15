@@ -68,18 +68,17 @@ function Report(props) {
             <div class="subtitle">
               <h3>Orders History</h3>
               <div class="dateblk">
-			   <select className="col-md-2 filterselect" style="margin-right:10px;" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}>
-                <option value="">All orders</option>
-                <option>Accepted</option>
-                <option>Canceled</option>
-                </select>
 			  <label>From Date</label>
                   <input type="date" id="from" />
 				  <label>To Date</label>
                    <input type="date" id="to" />
 
                     <input type="button" onClick={(event)=>dateget(event)} value="GET" className="btn btn-success" />
-               
+                <select className="col-md-3 filterselect" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}>
+                <option value="">All orders</option>
+                <option>Accepted</option>
+                <option>Canceled</option>
+                </select>
               </div>
               <button class="printbtn" onClick={(e)=>{//e.preventDefault();
               window.print();}}>Print</button>
