@@ -42,7 +42,7 @@ function Offers() {
     
     
   if(localStorage.getItem("offer")){
-setData(JSON.parse(localStorage.getItem("offer")));
+setData(atob(JSON.parse(localStorage.getItem("offer"))));
   }
       setTimeout(() => {
           //axios
