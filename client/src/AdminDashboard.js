@@ -29,6 +29,7 @@ function AdminDashboard(props) {
   const [orders, setOrders] = useState("");
   const [d, setD] = useState("");
   const [v, setV] = useState("");
+  const sd = useRef(0);
 
 
   playAlert.content['not']=[sound]
@@ -48,7 +49,25 @@ function AdminDashboard(props) {
       ref.current=ref.current-1;
     console.log(res.data)
     notify()
+    
     })
+  }
+  function sou(c){
+   
+      const so=setInterval(()=>{
+              if(sd.current==0){
+       playAlert('not');
+      }
+      if(sd.current>0){
+        // console.log("termnate"+sd.current);
+       return ()=> clearInterval(so);
+    }
+     
+    }, 2000);
+   
+     
+   // return ()=> sou(sd.current);
+    
   }
   function statusChange(e){
 
@@ -56,8 +75,8 @@ function AdminDashboard(props) {
       setShowConfirm(true);
       console.log( $("#"+e.target.id).val());
       $("#"+e.target.id).html("<option >Pending</option><option >Accepted</option><option >Canceled</option>");
-      
- 
+      //setSd(1);
+      sd.current=sd.current+1;
     
 
   }
@@ -83,8 +102,10 @@ function AdminDashboard(props) {
        if(res.data.s){
         console.log(res.data.s);
         ref.current=res.data.a.length;
-        playAlert('not');
-        
+        sd.current=0;
+        //setSd(0);
+        sou(sd.current);
+       
        }
        else{
         console.log(res.data.s);

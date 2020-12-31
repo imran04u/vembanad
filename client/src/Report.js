@@ -6,12 +6,13 @@ import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
 import CONFIG from './config';
 import $ from 'jquery';
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function Report(props) { 
   const [cat_data,setCatdata]=useState([]);
   const [tot,setTot]=useState(0);
   const [search,setSearch]=useState("");
   let d=[];
+  var today=new Date();
   useEffect(()=>{
 
         $("#searchT").on("change", function() {
@@ -82,8 +83,15 @@ function Report(props) {
               </div>
               <button class="printbtn" onClick={(e)=>{//e.preventDefault();
               window.print();}}>Print</button>
+                              <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button"
+                    table="table-to-xls"
+                    filename={today}
+                    sheet="tablexls"
+                    buttonText="Download as Excel-sheet"/>
             </div>
-            <table class="datatable ordertable">
+            <table  id="table-to-xls" class="datatable ordertable">
               <thead>
                 <tr>
                   <th>Order Id</th>
@@ -100,7 +108,7 @@ function Report(props) {
               <tbody id="myTable">
               {cat_data.map(d=>
               <tr key={d._id}>
-                <td><span class="id">{d._id}</span></td>
+                <td><span className="id">{d._id}</span></td>
                 <td><span>{d.created.split("T")[0]}</span></td>
                 <td>{d.customer}</td>
                 <td>{d.phone}</td>
