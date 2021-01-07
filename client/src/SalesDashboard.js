@@ -8,7 +8,7 @@ import { PromiseProvider } from "mongoose";
 import playAlert from 'alert-sound-notify';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
-//import sound from './client_home/images/notification.mp3';
+import sound from './client_home/images/notification.mp3';
 import CONFIG from './config'
 //import BootBox from 'react-bootbox';
 import Dialog from 'react-bootstrap-dialog';
@@ -32,7 +32,7 @@ function SalesDashboard(props) {
   const sd = useRef(0);
 
 
- // playAlert.content['not']=[sound]
+  playAlert.content['not']=[sound]
   //let d=[];
   const notify = ()=>{  
     toast('Status Updated') 
@@ -56,7 +56,7 @@ function SalesDashboard(props) {
    
       const so=setInterval(()=>{
               if(sd.current==0){
-      // playAlert('not');
+       playAlert('not');
       }
       if(sd.current>0){
         // console.log("termnate"+sd.current);
