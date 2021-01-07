@@ -1,0 +1,499 @@
+/* ------------------------------------------------------------------------------ 
+Project Name : Daqing 
+Description : Responsive Style Sheet 
+Author : Imran Rovan 
+Created On : 22 Feb 2018 
+--------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 1024px) {
+	#burgernav {
+		display: none;
+	}
+	header #menu {
+		display: block;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	#menu > ul {
+		display: flex;
+	}
+	#menu > ul > li {
+		margin-right: 30px;
+		padding: 0;
+		position: relative;
+	}
+	#menu > ul > li:last-child  {
+		margin-right: 10px;
+	}
+	#menu > ul > li > a {
+		font-size: 16px;
+		color: #fff;
+		font-weight: 500;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	
+	header.header-fixed  #menu > ul > li > a {
+		color: #3a3a3a;
+	}
+	#menu > ul > li.active a, header.header-fixed #menu > ul > li.active a {
+		color: #ce0101;
+	}
+	header #menu > ul > li > ul {
+		display: none !important;
+		position: absolute;
+		left: -50px;
+		top: 100px;
+		width: 220px;
+		z-index: 100;
+		background: #ffffff;
+		visibility: hidden;
+		opacity: 0;
+		border-top: 2px solid #f58320;
+		transition: all 300ms ease;
+		-moz-transition: all 300ms ease;
+		-webkit-transition: all 300ms ease;
+		-ms-transition: all 300ms ease;
+		-o-transition: all 300ms ease;
+		-webkit-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.05), -2px 0px 5px 1px rgba(0,0,0,0.05);
+		-ms-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+		-o-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+		-moz-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.05),-2px 0px 5px 1px rgba(0,0,0,0.05);
+		box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.05), -2px 0px 5px 1px rgba(0,0,0,0.05);
+	}
+	header #menu > ul > li > ul > li {
+		position:relative;
+		width:100%;
+		border-bottom:1px solid rgba(0,0,0,0.07);
+	}
+
+	header #menu > ul > li > ul > li:last-child {
+		border-bottom:none;	
+	}
+	header #menu > ul > li > ul > li > a {
+		position: relative;
+		display: block;
+		padding: 10px 15px;
+		line-height: 24px;
+		font-weight: 500;
+		font-size: 14px;
+		text-transform: capitalize;
+		color: #292929;
+		transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-webkit-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+	}
+	header #menu > ul > li > ul > li:hover > a {
+		color:#ffffff;
+		background:#f58320;
+		padding-left:25px;	
+	}
+}
+@media screen and (max-width: 1400px) {
+/*.inner-ban {
+height: 350px;
+}*/
+}
+@media screen and (max-width: 1199px) {
+	.sub-ban {
+		width: 80% !important;
+	}
+	.sub-ban h5 {
+		font-size:17px;
+		line-height:17px;
+		width:480px;
+	}
+	.sub-ban h2 {
+		font-size:45px;
+		line-height:45px;
+	}
+	.sub-ban p {
+		font-size:15px;
+		line-height:24px;
+	}
+	.owl-carousel .owl-item img {
+		height: auto;
+	}
+	.submenu .container {
+		width: 100%;
+	}
+	.abt-blk h5 {
+		font-size: 20px;
+	}
+	.abt-blk h5 span {
+		font-size: 40px;
+	}
+	.abt-intro .abt-dtl h3 {
+		font-size: 18px;
+		line-height: 22px;
+		margin-bottom: 6px;
+		width: 100%;
+	}
+	.abt-intro .abt-dtl p {
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 10px;
+	}
+	.abt-intro .abt-img img, .abt-big img {
+		width: auto;
+		height: 100%;
+	}
+	.abt-big {
+		height: 402px;
+	}
+	.orgchart:before {
+		height: 690px;
+	}
+	.predimg {
+		margin-bottom: 40px;
+	}
+	.asc-inner {
+		min-height: 145px;
+	}
+	.career-table tr td:first-child {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.sub-ban h2 {
+		font-size: 25px;
+		line-height: 25px;
+	}
+	.abt-intro .abt-dtl {
+		width: 62%;
+	}
+	.abt-intro .abt-img {
+		width: 38%;
+	}
+	.abt-big img {
+		width: 100%;
+		height: auto;
+	}
+	.home-career {
+		height: 420px;
+		background-size: cover;
+	}
+	.career-dtl {
+		width: 80%;
+		padding: 75px 0;
+	}
+	.footer-menu .container {
+		width: 100%;
+	}
+	.submenu li a {
+		padding: 20px 10px;
+		font-size: 13px;
+	}
+	.div-table > div {
+		float: none;
+		display: block;
+		width: 100%;
+	}
+	.inner-content h2 {
+		font-size: 18px;
+		line-height: 29px;
+		margin-bottom: 5px;
+	}
+	.inner-content img {
+		margin: 15px auto;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+2) > div p, .mile-timeline .timeline-row:nth-of-type(2n+1) > div p {
+		width: auto;
+	}
+	.orgchart:before {
+		height: 565px;
+	}
+	.predimg {
+		margin-bottom: 0px;
+	}
+	.preddtl h2,.preddtl h6, .signature {
+		margin-left: 15px;
+	}
+	.inner-content h1 {
+		font-size: 25px;
+		line-height: 28px;
+	}
+	.inner-content h1:after {
+		width: 80px;
+		margin-left: -40px;
+	}
+	.inner-service h1:after {
+		margin-left: 0;
+	}
+	.inner-ban {
+		width: 100%;
+		height: 300px;
+	}
+	.footer-menu .top-nav li:last-child a {
+		font-size: 14px;
+		padding-top: 20px;
+		margin: 20px -2px 0;
+	}
+	.footer-menu .top-nav li:first-child a {
+		font-size: 16px;
+	}
+	.footer-menu {
+		padding: 25px 0;
+	}
+	.inner-content img {
+		margin: 20px 0;
+	}
+	.services-inner .sleft:nth-child(1) {
+		display: none;
+	}
+	.services-inner .sleft:nth-child(2) {
+		width: 100%;
+		float: none !important;
+	}
+	.serviceshalf {
+		height: auto;
+		margin-bottom: 30px;
+	}
+	.owl-client .owl-nav {
+		display: none;
+	}
+}
+@media screen and (max-width: 767px) {
+	header {
+		height: 70px;
+		padding: 0px 0;
+		background-color: rgba(255,255,255,1);
+		top: 0px;
+		-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+		-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.23);
+	}
+	header .logo img:first-child {
+		display: none;
+		height: 70px;
+	}
+	header .logo img:last-child {
+		display: block;
+		height: 70px;
+	}
+	header #burgernav span {
+		background-color: #bf1e2e;
+	}
+	header.header-fixed #burgernav {
+		top: 20px;
+	}
+	#full-slider-wrapper {
+		padding-top: 70px;
+	}
+	.sub-ban h2 {
+		font-size: 20px;
+		line-height: 22px;
+		padding-top: 0px;
+		margin-top: -20px;
+	}
+	.sub-ban h2:before {
+		display: none;
+
+	}
+	.sub-ban p {
+		display: none;
+	}
+	.abt-blk h5 {
+		font-size: 16px;
+	}
+	.abt-blk h5 span {
+		font-size: 30px;
+	}
+	.abt-intro .abt-dtl {
+		width: 100%;
+		height: auto;
+	}
+	.abt-intro .abt-img, .abt-intro .abt-img img {
+		width: 100%;
+		height: auto;
+	}
+	.abt-big {
+		height: auto;
+	}
+	.owl-service .owl-stage .center {
+		transform: scale(1);
+	}
+	.owl-service .owl-stage-outer {
+		padding: 20px 0;
+	}
+	.service-caro {
+		padding: 45px 0px;
+	}
+	.career-dtl {
+		width: 100%;
+		padding: 25px 0;
+	}
+	.career-dtl h4 {
+		font-size: 38px;
+		line-height: 38px;
+		margin-bottom: 25px;
+	}
+	.career-dtl h2 {
+		font-size: 30px;
+		line-height: 45px;
+	}
+	.career-dtl h2 span {
+		display: block;
+		font-size: 40px;
+	}
+	.career-dtl a {
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		margin-left: 0;
+		background-size: contain;
+	}
+	/* .home-career {
+		height: 300px;
+		background: url(/images/home-career.jpg) no-repeat right -200px bottom;
+		background-size: cover;
+	} */
+	.footer-menu .top-nav {
+		text-align: left;
+	}
+	.footer-menu .top-nav li:first-child a {
+		font-size: 13px;
+		width: 45%;
+		padding: 0;
+	}
+	.footer-menu .top-nav li:last-child a {
+		display: none;
+	}
+	.owl-service .owl-stage .center .serv-dtls {
+		zoom: inline-block;
+	}
+	.submenu {
+		display: none;
+	}
+	.orgchart:before {
+		display: none;
+	}
+	.president-img {
+		padding: 20px;
+		background-color: #f5f5f5;
+		margin-left: 0;
+	}
+	.predimg {
+		margin-bottom: 0px;
+		margin: 0;
+		width: 100%;
+		float: none;
+	}
+	.preddtl {
+		padding-right: 0;
+		font-size: 25px;
+	}
+	.preddtl h2, .preddtl h6, .signature {
+		margin: 0;
+	}
+	.service-list li {
+		width: 100%;
+		float: none;
+	}
+	.tableScrol {
+		width: 100%;
+		overflow: scroll;
+	}
+	.tableScrol table {
+		min-width: 550px;
+	}
+	.tabs-career .panel-title {
+		font-size: 12px!important;
+	}
+	.tabs-career .nav>li>a {
+		position: relative;
+		display: block;
+		padding: 10px 8px;
+		font-size: 14px;
+	}
+	.inner-content .job-dtl p span {
+		width: 100%;
+		float: none;
+	}
+	.inner-content .job-dtl p span:first-child {
+		padding-right: 0;
+		border-right: none;
+		margin-bottom: 20px;
+		display: inline-block;
+	}
+	.centerAlign {
+		text-align: center;
+	}
+	.career-form .label-form label:first-child, .career-form .label-form label:last-child {
+		float: none;
+		text-align: center;
+	}
+	.career-form .label-form label:last-child span {
+		float: none;
+	}
+	.margt20 {
+		margin-top: 10px;
+	}
+	.career-form h3 {
+		margin-top: 20px;
+	}
+	.mile-timeline .timeline-row:before {
+		right: 95%;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+1) > div {
+		float: right;
+		text-align: left;
+	}
+	.mile-timeline .timeline-row > div {
+		width: 95%;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type {
+		float: left;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:first-of-type {
+		float: right;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type:after {
+		left: 0;
+		top: 15px;
+	}
+	.mile-timeline .timeline-row:nth-of-type(2n+1) > div > div:last-of-type:before {
+		left: -10px;
+		top: 5.5px;
+	}
+	.mile-timeline .timeline-row h4 {
+		font-size: 17px;
+		font-weight: 400;
+		margin: 0px 0 10px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
