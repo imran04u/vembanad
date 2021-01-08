@@ -39,14 +39,9 @@ function App() {
   return (
    
     <div>
-    
-
        <Switch>
     
      <Route exact path="/" component={Home}/>
-    
-
-
    
       </Switch>
     </div>
