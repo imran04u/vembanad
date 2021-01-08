@@ -22,13 +22,13 @@ import Home from "./client_home/Home";
 // import Userlist from './Userlist';
 // import Navbar from './Navbar';
 // import Sample from './Sample';
-import About from './client_home/About'
-import Contact from './client_home/Contact'
-import user_Dashboard from './client_home/Dashboard'
-import Menu from './client_home/Menu'
-import Offers from './client_home/Offers'
-import Register from './client_home/Register'
-import User_Log from './client_home/User_Log'
+// import About from './client_home/About'
+// import Contact from './client_home/Contact'
+// import user_Dashboard from './client_home/Dashboard'
+// import Menu from './client_home/Menu'
+// import Offers from './client_home/Offers'
+// import Register from './client_home/Register'
+// import User_Log from './client_home/User_Log'
 // import Order from './Orderslist'
 // import Report from './Report'
 // import AdminDashboard from './AdminDashboard'
@@ -44,13 +44,7 @@ function App() {
        <Switch>
     
      <Route exact path="/" component={Home}/>
-     <Route exact path="/about" component={About}/>
-     <Route exact path="/contact" component={Contact}/>
-     <Route exact path="/user_dash" component={user_Dashboard}/>
-     <Route exact path="/menu" component={Menu}/>
-     <Route exact path="/offers" component={Offers}/>
-     <Route exact path="/register" component={Register}/>
-     <Route exact path="/user_log" component={User_Log}/>
+    
 
 
    
