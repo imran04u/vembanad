@@ -9,7 +9,6 @@ function Home(props) {
     return (
 		<div id="page">
 		
-		<Header nav="home" />
 		Hellow world
 	</div>
 
