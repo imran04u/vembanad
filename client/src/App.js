@@ -8,8 +8,8 @@
 //import  'https://use.fontawesome.com/releases/v5.8.2/css/all.css';
 //import './App.css';
 import React from 'react';
-import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
-import Home from "./client_home/Home";
+// import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
+// import Home from "./client_home/Home";
 //import Login from './Login'
 //import Dashboard from './Dashboard'
 //import Category from './Category'
@@ -39,11 +39,7 @@ function App() {
   return (
    
     <div>
-       <Switch>
-    
-     <Route exact path="/" component={Home}/>
-   
-      </Switch>
+     Hellow world
     </div>
    
    
