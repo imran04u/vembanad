@@ -1,19 +1,11 @@
  import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
-import Home from "./client_home/Home";
+
 
 function App() {
   return (
     <div>
-    
-
-       <Switch>
-     
-     <Route exact path="/" component={Home}/>
-    
-     
-      </Switch>
+    Hellow world
     </div>
   );
 }
