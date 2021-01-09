@@ -4,7 +4,7 @@ import Home from "./../client_home/Home";
 const Routes = () => {
   return (
     <Fragment>
-        <NavBar />
+        
         <Switch>
           <Route path="/" component={ Home } exact />
         </Switch>
