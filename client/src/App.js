@@ -1,12 +1,13 @@
  import logo from './logo.svg';
 import './App.css';
-import Home from "./client_home/Home";
+import Routes from './Routes/Routes';
+
 
 function App() {
   return (
     <div>
     Hellow world
-    <Home/>
+     <Routes />
     </div>
   );
 }
