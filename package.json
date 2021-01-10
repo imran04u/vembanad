@@ -2,7 +2,7 @@
   "name": "vembanad",
   "version": "1.0.0",
   "description": "",
-  "homepage": ".",
+  "homepage": "http://199.192.24.120/",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
