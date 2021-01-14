@@ -23,6 +23,7 @@ import Menu from './client_home/Menu'
 import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
+import ProtectedRouter from './protected'
 //import Order from './Orderslist'
 //import Report from './Report'
 
