@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
-//import playAlert from 'alert-sound-notify';
+import playAlert from 'alert-sound-notify';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
 //import sound from './client_home/images/notification.mp3';
@@ -56,7 +56,8 @@ function AdminDashboard(props) {
    
       const so=setInterval(()=>{
               if(sd.current==0){
-      // playAlert('not');
+      playAlert('glass');
+      playAlert.volume(1);
       }
       if(sd.current>0){
         // console.log("termnate"+sd.current);
