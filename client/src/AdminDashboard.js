@@ -5,10 +5,10 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
-import playAlert from 'alert-sound-notify';
+//import playAlert from 'alert-sound-notify';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
-//import sound from './client_home/images/notification.mp3';
+import sound from './client_home/images/notification.mp3';
 import CONFIG from './config'
 //import BootBox from 'react-bootbox';
 //import Dialog from 'react-bootstrap-dialog';
@@ -30,7 +30,7 @@ function AdminDashboard(props) {
   const [d, setD] = useState("");
   const [v, setV] = useState("");
   const sd = useRef(0);
-
+  var x = document.getElementById("myAudio");
 
   //playAlert.content['not']=[sound]
   //let d=[];
@@ -56,8 +56,12 @@ function AdminDashboard(props) {
    
       const so=setInterval(()=>{
               if(sd.current==0){
-      playAlert('glass');
-      playAlert.volume(1);
+                x.play(); 
+     // playAlert('glass');
+      //playAlert.volume(1);
+      }
+      else{
+         x.pause(); 
       }
       if(sd.current>0){
         // console.log("termnate"+sd.current);
@@ -158,7 +162,9 @@ function AdminDashboard(props) {
               <button class="adminprint" onClick={(e)=>{//e.preventDefault();
               window.print();}}>PRINT</button>
             </div>
-        
+        <audio id="myAudio">
+  <source src="{sound}" type="audio/mpeg">
+</audio>
             <table class="datatable ordertable">
               <thead>
                 <tr>
