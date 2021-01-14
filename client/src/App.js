@@ -13,7 +13,7 @@ import Editcat from './Editcat';
 import Edit_product from './Edit_product';
 import Banner from './Banner';
 import EditBanner from './EditBanner';
-//import Userlist from './Userlist';
+import Userlist from './Userlist';
 import Navbar from './Navbar';
 //import Sample from './Sample';
 import About from './client_home/About'
@@ -24,7 +24,7 @@ import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
 import ProtectedRouter from './protected'
-//import Order from './Orderslist'
+import Order from './Orderslist'
 //import Report from './Report'
 
  // <ProtectedRouter exact path='/order' component={Order}/>   <ProtectedRouter exact path="/ban" component={Banner}/> 
@@ -58,6 +58,8 @@ function App() {
       <ProtectedRouter exact path="/pro" component={Add_product}/> 
       <ProtectedRouter exact path="/ban" component={Banner}/>
       <Route exact path="/editban/" component={EditBanner}/>
+      <ProtectedRouter exact path='/order' component={Order}/>
+      <Route exact path="/user/" component={Userlist}/>
       </Switch>
     </div>
    
