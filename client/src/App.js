@@ -12,7 +12,7 @@ import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
 import ProtectedRouter from './protected'
-import AdminDashboard from './Category'
+import Category from './Category'
 import Login from './Login'
 
 
