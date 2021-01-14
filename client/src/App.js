@@ -11,8 +11,8 @@ import Category from './Category'
 import Add_product from './Add_product';
 import Editcat from './Editcat';
 import Edit_product from './Edit_product';
-//import Banner from './Banner';
-//import EditBanner from './EditBanner';
+import Banner from './Banner';
+import EditBanner from './EditBanner';
 //import Userlist from './Userlist';
 import Navbar from './Navbar';
 //import Sample from './Sample';
@@ -56,8 +56,8 @@ function App() {
       <Route exact path="/editcat/" component={Editcat}/> 
       <Route exact path="/editpro/" component={Edit_product}/>
       <ProtectedRouter exact path="/pro" component={Add_product}/> 
-     
-      
+      <ProtectedRouter exact path="/ban" component={Banner}/>
+      <Route exact path="/editban/" component={EditBanner}/>
       </Switch>
     </div>
    
