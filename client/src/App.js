@@ -1,11 +1,8 @@
-//import logo from './logo.svg';
-//import '../../assets/images/logo.png';
 
 import React from 'react';
 
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
 
-import Header from "./client_home/Header";
 import Home from "./client_home/Home";
 
 function App() {
@@ -16,8 +13,7 @@ function App() {
 
        <Switch>
      
-     <Route exact path="/" component={Header}/>
-     <Route exact path="/home" component={Home}/>
+    <Route exact path="/" component={Home}/>
       </Switch>
     </div>
    
