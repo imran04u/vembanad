@@ -25,7 +25,7 @@ import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
 import ProtectedRouter from './protected'
 import Order from './Orderslist'
-//import Report from './Report'
+import Report from './Report'
 
  // <ProtectedRouter exact path='/order' component={Order}/>   <ProtectedRouter exact path="/ban" component={Banner}/> 
     
@@ -60,6 +60,7 @@ function App() {
       <Route exact path="/editban/" component={EditBanner}/>
       <ProtectedRouter exact path='/order' component={Order}/>
       <Route exact path="/user/" component={Userlist}/>
+       <ProtectedRouter exact path='/report' component={Report}/>
       </Switch>
     </div>
    
