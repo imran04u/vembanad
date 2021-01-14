@@ -163,7 +163,7 @@ function AdminDashboard(props) {
               window.print();}}>PRINT</button>
             </div>
         <audio id="myAudio">
-  <source src="{sound}" type="audio/mpeg">
+  <source src="{sound}" type="audio/mpeg"/>
 </audio>
             <table class="datatable ordertable">
               <thead>
