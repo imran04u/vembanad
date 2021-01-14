@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import sound from './client_home/images/notification.mp3';
 import CONFIG from './config'
 //import BootBox from 'react-bootbox';
-import Dialog from 'react-bootstrap-dialog';
+//import Dialog from 'react-bootstrap-dialog';
 import {Modal,Button} from 'react-bootstrap';
 import $ from 'jquery'
 
