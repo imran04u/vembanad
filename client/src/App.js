@@ -11,8 +11,8 @@ import Menu from './client_home/Menu'
 import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
-import ProtectedRouter from './protected'
-import AdminDashboard from './AdminDashboard'
+//import ProtectedRouter from './protected'
+//import AdminDashboard from './AdminDashboard'
 import Login from './Login'
 
 
@@ -33,8 +33,7 @@ function App() {
      <Route exact path="/register" component={Register}/>
      <Route exact path="/user_log" component={User_Log}/>
       <Route exact path="/admin" component={Login}/> 
-      <ProtectedRouter exact path='/dash' component={AdminDashboard}/>
-
+      
       </Switch>
     </div>
    
