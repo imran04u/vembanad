@@ -30,7 +30,7 @@ function AdminDashboard(props) {
   const [d, setD] = useState("");
   const [v, setV] = useState("");
   const sd = useRef(0);
-  var x = document.getElementById("myAudio");
+  
 
   //playAlert.content['not']=[sound]
   //let d=[];
@@ -53,9 +53,14 @@ function AdminDashboard(props) {
     })
   }
   function sou(c){
-   
+  // var x = document.getElementById("myAudio");
+   //console.log(x);
+    var x=new Audio(sound);
       const so=setInterval(()=>{
               if(sd.current==0){
+                //console.log( x.play());
+                //$("#myAudio").play();
+               
                 x.play(); 
      // playAlert('glass');
       //playAlert.volume(1);
@@ -162,9 +167,7 @@ function AdminDashboard(props) {
               <button class="adminprint" onClick={(e)=>{//e.preventDefault();
               window.print();}}>PRINT</button>
             </div>
-        <audio id="myAudio">
-  <source src="{sound}" type="audio/mpeg"/>
-</audio>
+     
             <table class="datatable ordertable">
               <thead>
                 <tr>
