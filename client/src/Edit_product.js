@@ -23,6 +23,10 @@ function Edit_product(props) {
     toast('Updated successfully') 
          
   } 
+          const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
  
  // const [pro_data,setPdata]=useState([]);
   useEffect(()=>{
@@ -51,6 +55,12 @@ function Edit_product(props) {
   
    
   function createCat(e){
+     if($('#prod').val()=="" ||  $('#des').val()=="" || $("#catselect option:selected").index()==0 || $('#pr').val()=="" || $('#of').val()==""){
+     // console.log("return");
+     //alert($("#c option:selected").index());
+     Missing();
+      return;
+    }
     const q=window.location.search;
     e.preventDefault();
     let data={
@@ -103,7 +113,7 @@ function Edit_product(props) {
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label><br/>
                 <label><img src={propath} style={{"height":"100px","width":"120px"}}/></label>
-                <input type="file" name="" class="iconblk"  onChange={(event)=>{
+                <input type="file" name="" id="f" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);
@@ -120,17 +130,17 @@ function Edit_product(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Product Name</label>
-                <input type="text" name="pname" value={pname}  onChange={(event)=>{setPname(event.target.value);}} placeholder="Product Name" />
+                <input type="text" name="pname" value={pname} id="prod"  onChange={(event)=>{setPname(event.target.value);}} placeholder="Product Name" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Product Description</label>
-                <input type="text" name="description" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Product description" class="iconblk" />
+                <input type="text" name="description" id="des" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Product description" class="iconblk" />
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Product prize</label>
-                <input type="text" name="" value={price} onChange={(event)=>{setPrice(event.target.value);}} placeholder="Category prize" />
+                <input type="text" name="" value={price} id="pr" onChange={(event)=>{setPrice(event.target.value);}} placeholder="Category prize" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Today Special</label>
@@ -147,7 +157,7 @@ function Edit_product(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Offer prize</label>
-                <input type="text" name="" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
+                <input type="text" name="" id="of" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
               </div>
               </div>
             <div class="col-md-12 formsingle">

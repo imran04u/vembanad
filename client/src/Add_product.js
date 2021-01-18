@@ -29,6 +29,10 @@ function Add_product() {
     toast('Deleted Successfully') 
          
   } 
+        const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
   useEffect(()=>{
     
       $("#searchT").on("keyup", function() {
@@ -80,6 +84,12 @@ function Add_product() {
 
   }
   function createCat(e){
+       if($('#prod').val()=="" || $('#f').val()=="" || $('#des').val()=="" || $("#c option:selected").index()==0 || $('#pr').val()=="" || $('#of').val()==""){
+     // console.log("return");
+     //alert($("#c option:selected").index());
+     Missing();
+      return;
+    }
     $('#'+e.target.id).attr('disabled','disabled');
     e.preventDefault();
     let data={
@@ -133,7 +143,7 @@ function Add_product() {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Category Name</label>
-                <select onChange={(event)=>{setCname(event.target.value);}} >
+                <select id="c" onChange={(event)=>{setCname(event.target.value);}} >
                 <option>--select--</option>
                 {cat_data.map(d=>
                   <option>{d.title}</option>
@@ -159,21 +169,21 @@ function Add_product() {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Product Name</label>
-                <input type="text" name="pname" value={pname}  onChange={(event)=>{setPname(event.target.value);}} placeholder="Product Name" />
+                <input type="text" id="prod" name="pname" value={pname}  onChange={(event)=>{setPname(event.target.value);}} placeholder="Product Name" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Product Description</label>
-                <input type="text" name="description" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Product description" class="iconblk" />
+                <input type="text" id="des" name="description" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Product description" class="iconblk" />
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Product prize</label>
-                <input type="text" name="" value={price} onChange={(event)=>{setPrice(event.target.value);}} placeholder="Category prize" />
+                <input type="text" name="" id="pr" value={price} onChange={(event)=>{setPrice(event.target.value);}} placeholder="Category prize" />
               </div>
                <div class="col-md-6 formsingle">
                 <label>Offer prize</label>
-                <input type="text" name="" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
+                <input type="text" name="" id="of" value={offer_price} onChange={(event)=>{setOPrice(event.target.value);}} placeholder="Category offer prize" />
               </div>
 
             </div>

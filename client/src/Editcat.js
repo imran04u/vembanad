@@ -5,6 +5,7 @@ import axios from "axios";
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import CONFIG from './config';
+import $ from "jquery";
 toast.configure()
 function Editcat() {
   const [fname,setFname]=useState("");
@@ -16,6 +17,10 @@ function Editcat() {
     toast('Updated successfully') 
          
   } 
+      const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -37,6 +42,11 @@ function Editcat() {
    
     //setCatdata(d);
   function createCat(){
+        if($('#c').val()==""){
+     // console.log("return");
+     Missing();
+      return;
+    }
     let data={
       fname:fname,
       photo:catpath,
@@ -70,7 +80,7 @@ function Editcat() {
             <div class="row">
               <div class="col-md-12 formsingle">
                 <label>Category Name</label>
-                <input type="text" name="" value={cat} onChange={(event)=>{setCat(event.target.value);console.log(cat)}} placeholder="Category Name" />
+                <input type="text" name="" id="c" value={cat} onChange={(event)=>{setCat(event.target.value);console.log(cat)}} placeholder="Category Name" />
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload</label><br/>

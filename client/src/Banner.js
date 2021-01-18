@@ -26,6 +26,10 @@ function Banner(props) {
     toast('Deleted successfully') 
          
   } 
+      const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -73,6 +77,11 @@ function Banner(props) {
     }
   }
   function createCat(e){
+        if($('#b').val()=="" || $('#f').val()=="" || $('#des').val()=="" || $('#l').val()==""){
+     // console.log("return");
+     Missing();
+      return;
+    }
     e.preventDefault();
     $('#'+e.target.id).attr('disabled','disabled');
     let data={
@@ -125,7 +134,7 @@ function Banner(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Banner Name</label>
-                <input type="text" name="" value={bname} onChange={(event)=>{setBname(event.target.value);}} placeholder="Banner Name" />
+                <input type="text" name="" id="b" value={bname} onChange={(event)=>{setBname(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload (Dimension 1920px x 920px)</label>
@@ -143,11 +152,11 @@ function Banner(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Description</label>
-                <input type="text" name="" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Banner description" />
+                <input type="text" name="" id="des" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Banner description" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Banner Link</label>
-                <input type="text" name="" value={banner_link} onChange={(event)=>{setBanner_link(event.target.value);}} placeholder="Banner link" />
+                <input type="text" name="" id="l" value={banner_link} onChange={(event)=>{setBanner_link(event.target.value);}} placeholder="Banner link" />
               </div>
               </div>
             <div class="col-md-12 formsingle">

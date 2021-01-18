@@ -6,6 +6,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';  
 import { PromiseProvider } from "mongoose";
 import CONFIG from './config';
+import $ from "jquery";
 toast.configure()
 function EditBanner(props) {
   const [fname,setFname]=useState("");
@@ -19,6 +20,10 @@ function EditBanner(props) {
     toast('Updated Successfully') 
          
   } 
+        const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
 
   useEffect(()=>{
     //const q=window.location.search;
@@ -43,6 +48,11 @@ function EditBanner(props) {
    
     //setCatdata(d);
   function createCat(){
+            if($('#b').val()=="" ||  $('#des').val()=="" || $('#l').val()==""){
+     // console.log("return");
+     Missing();
+      return;
+    }
     let data={
       fname:fname,
       photo:banpath,
@@ -78,12 +88,12 @@ function EditBanner(props) {
             <div class="row">
               <div class="col-md-12 formsingle">
                 <label>Banner Name</label>
-                <input type="text" name="" value={title} onChange={(event)=>{setTitle(event.target.value);}} placeholder="Banner Name" />
+                <input type="text" name="" id="b" value={title} onChange={(event)=>{setTitle(event.target.value);}} placeholder="Banner Name" />
               </div>
               <div class="col-md-12 formsingle">
                 <label>Image Upload (Dimension 1920px x 920px)</label><br/>
                 <label><img src={banpath} style={{"height":"100px","width":"120px"}}/></label>
-                <input type="file" name="" class="iconblk"  onChange={(event)=>{
+                <input type="file" name="" id="f" class="iconblk"  onChange={(event)=>{
                 let file=event.target.files;
                 let reader=new FileReader();
                 reader.readAsDataURL(file[0]);
@@ -98,11 +108,11 @@ function EditBanner(props) {
             <div class="row">
               <div class="col-md-12 formsingle">
                 <label>Banner Description</label>
-                <input type="text" name="" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Category Name" />
+                <input type="text" name="" id="des" value={description} onChange={(event)=>{setDescription(event.target.value);}} placeholder="Category Name" />
               </div>
               <div class="col-md-12 formsingle">
                 <label>URL link</label>
-                <input type="text" name="" value={url_link} onChange={(event)=>{setUrl_link(event.target.value);}} placeholder="Category Name" />
+                <input type="text" name="" id="l" value={url_link} onChange={(event)=>{setUrl_link(event.target.value);}} placeholder="Category Name" />
               </div>
               </div>
             <div class="col-md-12 formsingle">
