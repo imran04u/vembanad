@@ -41,7 +41,7 @@ const notify = ()=>{
            else{
             localStorage.setItem('auth',JSON.stringify(res.data.token));
             notify()
-          props.history.push('/category')
+          props.history.push('/dash')
            }
       }
       else{
