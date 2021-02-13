@@ -11,6 +11,17 @@ const jwt=require('jsonwebtoken');
 const fileUpload=require('express-fileupload');
 router.use(fileUpload());
 
+// router.get("/admin",async(req,res)=>{
+//         const m=await new user({
+//             uname:"admin",
+//             pass:"admin",
+//             user_type:"admin"
+//             })
+//             const mS=await m.save();
+//         console.log(mS)
+//         res.json(mS);
+// });
+
 router.post("/",async(req,res)=>{
     //res.json("h");
     try{
@@ -61,11 +72,15 @@ router.post("/cat/",async(req,res)=>{
         //res.setHeader('Content-Type', 'text/json');
         //res.setHeader('Content-Type', 'text/html');
         res.type('json');
+      //  for(var i=0;i<100;i++){
         const m=await new cat({
             title:req.body.cat,
             path:req.body.photo
             })
-            const mS=await m.save();
+           
+                const mS=await m.save();
+         //   }
+           
       //  console.log(mS)
  const c=await cat.find().sort({created:-1}).exec();
             console.log(c);

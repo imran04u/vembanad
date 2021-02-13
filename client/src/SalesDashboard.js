@@ -5,13 +5,13 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import {useHistory} from 'react-router-dom'
 import { PromiseProvider } from "mongoose";
-import playAlert from 'alert-sound-notify';
+//import playAlert from 'alert-sound-notify';
 import {toast} from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
 import sound from './client_home/images/notification.mp3';
 import CONFIG from './config'
 //import BootBox from 'react-bootbox';
-import Dialog from 'react-bootstrap-dialog';
+//import Dialog from 'react-bootstrap-dialog';
 import {Modal,Button} from 'react-bootstrap';
 import $ from 'jquery'
 
@@ -30,9 +30,9 @@ function SalesDashboard(props) {
   const [d, setD] = useState("");
   const [v, setV] = useState("");
   const sd = useRef(0);
+  
 
-
-  playAlert.content['not']=[sound]
+  //playAlert.content['not']=[sound]
   //let d=[];
   const notify = ()=>{  
     toast('Status Updated') 
@@ -53,10 +53,20 @@ function SalesDashboard(props) {
     })
   }
   function sou(c){
-   
+  // var x = document.getElementById("myAudio");
+   //console.log(x);
+    var x=new Audio(sound);
       const so=setInterval(()=>{
               if(sd.current==0){
-       playAlert('not');
+                //console.log( x.play());
+                //$("#myAudio").play();
+               
+                x.play(); 
+     // playAlert('glass');
+      //playAlert.volume(1);
+      }
+      else{
+         x.pause(); 
       }
       if(sd.current>0){
         // console.log("termnate"+sd.current);
@@ -143,7 +153,7 @@ function SalesDashboard(props) {
       <div className="page-container">  
       <div className="left-content">
         <div className="mother-grid-inner">
-         <Header d="auths"/>
+         <Header d="auth"/>
          <div class="content-wrapper">
           
           <div class="titleblk clearfix">       
@@ -157,7 +167,7 @@ function SalesDashboard(props) {
               <button class="adminprint" onClick={(e)=>{//e.preventDefault();
               window.print();}}>PRINT</button>
             </div>
-        
+     
             <table class="datatable ordertable">
               <thead>
                 <tr>
@@ -261,5 +271,4 @@ function SalesDashboard(props) {
   </div>
     );
   }
-  
   export default SalesDashboard;

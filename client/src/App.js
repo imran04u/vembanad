@@ -1,14 +1,8 @@
-//import logo from './logo.svg';
-//import '../../assets/images/logo.png';
-//import 'https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css';
-//import  logo from './assets/images/logo.png';
-//import   './assets/css/bootstrap.min.css';
-//simport  './assets/css/theme.css';
-//import  'https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css';
-//import  'https://use.fontawesome.com/releases/v5.8.2/css/all.css';
-//import './App.css';
+
 import React from 'react';
+
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
+
 import Home from "./client_home/Home";
 import Login from './Login'
 import Dashboard from './Dashboard'
@@ -21,7 +15,7 @@ import Banner from './Banner';
 import EditBanner from './EditBanner';
 import Userlist from './Userlist';
 import Navbar from './Navbar';
-import Sample from './Sample';
+//import Sample from './Sample';
 import About from './client_home/About'
 import Contact from './client_home/Contact'
 import user_Dashboard from './client_home/Dashboard'
@@ -29,12 +23,18 @@ import Menu from './client_home/Menu'
 import Offers from './client_home/Offers'
 import Register from './client_home/Register'
 import User_Log from './client_home/User_Log'
+import ProtectedRouter from './protected'
 import Order from './Orderslist'
 import Report from './Report'
 import AdminDashboard from './AdminDashboard'
-import SalesDashboard from './SalesDashboard'
-import ProtectedRouter from './protected'
-import ProtectedRouters from './protecteds'
+
+ // <ProtectedRouter exact path='/order' component={Order}/>   <ProtectedRouter exact path="/ban" component={Banner}/> 
+    
+ //      <ProtectedRouter exact path='/report' component={Report}/>  <Route exact path="/editban/" component={EditBanner}/>  
+ //    <Route exact path="/user/" component={Userlist}/>
+
+    
+     
 function App() {
   return (
    
@@ -42,7 +42,6 @@ function App() {
     
 
        <Switch>
-      <Route exact path="/admin" component={Login}/> 
      
      <Route exact path="/" component={Home}/>
      <Route exact path="/about" component={About}/>
@@ -52,22 +51,18 @@ function App() {
      <Route exact path="/offers" component={Offers}/>
      <Route exact path="/register" component={Register}/>
      <Route exact path="/user_log" component={User_Log}/>
-
-
-     <Route exact path="/user/" component={Userlist}/>
-
+      <Route exact path="/admin" component={Login}/> 
+        <ProtectedRouter exact path="/category" component={Category}/> 
+         
       <Route exact path="/editcat/" component={Editcat}/> 
       <Route exact path="/editpro/" component={Edit_product}/>
-      <Route exact path="/editban/" component={EditBanner}/>  
-      <ProtectedRouter exact path="/category" component={Category}/> 
       <ProtectedRouter exact path="/pro" component={Add_product}/> 
-      <ProtectedRouter exact path="/ban" component={Banner}/> 
-      <ProtectedRouter exact path='/sample' component={Sample}/>
+      <ProtectedRouter exact path="/ban" component={Banner}/>
+      <Route exact path="/editban/" component={EditBanner}/>
       <ProtectedRouter exact path='/order' component={Order}/>
-      <ProtectedRouter exact path='/dash' component={AdminDashboard}/>
-      <ProtectedRouter exact path='/report' component={Report}/>
-      <ProtectedRouters exact path='/sales' component={SalesDashboard}/>
-     
+      <Route exact path="/user/" component={Userlist}/>
+       <ProtectedRouter exact path='/report' component={Report}/>
+        <ProtectedRouter exact path='/dash' component={AdminDashboard}/>
       </Switch>
     </div>
    

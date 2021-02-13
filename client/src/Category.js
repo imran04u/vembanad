@@ -28,6 +28,10 @@ function Category(props) {
     toast('Deleted successfully') 
          
   }
+    const Missing = ()=>{  
+    toast('Some inputs are missing') 
+         
+  }
   useEffect(()=>{
     //const q=window.location.search;
     //console.log(q.substring(4));
@@ -78,6 +82,11 @@ function Category(props) {
     }
   }
   function createCat(e){
+    if($('#c').val()=="" || $('#f').val()==""){
+     // console.log("return");
+     Missing();
+      return;
+    }
    $('#'+e.target.id).attr('disabled','disabled'); e.preventDefault();
     let data={
       fname:fname,
@@ -132,7 +141,7 @@ function Category(props) {
             <div class="row">
               <div class="col-md-6 formsingle">
                 <label>Category Name</label>
-                <input type="text" name="" value={cat} onChange={(event)=>{setCat(event.target.value);console.log(cat)}} placeholder="Category Name" />
+                <input type="text" name="" id="c" value={cat} onChange={(event)=>{setCat(event.target.value);console.log(cat)}} placeholder="Category Name" />
               </div>
               <div class="col-md-6 formsingle">
                 <label>Image Upload</label>

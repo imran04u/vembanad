@@ -39,7 +39,7 @@ router3.get('/', async(req, res)=>{
    res.json({offer:d,b:b,t:spl});
  });
  router3.get('/menu', async(req, res)=>{
-    const s=await cat.find().exec();
+    const s=await cat.find().select("-path").exec();
     const w=await product.find({offer_price:0}).exec();
     const offer=await product.find({offer_price:{$gte:1}}).exec();
     let d=[];
