@@ -134,6 +134,11 @@ console.log("axos banner");
 			setBanner(res.data.b);
 			sessionStorage.setItem("banner",btoa(JSON.stringify(res.data.b)));
 			sessionStorage.setItem("offer",btoa(JSON.stringify(res.data.offer)));
+			res.data.t.map(s=>{
+				if(s.offer_price>0){
+					s.price=s.offer_price;
+				}
+			});
 			sessionStorage.setItem("spl",btoa(JSON.stringify(res.data.t)));
 			setOffer(res.data.offer);
 			setTspl(res.data.t);
@@ -257,7 +262,8 @@ console.log("axos banner");
 			{tspl.map(t=>(
 					<div class=" dish">
 					<img src={t.path}/>
-				<span>{t.price} QR</span>
+				
+				<span>{t.price} QR </span>
 				<p>{t.title}</p>
 					<a href="/menu">Order now <i class="fa fa-long-arrow-right"></i></a>
 					</div>

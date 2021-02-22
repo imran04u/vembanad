@@ -46,11 +46,17 @@ function Menu(props) {
 			 
 	  }
 	let url="/menu?"
-	function setC(e,c){
+	function setC(e,c,i){
 		e.preventDefault();
+		$('#banner').show();
+		console.log();
+		var x=$('.act').attr('id');
+		$('#'+x).removeClass('act');
+		document.getElementById(i).className="act";
 		setOffer([]);
 		setP([]);
 		axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
+			$('#banner').hide();
 			res.data.offer.map(o=>{
 				if(o.cname==c){
 					setOffer(offer=>[...offer,o]);
@@ -116,6 +122,7 @@ function Menu(props) {
 		 // alert('hi');  
 		 console.log(window.location.search.substring(1))
 		 axios.get(`${CONFIG.baseUrl}/home/menu/`).then(res=>{
+			 $('#banner').hide();
 			console.log(res.data);
 			setData(res.data.d);
 			localStorage.setItem("offer",btoa(JSON.stringify(res.data.offer)));
@@ -196,7 +203,7 @@ else{
 							<li>Category</li>
 							{cat.map(d=>
 							
-								<li><a href="" onClick={(event)=>{setC(event,d.title)}}>{d.title}</a></li>
+								<li><a id={d._id} href="" onClick={(event)=>{setC(event,d.title,d._id)}}>{d.title}</a></li>
 								)}
 							
 							
@@ -204,6 +211,7 @@ else{
 					</div>
 					<div className="col-md-9">
 						<div className="mainmenu">
+						<section id="banner"></section>
 						{offer.map(o=>
 								
 								<div className="menulist">
