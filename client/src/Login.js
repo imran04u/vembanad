@@ -18,6 +18,9 @@ const notify = ()=>{
    
 
    function btn_click(e){
+    // axios.get(`${CONFIG.baseUrl}/login/admin`).then(res=>{
+    //   console.log(res.data.result);
+    // });
      e.preventDefault();
      let data={
        uname:uname,

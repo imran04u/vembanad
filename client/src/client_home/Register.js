@@ -1,4 +1,4 @@
-import jquery from "jquery";
+ import jquery from "jquery";
 import React, {useState,useEffect} from "react";
 import ReactDOM from 'react-dom';
 import axios from "axios";
