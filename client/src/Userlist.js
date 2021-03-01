@@ -13,11 +13,17 @@ function Userlist(props) {
     //const q=window.location.search;
     //console.log(q.substring(4));
     setTimeout(() => {
-      axios.get(`${CONFIG.baseUrl}/user/display/`).then(res=>{
-        console.log(res.data);
-       setCatdata(res.data);
+      fetch(`${CONFIG.baseUrl}/user/display/`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+         console.log(result);
+          setCatdata(result);
+          });
+      // axios.get(`${CONFIG.baseUrl}/user/display/`).then(res=>{
+      //   setCatdata(res.data);
         
-      })
+      // })
       
     }, 1000);
     //console.log(catd);

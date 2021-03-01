@@ -14,6 +14,7 @@ function Banner(props) {
   const [fname,setFname]=useState("");
   const [Img,setImg]=useState("");
   const [bname,setBname]=useState("");
+  const [blength,setBlen]=useState(0);
   const [description,setDescription]=useState("");
   const [banner_link,setBanner_link]=useState("#");
   const [ban_data,setBandata]=useState([]);
@@ -35,9 +36,11 @@ function Banner(props) {
     //console.log(q.substring(4));
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
-        
+        $('#banner').hide();
         setBandata(res.data);
-        console.log(ban_data);
+        setBlen(res.data.length);
+        
+        //console.log(ban_data);
       })
       
     }, 1000);
@@ -68,7 +71,9 @@ function Banner(props) {
           axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
             
             setBandata(res.data);
+            setBlen(res.data.length);
             console.log(ban_data);
+
           })
           
         }, 1000);
@@ -107,6 +112,7 @@ function Banner(props) {
         axios.get(`${CONFIG.baseUrl}/home/banner/`).then(res=>{
           
           setBandata(res.data);
+          setBlen(res.data.length);
           console.log(ban_data);
         })
         
@@ -168,7 +174,7 @@ function Banner(props) {
 
          <div class="newblk bgwhite">                
             <div class="subtitle">
-              <h3>View Banner</h3>
+              <h3>View Banner({blength})</h3>
             </div>
             <table class="datatable">
               <thead>
@@ -205,6 +211,7 @@ function Banner(props) {
 
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>

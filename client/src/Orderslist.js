@@ -31,6 +31,7 @@ function Orderlist(props) {
         // console.log(res.data);
        setCatdata(res.data);
         setLength(res.data.length);
+        $('#banner').hide();
         clearTimeout();
        
       })
@@ -116,6 +117,7 @@ function Orderlist(props) {
 
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>

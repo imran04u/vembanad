@@ -36,6 +36,7 @@ function Menu(props) {
 	const [offer,setOffer]=useState([]);
 	const [product,setP]=useState([]);
 	const [tot,setTot]=useState(0);
+	const [catlen,setlen]=useState(0);
 	const [order,setD]=useState([]);
 	const notify = ()=>{  
 		toast('Added to cart') 
@@ -76,7 +77,7 @@ function Menu(props) {
 			       	if(localStorage.getItem("cats")){
     		setCat(JSON.parse(atob(localStorage.getItem("cats"))));
     	}
-    	 		if(localStorage.getItem("offer") || localStorage.getItem("pro")){
+    	 		if(localStorage.getItem("offer") && localStorage.getItem("pro")){
   			setP(JSON.parse(atob(localStorage.getItem("pro"))));
   			setOffer(JSON.parse(atob(localStorage.getItem("offer"))));
   			console.log("menu");
@@ -133,7 +134,7 @@ function Menu(props) {
 			setCat(res.data.c);
 			setOffer(res.data.offer);
 			setP(res.data.p);
-
+			setlen(res.data.c.length);
 		
 			if(localStorage.getItem("data"))
 			{
@@ -200,7 +201,7 @@ else{
 				<div className="row">
 					<div className="col-md-3">
 						<ul className="nav-tabs tabs-left">
-							<li>Category</li>
+							<li>Category({catlen})</li>
 							{cat.map(d=>
 							
 								<li><a id={d._id} href="" onClick={(event)=>{setC(event,d.title,d._id)}}>{d.title}</a></li>

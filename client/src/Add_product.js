@@ -11,6 +11,7 @@ toast.configure()
 
 function Add_product() {
   const [cname,setCname]=useState("");
+  const [plength,setlen]=useState(0);
   const [Img,setImg]=useState("");
   const [pname,setPname]=useState("");
   const [fname,setFname]=useState("");
@@ -45,8 +46,10 @@ function Add_product() {
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
         setCatdata(res.data.b);
+        setlen(res.data.a.length);
       setPdata(res.data.a);
-        console.log();
+      $('#banner').hide();
+      //  console.log();
       })
       
     }, 1000);
@@ -66,6 +69,7 @@ function Add_product() {
         setTimeout(() => {
           axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
             setCatdata(res.data.b);
+            setlen(res.data.a.length);
           setPdata(res.data.a);
             console.log();
           })
@@ -117,6 +121,7 @@ function Add_product() {
     // },1000)
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/product/display/`).then(res=>{
+        setlen(res.data.a.length);
         setCatdata(res.data.b);
       setPdata(res.data.a);
         console.log();
@@ -207,7 +212,7 @@ function Add_product() {
 
          <div class="newblk bgwhite">                
             <div class="subtitle">
-              <h3>View Products</h3>  
+              <h3>View Products({plength})</h3>  
               <input className="col-md-6 searchfood" placeholder="search products" type="text" id="searchT" onChange={(event)=>{setSearch(event.target.value);}}/>
            
             </div>
@@ -249,6 +254,7 @@ function Add_product() {
               )}
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>

@@ -28,6 +28,7 @@ function Report(props) {
       axios.get(`${CONFIG.baseUrl}/cart/display2/`).then(res=>{
         console.log(res.data);
        setCatdata(res.data);
+       $('#banner').hide();
         // res.data.map(t=>{
         //   setTot(...tot+res.data.total);
         // })
@@ -142,6 +143,7 @@ function Report(props) {
              
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>

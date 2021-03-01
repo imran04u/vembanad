@@ -100,7 +100,7 @@ function AdminDashboard(props) {
         setLength(res.data.length);
         setCatdata(res.data);
         ref1.current=1;
-       
+        $('#banner').hide();
       }).then(console.log("ref1"+ref.current))
   }
    const n= setInterval(() => {
@@ -226,6 +226,7 @@ function AdminDashboard(props) {
 
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>

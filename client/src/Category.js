@@ -19,6 +19,7 @@ function Category(props) {
   const [catd,setCatd]=useState("");
   const [name,setName]=useState("");
   const [cat_data,setCatdata]=useState([]);
+  const [catlen,setlen]=useState(0);
   let d=[];
   const Added = ()=>{  
     toast('Added successfully') 
@@ -39,8 +40,9 @@ function Category(props) {
     setTimeout(() => {
       axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
         headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
-        
+        setlen(res.data.length);
        setCatdata(res.data);
+       $('#banner').hide();
         console.log(cat_data);
       })
       
@@ -70,7 +72,7 @@ function Category(props) {
           setTimeout(() => {
             axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
               headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
-              
+              setlen(res.data.length);
              setCatdata(res.data);
               console.log(cat_data);
             })
@@ -107,7 +109,7 @@ function Category(props) {
         setTimeout(() => {
           axios.get(`${CONFIG.baseUrl}/login/catdisplay/`,{
             headers: {'auth':`${JSON.parse(localStorage.getItem('auth'))}`}}).then(res=>{
-            
+            setlen(res.data.length);
            setCatdata(res.data);
             console.log(cat_data);
           })
@@ -168,7 +170,7 @@ function Category(props) {
 
          <div class="newblk bgwhite">                
             <div class="subtitle">
-              <h3>View Category</h3>
+              <h3>View Category({catlen})</h3>
             </div>
             <table class="datatable">
               <thead>
@@ -201,6 +203,7 @@ function Category(props) {
 
               </tbody>
             </table>
+            <section id="banner"></section>
           </div> 
 
         </div>
